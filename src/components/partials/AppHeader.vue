@@ -2,19 +2,20 @@
 export default{
     data(){
         return {
-            message: 'Header'
+            
         }
     }
 }
 </script>
 
 <template>
-    <header>
-        <h1>{{ message }}</h1>
+    <header class="px-4 py-3">
         <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
-        <nav>
-            <!-- <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/about">About</RouterLink> -->
+        <nav class="navbar">
+            <div>
+                <router-link to="/" class="text-decoration-none text-white mx-2">Home</router-link>
+                <router-link to="/dashboard" class="text-decoration-none text-white mx-2">Dashboard</router-link>
+            </div>
         </nav>
     </header>
 </template>
