@@ -1,5 +1,4 @@
 import AppHome from '@/components/pages/guests/AppHome.vue';
-import UserDashboard from '@/components/pages/users/UserDashboard.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -10,11 +9,7 @@ const router = createRouter({
       name: 'home',
       component: AppHome
     },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: UserDashboard
-    },
+    
     
   ]
 })
