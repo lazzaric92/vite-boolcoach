@@ -1,17 +1,19 @@
 <script>
-export default{
-data(){
-return {
-message: 'Home'
-}
-}
+export default {
+    data() {
+        return {
+            message: 'Home'
+        }
+    }
 }
 </script>
 
 <template>
-<h1 class="text-white"> {{ message }} </h1>
+    <h1 class="text-white"> {{ message }} </h1>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+@use '../../../assets/styles/general.scss' as *;
+
 
 </style>
