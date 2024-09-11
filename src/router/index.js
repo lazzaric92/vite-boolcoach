@@ -17,8 +17,8 @@ const router = createRouter({
       component: AppSearch
     },
     {
-      path: '/game',
-      name: 'game',
+      path: '/games',
+      name: 'games',
       component: AppGame
     },
 

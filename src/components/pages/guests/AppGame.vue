@@ -1,34 +1,43 @@
 <script>
-import CoachesList from '@/components/partials/CoachesList.vue';
+import axios from 'axios';
+import GameCard from '@/components/partials/GameCard.vue';
 
 export default{
     data(){
         return {
-            
+            gamesList: [],
         }
     },
     components: {
-        CoachesList
+        GameCard
+    },
+    methods: {
+        getGamesList() {
+            axios.get('http://127.0.0.1:8000/api/games',{
+                params: {
+
+                }
+            })
+            .then((response) =>{
+                console.log(response.data.results);
+                this.gamesList = response.data.results;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+    },
+    created(){
+        this.getGamesList();
     }
 }
 </script>
 
 <template>
-    <div class="container py-4">
-        <div class="card mb-3" style="max-width: 540px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="..." class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="row">
+        <article class="col-3 mb-3" v-for="game in gamesList" key="game.id">
+            <CoachCard :singleGame="game"/>
+        </article>
     </div>
 </template>
 
