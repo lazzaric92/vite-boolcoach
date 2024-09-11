@@ -1,33 +1,134 @@
 <script>
-export default{
-    data(){
+export default {
+    data() {
         return {
-            
+
         }
     }
 }
 </script>
 
 <template>
-    <header class="px-4 py-3">
-        <nav class="navbar">
-            <ul class="list-unstyled d-flex mb-0">
+    <header>
+        <nav>
+            <!-- Logo -->
+            <div class="logo-container">
+                <router-link to="/" class="mx-5">
+                    <img src="../../assets/images/BoolCoach Logo.png" alt="Boolcoach Logo">
+                    <img class="header-link" src="../../assets/images/Asset 4.png" alt="Boolcoach Logo">
+                </router-link>
+            </div>
+
+            <ul class="mx-5">
+
                 <li>
-                    <router-link to="/" class="text-decoration-none fw-bold text-white mx-2">Boolcoach</router-link>
+                    <router-link to="/search" class="text-center text-decoration-none fw-bold text-white">
+                        <div class="circle">
+                            <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="lens" />
+                        </div>
+
+                    </router-link>
                 </li>
                 <li>
-                    <router-link to="/search" class="text-center text-decoration-none fw-bold text-white mx-2">Coaching</router-link>
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                        <img class="header-link" src="../../assets/images/Asset 5.png" alt="Boolcoach Logo">
+                    </router-link>
                 </li>
+                <li>
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                        <img class="header-link" src="../../assets/images/Asset 6.png" alt="Boolcoach Logo">
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                        <img class="login-button" src="../../assets/images/LOGIN BUTTON.png" alt="Boolcoach Logo">
+                    </router-link>
+                </li>
+
             </ul>
-            
-            
+
+
+
         </nav>
     </header>
 </template>
 
 <style scoped lang="scss">
-    header{
-        background: #7e3cc1;
-        background: linear-gradient(145deg, #7e3cc1 0%, #d62973 75%, #ff204e 100%);
+header {
+    height: 3.5rem;
+    background: #FF204E;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    display: flex;
+    align-items: center;
+
+
+    nav {
+        font-family: Jaro;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        div.logo-container {
+            position: relative;
+            top: 0;
+            width: 500px;
+            overflow: visible;
+            background-image: url('../../assets/images/Untitled-1.svg');
+            background-repeat: no-repeat;
+
+            img {
+                height: 4rem;
+                margin-right: 1rem;
+            }
+
+            .header-link {
+                height: 2.2rem;
+            }
+        }
+
+
+
+
+        ul {
+
+            display: flex;
+            align-items: center;
+            margin: 0;
+
+            li {
+                list-style-type: none;
+
+
+                .lens {
+                    font-size: 1.3rem;
+                }
+
+                .login-button {
+                    height: 3rem;
+
+                }
+
+                .header-link {
+                    height: 1.8rem;
+                }
+            }
+
+
+        }
+
+        .circle {
+            height: 3rem;
+            width: 3rem;
+            background-color: #7E3CC1;
+            border: black 3px solid;
+            border-radius: 50%;
+            padding: .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
+}
 </style>
