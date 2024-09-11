@@ -76,12 +76,18 @@ export default{
             </div>
             <p v-if="searchOn === true" id="clear-search" class="col-12 text-white text-decoration-underline p-1 mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Remove filters</p>
         </div>
+
         <CoachesIndex v-if="searchOn === false"/>
         <div v-else class="row">
-        <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
-            <CoachCard :singleCoach="coach"/>
-        </article>
-    </div>
+            <div v-if="searchResults.length > 0">
+                <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
+                    <CoachCard :singleCoach="coach"/>
+                </article>
+            </div>
+            <div v-else>
+                <h2 class="text-center text-white">Unlucky, no results found</h2>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -95,13 +101,13 @@ export default{
         border: 1px solid transparent;
 
         &:hover {
-            background-color: #df276b;
+            background-color: #ff204e;
             border: 1px solid transparent;
             scale: 1.05;
         }
 
         &:focus {
-            background-color: #df276b;
+            background-color: #ff204e;
             border: 1px solid transparent;
             scale: 1.05;
         }

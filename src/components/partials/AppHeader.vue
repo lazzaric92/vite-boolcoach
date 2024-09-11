@@ -30,18 +30,18 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="ms-4 d-flex align-items-center">
-                        <img class="header-link" src="../../assets/images/Asset 5.png" alt="Boolcoach Logo">
+                    <router-link to="/search" class="ms-4 d-flex align-items-center">
+                        <img class="header-link" src="../../assets/images/Asset 5.png" alt="Coaches">
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/" class="ms-4 d-flex align-items-center">
-                        <img class="header-link" src="../../assets/images/Asset 6.png" alt="Boolcoach Logo">
+                        <img class="header-link" src="../../assets/images/Asset 6.png" alt="Games">
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/" class="ms-4 d-flex align-items-center">
-                        <img class="login-button" src="../../assets/images/LOGIN BUTTON.png" alt="Boolcoach Logo">
+                        <img class="login-button" src="../../assets/images/LOGIN BUTTON.png" alt="Login">
                     </router-link>
                 </li>
 
