@@ -5,7 +5,6 @@ import CoachCard from './CoachCard.vue';
 export default{
     data(){
         return {
-            message: 'Coaches',
             coachesList: [],
         }
     },
@@ -35,7 +34,6 @@ export default{
 </script>
 
 <template>
-<h1> {{ message }} </h1>
 <div class="container-fluid">
     <div class="row">
         <article class="col-3 mb-3" v-for="coach in coachesList" key="coach.id">
