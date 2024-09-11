@@ -13,25 +13,37 @@ export default {
         <nav>
             <!-- Logo -->
             <div class="logo-container">
-                <router-link to="/" class="black-outline mx-5">
+                <router-link to="/" class="mx-5">
                     <img src="../../assets/images/BoolCoach Logo.png" alt="Boolcoach Logo">
-                    <span>BoolCoach</span>
+                    <img class="header-link" src="../../assets/images/Asset 4.png" alt="Boolcoach Logo">
                 </router-link>
-
             </div>
 
             <ul class="mx-5">
 
-                <a>
-                    <router-link to="/search"
-                    class="text-center text-decoration-none fw-bold text-white mx-2"><font-awesome-icon
-                    :icon="['fas', 'magnifying-glass']" class="lens" /></router-link>
-                </a>
-                <a>
-                    <router-link to="/"
-                        class="text-center text-decoration-none fw-bold text-white mx-2">
-                    <span class="black-outline">Coach</span></router-link>
-                </a>
+                <li>
+                    <router-link to="/search" class="text-center text-decoration-none fw-bold text-white">
+                        <div class="circle">
+                            <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="lens" />
+                        </div>
+
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                        <img class="header-link" src="../../assets/images/Asset 5.png" alt="Boolcoach Logo">
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                        <img class="header-link" src="../../assets/images/Asset 6.png" alt="Boolcoach Logo">
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                        <img class="login-button" src="../../assets/images/LOGIN BUTTON.png" alt="Boolcoach Logo">
+                    </router-link>
+                </li>
 
             </ul>
 
@@ -56,13 +68,11 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 1rem;
 
 
-        
         div.logo-container {
-            position:relative;
-            top: -7px;
+            position: relative;
+            top: 0;
             width: 500px;
             overflow: visible;
             background-image: url('../../assets/images/Untitled-1.svg');
@@ -72,23 +82,52 @@ header {
                 height: 4rem;
                 margin-right: 1rem;
             }
+
+            .header-link {
+                height: 2.2rem;
+            }
         }
 
-        .black-outline {
-            color: #FFF;
-            text-align: center;
-            -webkit-text-stroke-width: 2px;
-            -webkit-text-stroke-color: #000;
-            font-size: 2.2rem;
-            text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -2px 2px 0 #000;
-            
-        }
+
+
+
         ul {
-            
+
+            display: flex;
+            align-items: center;
+            margin: 0;
+
+            li {
+                list-style-type: none;
+
+
+                .lens {
+                    font-size: 1.3rem;
+                }
+
+                .login-button {
+                    height: 3rem;
+
+                }
+
+                .header-link {
+                    height: 1.8rem;
+                }
+            }
+
+
         }
 
-        .lens {
-            font-size: 2rem;
+        .circle {
+            height: 3rem;
+            width: 3rem;
+            background-color: #7E3CC1;
+            border: black 3px solid;
+            border-radius: 50%;
+            padding: .8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
