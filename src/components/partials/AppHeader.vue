@@ -35,7 +35,7 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                    <router-link to="/game" class="ms-4 d-flex align-items-center">
                         <img class="header-link" src="../../assets/images/Asset 6.png" alt="Boolcoach Logo">
                     </router-link>
                 </li>
