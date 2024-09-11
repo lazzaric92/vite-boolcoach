@@ -55,9 +55,9 @@ export default {
 
 <style scoped lang="scss">
 header {
-    height: 3.5rem;
+    height: 4rem;
     background: #FF204E;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    border-bottom: 3px solid black;
     display: flex;
     align-items: center;
 
@@ -68,15 +68,21 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
 
 
         div.logo-container {
             position: relative;
-            top: 0;
+            top: 17px;
             width: 500px;
+            height: 100px;
             overflow: visible;
             background-image: url('../../assets/images/Untitled-1.svg');
             background-repeat: no-repeat;
+
+            & * {
+                margin-top: .3rem;
+            }
 
             img {
                 height: 4rem;
@@ -99,6 +105,10 @@ header {
 
             li {
                 list-style-type: none;
+                &:hover {
+                    transition: all .2s ease-in-out;
+                    transform: scale(1.15);
+                }
 
 
                 .lens {
@@ -111,7 +121,7 @@ header {
                 }
 
                 .header-link {
-                    height: 1.8rem;
+                    height: 1.7rem;
                 }
             }
 
