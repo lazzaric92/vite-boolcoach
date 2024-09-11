@@ -72,10 +72,9 @@ export default{
             </div>
             
             <div class="col-1">
-                <button class="btn text-white" @click="[console.log(this.game_id, this.vote_avg, this.nickname), getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">Search</button>
+                <button class="btn text-white" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">Search</button>
             </div>
             <p v-if="searchOn === true" id="clear-search" class="col-12 text-white text-decoration-underline p-1 mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Remove filters</p>
-            <p class="text-white">params:  <span>{{ gameId }}</span> <span>{{ voteAvg }}</span> {{ nicknameString }}</p>
         </div>
         <CoachesIndex v-if="searchOn === false"/>
         <div v-else class="row">
