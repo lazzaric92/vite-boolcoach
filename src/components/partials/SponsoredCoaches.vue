@@ -71,7 +71,6 @@ export default{
             @mouseleave="stopDrag">
                 <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }"  class="col-3 mb-3 mx-3" v-for="(coach, index) in sponsoredCoaches" :key="index" style="cursor: pointer;">
                     <CoachCard :single-coach="coach"/>
-                    <span class="text-white">Voto: {{ coach.vote_average }}</span>
                 </RouterLink>
             </div>
     </div>
