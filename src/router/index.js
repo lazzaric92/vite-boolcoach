@@ -18,11 +18,6 @@ const router = createRouter({
       component: AppSearch
     },
     {
-      path: '/games',
-      name: 'games',
-      component: AppGame
-    },
-    {
       path: '/coach/:id',
       name: 'coach-details',
       component: ShowCoach
