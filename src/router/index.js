@@ -1,3 +1,4 @@
+import AppGame from '@/components/pages/guests/AppGame.vue';
 import AppHome from '@/components/pages/guests/AppHome.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
 import Error404 from '@/components/pages/guests/Error404.vue';
@@ -18,16 +19,21 @@ const router = createRouter({
       component: AppSearch
     },
     {
-      path: '/coaches/:id',
-      name: 'single-coach',
-      component: ShowCoach
+      path: '/games',
+      name: 'games',
+      component: AppGame
     },
     {
       path: '/404',
       name: '404-not-found',
       component: Error404
     },
+    {
+      path: '/coach/:id',
+      name: 'coach-details',
+      component: ShowCoach
+    }
   ]
 })
 
-export {router};
+export { router };

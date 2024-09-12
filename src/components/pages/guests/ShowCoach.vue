@@ -1,4 +1,6 @@
 <script>
+import axios from 'axios';
+
 export default{
     data(){
         return {
@@ -21,7 +23,7 @@ export default{
                 this.$router.push({ name: '404-not-found' });
                 console.log(error);
             }); 
-        }
+        },
     },
     created(){
         this.getCoach(this.$route.params.id);
