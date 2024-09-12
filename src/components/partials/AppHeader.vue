@@ -37,7 +37,7 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/games" class="ms-4 d-flex align-items-center">
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
                         <span class="header-link">Sponsorship</span>
                     </router-link>
                 </li>

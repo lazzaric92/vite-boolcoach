@@ -1,4 +1,4 @@
-// import AppGame from '@/components/pages/guests/AppGame.vue';
+
 import AppHome from '@/components/pages/guests/AppHome.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
 import ShowCoach from '@/components/pages/guests/ShowCoach.vue';
