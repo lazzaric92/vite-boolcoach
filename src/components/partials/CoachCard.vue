@@ -28,8 +28,8 @@ export default{
 </script>
 
 <template>
-    <div class="card border border-light rounded">
-        <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="card-img-top" :alt="singleCoach.nickname" draggable="false">
+    <div class="card border border-light rounded" draggable="false">
+        <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="card-img-top" :alt="singleCoach.nickname">
         <img v-else :src="randomImage()" :alt="singleCoach.nickname">
         <div class="card-body text-white">
             <router-link class="card-title fs-5 text-decoration-none text-white">{{ singleCoach.nickname }}</router-link>
@@ -43,5 +43,7 @@ export default{
 <style scoped lang="scss">
     .card{
         background-color: transparent;
+        user-select: none;
+        
     }
 </style>
