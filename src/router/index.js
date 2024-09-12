@@ -1,5 +1,6 @@
 import AppGame from '@/components/pages/guests/AppGame.vue';
 import AppHome from '@/components/pages/guests/AppHome.vue';
+import AppLogin from '@/components/pages/guests/AppLogin.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -21,7 +22,11 @@ const router = createRouter({
       name: 'games',
       component: AppGame
     },
-
+    {
+      path: '/login',
+      name: 'login',
+      component: AppLogin
+    },
   ]
 })
 

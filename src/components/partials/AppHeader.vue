@@ -40,7 +40,7 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                    <router-link to="/login" class="ms-4 d-flex align-items-center">
                         <img class="login-button" src="../../assets/images/LOGIN BUTTON.png" alt="Login">
                     </router-link>
                 </li>
