@@ -31,6 +31,7 @@ export default{
             })
             .catch((error) =>{
                 console.log(error);
+                this.$router.push({ name: '404-not-found' });
             });
         }
     }
@@ -112,12 +113,12 @@ export default{
         color: white;
     }
 
-    input,
-    select,
-    p#clear-search,
-    .no-results h2{
-        @include font-doppio;
-    }
+    // input,
+    // select,
+    // p#clear-search,
+    // .no-results h2{
+    //     @include font-doppio;
+    // }
 
     button {
         background-color: #7E3CC1;

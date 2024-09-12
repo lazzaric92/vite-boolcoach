@@ -1,5 +1,6 @@
 import AppHome from '@/components/pages/guests/AppHome.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
+import Error404 from '@/components/pages/guests/Error404.vue';
 import ShowCoach from '@/components/pages/guests/ShowCoach.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/coaches/:id',
       name: 'single-coach',
       component: ShowCoach
+    },
+    {
+      path: '/404',
+      name: '404-not-found',
+      component: Error404
     },
   ]
 })

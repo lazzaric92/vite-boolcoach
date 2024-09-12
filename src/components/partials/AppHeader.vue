@@ -32,7 +32,7 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/search" class="ms-4 d-flex align-items-center">
+                    <router-link to="/" class="ms-4 d-flex align-items-center">
                         <img class="header-link" src="../../assets/images/Asset 5.png" alt="Coaches">
                     </router-link>
                 </li>
