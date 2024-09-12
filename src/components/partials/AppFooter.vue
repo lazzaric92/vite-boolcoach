@@ -25,9 +25,11 @@ export default {
 </template>
 
 <style scoped lang="scss">
+@use '../../assets/styles/partials/variables' as *;
 footer {
     background: linear-gradient(180deg, #99132f 49%, #7E3CC1);
     width: 100%;
+    height: $footer-height;
 
     li {
         cursor: pointer;

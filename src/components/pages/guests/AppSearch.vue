@@ -38,8 +38,8 @@ export default{
 </script>
 
 <template>
-    <div class="container py-4">
-        <div class="row justify-content-around mb-4 p-3">
+    <div class="container">
+        <div id="search-nav-container" class="row justify-content-around">
             <!-- ! GAME_ID -->
             <div class="col-3 d-flex justify-content-center">
                 <select id="game_id" v-model="this.gameId" class="text-center">
@@ -76,14 +76,15 @@ export default{
             </div>
             <p v-if="searchOn === true" id="clear-search" class="col-12 text-white text-decoration-underline p-1 mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi i filtri</p>
         </div>
-
+    </div>
+    <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
         <div v-if="searchOn === true">
-            <div v-if="searchResults.length > 0" class="row">
+            <div v-if="searchResults.length > 0" class="row p-5">
                 <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
                     <CoachCard :singleCoach="coach"/>
                 </article>
             </div>
-            <div v-else class="no-results py-3 d-flex flex-column align-items-center">
+            <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
                 <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
                 <img src="../../../assets/images/amumu_sad_crying.png" alt="😭" >
             </div>
@@ -93,6 +94,20 @@ export default{
 
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/mixins' as *;
+@use '../../../assets/styles/partials/variables' as *;
+    #search-nav-container{
+        height: $search-nav-container-height;
+        padding: 3rem 1rem 1rem;
+    }
+
+    #main-content{
+        overflow-y: scroll;
+
+        &.empty{
+            height: calc(100vh - $header-height - $footer-height - $search-nav-container-height);
+        }
+    }
+
     label{
         color: white;
     }
