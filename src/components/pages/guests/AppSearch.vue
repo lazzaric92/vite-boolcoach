@@ -41,12 +41,14 @@ export default{
 </script>
 
 <template>
-    <div class="container-fluid py-4">
-        <div class="row justify-content-between mb-4 py-3">
+
+
+    <div class="container">
+        <div id="search-nav-container" class="row justify-content-around">
             <!-- ! GAME_ID -->
             <div class="col-3 d-flex justify-content-center">
-                <select id="game_id" v-model="this.gameId">
-                    <option value="" selected disabled>-- Select a game --</option>
+                <select id="game_id" v-model="this.gameId" class="text-center">
+                    <option value="" selected disabled>-- Videogioco --</option>
                     <option value="1">League of Legends</option>
                     <option value="2">Tom Clancy's Rainbow Six Siege</option>
                     <option value="3">FIFA 25</option>
@@ -57,46 +59,63 @@ export default{
             
             <!-- ! VOTE_AVG -->
             <div class="col-3 d-flex justify-content-center">
-                <select id="vote_avg" v-model="this.voteAvg">
-                    <option value="" selected disabled>-- Vote --</option>
-                    <option value="1">1 star or higher</option>
-                    <option value="2">2 stars or higher</option>
-                    <option value="3">3 stars or higher</option>
-                    <option value="4">4 stars or higher</option>
-                    <option value="5">5 stars</option>
+                <select id="vote_avg" v-model="this.voteAvg" class="text-center">
+                    <option value="" selected disabled>-- Voto --</option>
+                    <option value="1">1 &#9733; o superiore</option>
+                    <option value="2">2 &#9733; o superiore</option>
+                    <option value="3">3 &#9733; o superiore</option>
+                    <option value="4">4 &#9733; o superiore</option>
+                    <option value="5">5 &#9733;</option>
                 </select>
             </div>
             
             <!-- ! NICKNAME -->
             <div class="col-4">
-                <input class="form-control me-2" name="nickname" type="search" placeholder="Coach name" aria-label="Search" v-model="this.nicknameString">
+                <input class="form-control me-2" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString">
             </div>
             
             <div class="col-1">
-                <button class="btn text-white" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">Search</button>
+                <button class="btn text-white" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
+                    <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+                </button>
             </div>
-            <p v-if="searchOn === true" id="clear-search" class="col-12 ms-5 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Remove filters</p>
+            <p v-if="searchOn === true" id="clear-search" class="col-12 ms-5 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
         </div>
+    </div>
 
+    <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
         <CoachesIndex v-if="searchOn === false"/>
-        <div v-else class="row">
-            <div v-if="searchResults.length > 0" class="d-flex flex-wrap">
+        <div v-if="searchOn === true">
+            <div v-if="searchResults.length > 0" class="row p-5">
                 <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
                     <CoachCard :singleCoach="coach"/>
                 </article>
             </div>
-            <div v-else>
-                <h2 class="text-center text-white">Unlucky, no results found</h2>
+            <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
+                <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
+                <img src="../../../assets/images/amumu_sad_crying.png" alt="😭" >
             </div>
+
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
-    label{
-        color: white;
+    @use '../../../assets/styles/partials/variables' as *;
+    @use '../../../assets/styles/partials/mixins' as *;
+
+    #search-nav-container{
+        height: $search-nav-container-height;
+        padding: 3rem 1rem 1rem;
     }
-    
+    #main-content{
+        overflow-y: scroll;
+        &.empty{
+            height: calc(100vh - $header-height - $footer-height - $search-nav-container-height);
+        }
+    }
+
+
     button {
         background-color: #7E3CC1;
         border: 1px solid transparent;
