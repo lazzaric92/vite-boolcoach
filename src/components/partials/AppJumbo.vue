@@ -9,6 +9,7 @@ export default {
 </script>
 
 <template>
+    
     <section class="jumbo-container d-flex flex-column align-items-center">
         <h1> be the best player</h1>
         <div class="w-50">
@@ -41,7 +42,6 @@ export default {
     }
 
     p {
-        margin-top: 2rem;
         font-size: 2rem;
         font-family: 'Doppio One', sans-serif;
         -webkit-text-stroke-width: 2px;
