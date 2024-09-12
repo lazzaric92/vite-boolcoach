@@ -10,6 +10,8 @@ export default {
 
 <template>
     <header>
+        <img class="decoration" src="../../assets/images/spaceInvaders.png" alt="">
+        <img class="decoration small" src="../../assets/images/spaceInvaders.png" alt="">
         <nav>
             <!-- Logo -->
             <div class="logo-container">
@@ -35,14 +37,14 @@ export default {
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="ms-4 d-flex align-items-center">
-                        <img class="header-link" src="../../assets/images/Asset 6.png" alt="Games">
+                    <router-link to="/games" class="ms-4 d-flex align-items-center">
+                        <img class="header-link" src="../../assets/images/Asset 6.png" alt="Boolcoach Logo">
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/" class="ms-4 d-flex align-items-center">
+                    <a href="http://127.0.0.1:8000/login" class="ms-4 d-flex align-items-center">
                         <img class="login-button" src="../../assets/images/LOGIN BUTTON.png" alt="Login">
-                    </router-link>
+                    </a>
                 </li>
 
             </ul>
@@ -54,6 +56,21 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+.decoration {
+    position: absolute;
+    height: 2rem;
+    top: 10px;
+    left: 500px;
+    transform: rotate(35deg);
+
+    &.small {
+        height: 1.5rem;
+        top: 10px;
+        left: 550px;
+    }
+}
+
 header {
     height: 4rem;
     background: #FF204E;

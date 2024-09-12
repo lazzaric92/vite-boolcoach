@@ -4,7 +4,13 @@
 
 body {
     background-color: #121922;
+    font-family: 'Doppio One', sans-serif;
+    color: white;
+    li {
+        list-style-type: none;
+    }
     a{
+        color: white;
         text-decoration: none;
     }
 }

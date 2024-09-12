@@ -1,6 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router';
 import AppHeader from './components/partials/AppHeader.vue';
+import AppFooter from './components/partials/AppFooter.vue';
 export default {
     data() {
       return { 
@@ -8,7 +9,8 @@ export default {
       }
     },
     components: {
-      AppHeader
+      AppHeader,
+      AppFooter
     }
 }
 </script>
@@ -16,6 +18,7 @@ export default {
 <template>
   <AppHeader />
   <RouterView />
+  <AppFooter/>
 </template>
 
 <style lang="scss">

@@ -40,8 +40,8 @@ export default{
 </script>
 
 <template>
-    <div class="container py-4">
-        <div class="row justify-content-around mb-4 p-3">
+    <div class="container-fluid py-4">
+        <div class="row justify-content-between mb-4 py-3">
             <!-- ! GAME_ID -->
             <div class="col-3 d-flex justify-content-center">
                 <select id="game_id" v-model="this.gameId">
@@ -74,12 +74,12 @@ export default{
             <div class="col-1">
                 <button class="btn text-white" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">Search</button>
             </div>
-            <p v-if="searchOn === true" id="clear-search" class="col-12 text-white text-decoration-underline p-1 mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Remove filters</p>
+            <p v-if="searchOn === true" id="clear-search" class="col-12 ms-5 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Remove filters</p>
         </div>
 
         <CoachesIndex v-if="searchOn === false"/>
         <div v-else class="row">
-            <div v-if="searchResults.length > 0">
+            <div v-if="searchResults.length > 0" class="d-flex flex-wrap">
                 <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
                     <CoachCard :singleCoach="coach"/>
                 </article>
