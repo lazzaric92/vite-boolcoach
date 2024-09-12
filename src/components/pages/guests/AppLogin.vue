@@ -14,19 +14,19 @@ export default {
 </script>
 
 <template>
-<body class="d-flex">
+<body class="d-flex align-items-center">
     <div class="col-6 mx-auto text-white">
         <form>
             <!-- Email input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="form2Example1" class="form-control" />
-                <label class="form-label" for="form2Example1">Email address</label>
+                <input type="email" id="email" class="form-control" />
+                <label class="form-label" for="email">Email address</label>
             </div>
     
             <!-- Password input -->
             <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" id="form2Example2" class="form-control" />
-                <label class="form-label" for="form2Example2">Password</label>
+                <input type="password" id="password" class="form-control" />
+                <label class="form-label" for="password">Password</label>
             </div>
     
     
@@ -40,6 +40,6 @@ export default {
 
 <style scoped lang="scss">
 body {
-    height: 100%;
+    height: calc(100vh - 64px);
 }
 </style>
