@@ -15,8 +15,8 @@ export default{
 </script>
 
 <template>
-    <div class="card border border-light rounded">
-        <img :src="singleCoach.img_url" class="card-img-top" :alt="singleCoach.nickname">
+    <div class="card border border-light rounded mx-3 mb-3">
+        <img :src="singleCoach.img_url" class="card-img-top" :alt="singleCoach.nickname" draggable="false">
         <div class="card-body text-white">
             <h5 class="card-title">{{ singleCoach.nickname }}</h5>
             <p class="card-text ">{{ singleCoach.email }}</p>

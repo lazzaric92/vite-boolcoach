@@ -1,7 +1,7 @@
 <script>
 import AppJumbo from '@/components/partials/AppJumbo.vue';
 import AppMainHome from '@/components/partials/AppMainHome.vue';
-
+import SponsoredCoaches from '@/components/partials/SponsoredCoaches.vue';
 
 export default {
     data() {
@@ -11,7 +11,8 @@ export default {
     },
     components: {
         AppJumbo,
-        AppMainHome
+        AppMainHome,
+        SponsoredCoaches
     }
 }
 </script>
@@ -20,6 +21,7 @@ export default {
     <main>
         <AppJumbo/>
         <AppMainHome />
+        <SponsoredCoaches/>
     </main>
 </template>
 
