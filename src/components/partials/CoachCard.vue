@@ -16,7 +16,7 @@ export default{
 
 <template>
     <div class="card border border-light rounded">
-        <img :src="singleCoach.img_url" class="card-img-top" :alt="singleCoach.nickname">
+        <img :src="singleCoach.img_url" class="card-img-top" :alt="singleCoach.nickname" draggable="false">
         <div class="card-body text-white">
             <router-link class="card-title fs-5 text-decoration-none text-white">{{ singleCoach.nickname }}</router-link>
             <p class="card-text ">{{ singleCoach.email }}</p>

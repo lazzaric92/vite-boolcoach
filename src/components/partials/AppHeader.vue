@@ -10,6 +10,8 @@ export default {
 
 <template>
     <header>
+        <img class="decoration" src="../../assets/images/spaceInvaders.png" alt="">
+        <img class="decoration small" src="../../assets/images/spaceInvaders.png" alt="">
         <nav>
             <!-- Logo -->
             <div class="logo-container">
@@ -54,6 +56,21 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+.decoration {
+    position: absolute;
+    height: 2rem;
+    top: 10px;
+    left: 500px;
+    transform: rotate(35deg);
+
+    &.small {
+        height: 1.5rem;
+        top: 10px;
+        left: 550px;
+    }
+}
+
 header {
     height: 4rem;
     background: #FF204E;
