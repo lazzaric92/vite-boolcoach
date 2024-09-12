@@ -34,10 +34,12 @@ export default{
 </script>
 
 <template>
-    <div class="row">
-        <article class="col-12 p-4" v-for="game in gamesList" key="game.id">
-            <GameCard :singleGame="game"/>
-        </article>
+    <div class="container">
+        <div class="row">
+            <article class="col-4 p-4" v-for="game in gamesList" key="game.id">
+                <GameCard :singleGame="game"/>
+            </article>
+        </div>
     </div>
 </template>
 
