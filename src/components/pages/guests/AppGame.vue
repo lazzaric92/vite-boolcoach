@@ -35,31 +35,12 @@ export default{
 
 <template>
     <div class="row">
-        <article class="col-3 mb-3" v-for="game in gamesList" key="game.id">
-            <CoachCard :singleGame="game"/>
+        <article class="col-12 p-4" v-for="game in gamesList" key="game.id">
+            <GameCard :singleGame="game"/>
         </article>
     </div>
 </template>
 
 <style scoped lang="scss">
-    label{
-        color: white;
-    }
 
-    button {
-        background-color: #7E3CC1;
-        border: 1px solid transparent;
-
-        &:hover {
-            background-color: #df276b;
-            border: 1px solid transparent;
-            scale: 1.05;
-        }
-
-        &:focus {
-            background-color: #df276b;
-            border: 1px solid transparent;
-            scale: 1.05;
-        }
-    }
 </style>
