@@ -76,17 +76,19 @@ div:last-child {
     height: 30vh;
     width: 30vh;
     border-radius: 15px;
-    background-size: cover !important;
+    background-size: 220% !important;
     background-position: center !important;
     display: flex;
     justify-content: center;
     align-items: center;
     outline: 0px solid #000000;
-    transition: outline 0.2s ease 0s;
+    transition: all 0.2s ease 0s;
 
     &:hover {
         cursor: pointer;
         outline: 3px solid #FF204E;
+        background-size: 180% !important;
+        
     }
 
     &:hover figure {
