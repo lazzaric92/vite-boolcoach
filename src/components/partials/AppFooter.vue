@@ -33,7 +33,7 @@ img {
     position: absolute;
     bottom: 0;
     right: 0;
-    height: calc($footer-height - 1rem);
+    height: calc($footer-height - 3rem);
 
     &.left {
         left: 0;
