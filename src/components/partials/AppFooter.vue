@@ -18,7 +18,7 @@ export default {
                 </ul>
             </nav>
             <h6 class="text-center mt-5">
-                Sito Web creato dal team dei Cavallones (best team EU) tutti i diritti riservati
+                Sito Web creato dal team dei Cavallones (best team EU) tutti i cavalli riservati
             </h6>
         </div>
     </footer>
