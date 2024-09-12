@@ -78,8 +78,8 @@ export default{
         </div>
 
         <CoachesIndex v-if="searchOn === false"/>
-        <div v-else class="row">
-            <div v-if="searchResults.length > 0" class="d-flex flex-wrap">
+        <div v-else>
+            <div v-if="searchResults.length > 0" class="d-flex flex-wrap row">
                 <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
                     <CoachCard :singleCoach="coach"/>
                 </article>
