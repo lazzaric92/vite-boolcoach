@@ -22,6 +22,11 @@ const router = createRouter({
       name: 'games',
       component: AppGame
     },
+    {
+      path: '/coach/:id',
+      name: 'coach-details',
+      component: ShowCoach
+    }
   ]
 })
 
