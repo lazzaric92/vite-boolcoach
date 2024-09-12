@@ -32,7 +32,7 @@ export default{
 </script>
 
 <template>
-<!-- <h1> {{ coach.nickname }} </h1> -->
+<h1> {{ coach.nickname }} </h1>
 </template>
 
 <style scoped lang="scss">
