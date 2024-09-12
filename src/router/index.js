@@ -1,3 +1,4 @@
+import AppGame from '@/components/pages/guests/AppGame.vue';
 import AppHome from '@/components/pages/guests/AppHome.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
 import ShowCoach from '@/components/pages/guests/ShowCoach.vue';
@@ -17,11 +18,11 @@ const router = createRouter({
       component: AppSearch
     },
     {
-      path: '/coaches/:id',
-      name: 'single-coach',
-      component: ShowCoach
+      path: '/games',
+      name: 'games',
+      component: AppGame
     },
   ]
 })
 
-export {router};
+export { router };
