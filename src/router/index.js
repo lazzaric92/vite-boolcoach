@@ -1,5 +1,6 @@
 import AppHome from '@/components/pages/guests/AppHome.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
+import ShowCoach from '@/components/pages/guests/ShowCoach.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -15,7 +16,11 @@ const router = createRouter({
       name: 'search',
       component: AppSearch
     },
-    
+    {
+      path: '/coaches/:id',
+      name: 'single-coach',
+      component: ShowCoach
+    },
   ]
 })
 
