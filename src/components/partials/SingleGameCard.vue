@@ -52,7 +52,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
 .wrapper {
     margin-top: 4rem;
     margin-bottom: 4rem;
@@ -74,18 +73,20 @@ div:last-child {
 }
 
 .bg {
-    width: 300px;
-    height: 300px;
-    flex-shrink: 0;
+    height: 30vh;
+    width: 30vh;
     border-radius: 15px;
     background-size: cover !important;
     background-position: center !important;
     display: flex;
     justify-content: center;
     align-items: center;
+    outline: 0px solid #000000;
+    transition: outline 0.2s ease 0s;
 
     &:hover {
         cursor: pointer;
+        outline: 3px solid #FF204E;
     }
 
     &:hover figure {
