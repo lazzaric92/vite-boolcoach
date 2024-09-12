@@ -23,7 +23,9 @@ export default{
                         <h6 class="mb-0">{{ singleCoach.nickname }}</h6> <span>{{ singleCoach.price }}&euro;</span>
                     </div>
                 </div>
-                <div class="badge"> <span>Design</span> </div>
+                <div class="badge"> 
+                    <span v-for="(game, index) in singleCoach.games" :key="index">{{ game }}</span>
+                </div>
             </div>
             <div class="mt-5">
                 <h5 class="heading">{{ singleCoach.email }}</h5>
