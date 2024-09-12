@@ -82,7 +82,7 @@ div:last-child {
     justify-content: center;
     align-items: center;
     outline: 0px solid #000000;
-    transition: all 0.2s ease 0s;
+    transition: all 0.3s ease 0s;
 
     &:hover {
         cursor: pointer;
@@ -92,7 +92,7 @@ div:last-child {
     }
 
     &:hover figure {
-        transition: all .2s ease;
+        transition: all .3s ease 0s;
         transform: scale(1.2);
     }
 
