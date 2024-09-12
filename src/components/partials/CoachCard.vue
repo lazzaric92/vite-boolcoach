@@ -2,13 +2,23 @@
 export default{
     data(){
         return {
-            
+            imgArray: [
+                'Ash Chibi.png',
+                'Genji Chibi.png',
+                'Jager Chibi.png',
+            ]
         }
     },
     props: {
         singleCoach: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        randomImage(){
+            const randomInt = Math.floor((Math.random() * this.imgArray.length), 10);
+            return `src/assets/images/${this.imgArray[randomInt]}`;
         }
     }
 }
@@ -19,7 +29,8 @@ export default{
             <div class="d-flex justify-content-between">
                 <div class="d-flex flex-row align-items-center">
 
-                        <img class="icon" :src="singleCoach.img_url" alt="Coach Image">
+                    <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="icon" :alt="singleCoach.nickname" draggable="false">
+                    <img v-else :src="randomImage()" class="icon" :alt="singleCoach.nickname">
 
                     <div class="ms-2 c-details">
                         <h6 class="mb-0">{{ singleCoach.nickname }}</h6> <span>{{ singleCoach.price }}&euro;</span>
