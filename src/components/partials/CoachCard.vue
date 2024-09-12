@@ -18,13 +18,15 @@ export default{
         <div class="card p-3 mb-2">
             <div class="d-flex justify-content-between">
                 <div class="d-flex flex-row align-items-center">
-                    <div class="icon"> <i class="bx bxl-mailchimp"></i> </div>
+
+                        <img class="icon" :src="singleCoach.img_url" alt="Coach Image">
+
                     <div class="ms-2 c-details">
                         <h6 class="mb-0">{{ singleCoach.nickname }}</h6> <span>{{ singleCoach.price }}&euro;</span>
                     </div>
                 </div>
                 <div class="badge"> 
-                    <span v-for="(game, index) in singleCoach.games" :key="index">{{ game }}</span>
+                    <span v-for="(game, index) in singleCoach.games" :key="index">{{ game.name }}</span>
                 </div>
             </div>
             <div class="mt-5">
@@ -33,7 +35,8 @@ export default{
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    <div class="mt-3"> <span class="text1">{{ singleCoach.vote_average }}<span class="text2"> of 5 max</span></span> </div>
+                    <div class="mt-3"> <span class="text1"><span>{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</span>
+                        <span class="text2"> of 5 max</span></span> </div>
                 </div>
             </div>
         </div>
@@ -67,7 +70,6 @@ export default{
 
 .badge span {
     background-color: #fffbec;
-    width: 60px;
     height: 25px;
     padding-bottom: 3px;
     border-radius: 5px;
