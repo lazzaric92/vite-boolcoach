@@ -61,6 +61,7 @@ export default{
             <div class="col-3 d-flex justify-content-center">
                 <select id="vote_avg" v-model="this.voteAvg" class="text-center">
                     <option value="" selected disabled>-- Voto --</option>
+                    <option value="0">0 &#9733; o superiore</option>
                     <option value="1">1 &#9733; o superiore</option>
                     <option value="2">2 &#9733; o superiore</option>
                     <option value="3">3 &#9733; o superiore</option>
