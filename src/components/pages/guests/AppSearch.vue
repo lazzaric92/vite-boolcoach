@@ -109,13 +109,6 @@ export default{
         height: $search-nav-container-height;
         padding: 3rem 1rem 1rem;
     }
-    #main-content{
-        overflow-y: scroll;
-        &.empty{
-            height: calc(100vh - $header-height - $footer-height - $search-nav-container-height);
-        }
-    }
-
 
     button {
         background-color: #7E3CC1;
