@@ -27,6 +27,11 @@ const router = createRouter({
       path: '/coach/:id',
       name: 'coach-details',
       component: ShowCoach
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: Error404
     }
   ]
 })
