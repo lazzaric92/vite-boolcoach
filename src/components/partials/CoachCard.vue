@@ -50,7 +50,7 @@ export default{
                 </div>
                 <div class="rating mt-2">
                     <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;</span>
-                    <small class="ms-2">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
+                    <small class="ms-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
                 </div>
             </div>
         </div>
