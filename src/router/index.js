@@ -1,4 +1,4 @@
-import AppGame from '@/components/pages/guests/AppGame.vue';
+
 import AppHome from '@/components/pages/guests/AppHome.vue';
 import AppSearch from '@/components/pages/guests/AppSearch.vue';
 import Error404 from '@/components/pages/guests/Error404.vue';
@@ -17,11 +17,6 @@ const router = createRouter({
       path: '/search',
       name: 'search',
       component: AppSearch
-    },
-    {
-      path: '/games',
-      name: 'games',
-      component: AppGame
     },
     {
       path: '/404',

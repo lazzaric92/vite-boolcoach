@@ -86,8 +86,8 @@ export default{
 
     <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
         <CoachesIndex v-if="searchOn === false"/>
-        <div v-if="searchOn === true">
-            <div v-if="searchResults.length > 0" class="row p-5 justify-content-center">
+        <div v-else>
+            <div v-if="searchResults.length > 0" class="row">
                 <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
                     <CoachCard :singleCoach="coach"/>
                 </article>
@@ -105,17 +105,14 @@ export default{
     @use '../../../assets/styles/partials/variables' as *;
     @use '../../../assets/styles/partials/mixins' as *;
 
+
+    #main-content{
+        min-height: 800px;
+    }
     #search-nav-container{
         height: $search-nav-container-height;
         padding: 3rem 1rem 1rem;
     }
-    #main-content{
-        overflow-y: scroll;
-        &.empty{
-            height: calc(100vh - $header-height - $footer-height - $search-nav-container-height);
-        }
-    }
-
 
     button {
         background-color: #7E3CC1;
