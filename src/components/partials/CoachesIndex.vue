@@ -35,7 +35,7 @@ export default{
 
 <template>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center pt-4">
         <article class="col-3 mb-3" v-for="coach in coachesList" key="coach.id">
             <CoachCard :singleCoach="coach"/>
         </article>
