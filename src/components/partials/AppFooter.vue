@@ -1,9 +1,11 @@
 <script>
+// import NewMessageForm from '../pages/guests/NewMessageForm.vue';
 export default {
     data() {
         return {
         }
-    }
+    },
+
 }
 </script>
 
@@ -22,6 +24,7 @@ export default {
                 Sito Web creato dal team dei Cavallones (best team EU) tutti i cavalli riservati
             </h6>
         </div>
+        <!-- <NewMessageForm/> -->
     </footer>
 </template>
 
