@@ -48,14 +48,9 @@ export default{
                             style="max-width:50px">
                     </div>
                 </div>
-                <div class="progress mt-2" style="width: 100%;">
-                    <div class="bg-success" 
-                        role="progressbar" 
-                        :style="{ width: (singleCoach.vote_average * 20) + '%' }" 
-                        :aria-valuenow="singleCoach.vote_average" 
-                        aria-valuemin="0" 
-                        aria-valuemax="5">
-                    </div>
+                <div class="rating mt-2">
+                    <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;</span>
+                    <small class="ms-2">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
                 </div>
             </div>
         </div>
@@ -131,5 +126,27 @@ h1{
 
 }
 }
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #ffd700;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #ddd; 
+}
+
+.star.filled {
+    color: #ffd700;
+}
+
+.rating small {
+    font-size: 1rem;
+    color: #333;
+}
+
 
 </style>
