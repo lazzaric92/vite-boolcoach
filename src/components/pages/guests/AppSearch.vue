@@ -107,6 +107,7 @@ export default{
 
 
     #main-content{
+        margin-top: 3rem;
         min-height: 800px;
     }
     #search-nav-container{
