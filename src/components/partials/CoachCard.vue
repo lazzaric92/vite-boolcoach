@@ -60,8 +60,15 @@ export default{
 
 .card {
     border: none;
-    border-radius: 10px
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Aggiungi una transizione fluida */
 }
+
+.card:hover {
+    transform: scale(1.05); /* Ingrandisce la card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiungi un'ombra per evidenziare l'ingrandimento */
+}
+
 
 .c-details span {
     font-weight: 300;
