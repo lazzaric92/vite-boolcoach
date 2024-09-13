@@ -36,9 +36,11 @@ export default{
 <template>
 <div class="container-fluid">
     <div class="row justify-content-center pt-4">
-        <article class="col-3 mb-3" v-for="coach in coachesList" key="coach.id">
-            <CoachCard :singleCoach="coach"/>
-        </article>
+        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-3 mb-3" v-for="coach in coachesList" key="coach.id">
+            <article>
+                <CoachCard :singleCoach="coach"/>
+            </article>
+        </router-link>
         
     </div>
 </div>
