@@ -25,93 +25,118 @@ export default{
 </script>
 
 <template>
-    <div class="card p-3 mb-2">
-        <div class="d-flex justify-content-between">
-            <div class="d-flex flex-row align-items-center">
-
-                <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="icon" :alt="singleCoach.nickname" draggable="false">
-                <img v-else :src="randomImage()" class="icon" :alt="singleCoach.nickname">
-
-                <div class="ms-2 c-details">
-                    <h6 class="mb-0">{{ singleCoach.nickname }}</h6> <span>{{ singleCoach.price }}&euro;</span>
-                </div>
-            </div>
-            <div class="badge"> 
-                <span v-for="(game, index) in singleCoach.games" :key="index">{{ game.name }}</span>
-            </div>
+    <div class="card p-3 mb-2 d-flex flex-row">
+    <!-- Immagine a sinistra -->
+    <div class="image-container">
+        <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="icon" :alt="singleCoach.nickname" draggable="false">
+        <img v-else :src="randomImage()" class="icon" :alt="singleCoach.nickname">
+    </div>
+    
+    <!-- Dettagli a destra -->
+    <div class="details-container ms-3 d-flex flex-column justify-content-between">
+        <!-- Nome e Prezzo -->
+        <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">{{ singleCoach.nickname }}</h6>
+            <span class="price">{{ singleCoach.price }}&euro;</span>
         </div>
-        <div class="mt-5">
-            <h5 class="heading">{{ singleCoach.email }}</h5>
-            <div class="mt-5">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="mt-3"> <span class="text1"><span>{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</span>
-                    <span class="text2"> of 5 max</span></span> </div>
+        
+        <!-- Giochi -->
+        <div class="badge mt-2">
+            <span v-for="(game, index) in singleCoach.games" :key="index">{{ game.name }}</span>
+        </div>
+        
+        <!-- Email -->
+        <h5 class="heading mt-2">{{ singleCoach.email }}</h5>
+
+        <!-- Progress bar e voto -->
+        <div class="progress-container mt-2">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="vote mt-2">
+                <span class="text1">{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</span>
+                <span class="text2"> of 5 max</span>
             </div>
         </div>
     </div>
+</div>
+
 </template>
 
 <style scoped lang="scss">
-    body {
-    background-color: #eee
+body {
+    background-color: #eee;
 }
 
 .card {
     border: none;
     border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Aggiungi una transizione fluida */
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05); /* Ingrandisce la card */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiungi un'ombra per evidenziare l'ingrandimento */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
-.c-details span {
-    font-weight: 300;
-    font-size: 13px
+/* Immagine che occupa il 40% della card */
+.image-container {
+    width: 40%;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    height: 100%;
     background-color: #eee;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 39px
+    border-radius: 10px;
+    object-fit: cover;
 }
 
+/* Dettagli che occupano il 60% */
+.details-container {
+    width: 60%;
+    padding: 10px;
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px;
+}
+
+.price {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Badge per i giochi */
 .badge span {
     background-color: #fffbec;
     height: 25px;
-    padding-bottom: 3px;
+    padding: 5px 10px;
     border-radius: 5px;
-    display: flex;
+    display: inline-block;
     color: #fed85d;
-    justify-content: center;
-    align-items: center
+    margin-right: 5px;
 }
 
 .progress {
     height: 10px;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
 .progress div {
-    background-color: red
+    background-color: red;
 }
 
 .text1 {
     font-size: 14px;
-    font-weight: 600
+    font-weight: 600;
 }
 
 .text2 {
-    color: #a5aec0
+    color: #a5aec0;
 }
+
 </style>
