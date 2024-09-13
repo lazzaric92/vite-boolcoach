@@ -19,11 +19,6 @@ const router = createRouter({
       component: AppSearch
     },
     {
-      path: '/games',
-      name: 'games',
-      component: AppGame
-    },
-    {
       path: '/404',
       name: '404-not-found',
       component: Error404

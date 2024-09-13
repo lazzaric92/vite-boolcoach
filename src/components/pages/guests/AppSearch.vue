@@ -105,6 +105,10 @@ export default{
     @use '../../../assets/styles/partials/variables' as *;
     @use '../../../assets/styles/partials/mixins' as *;
 
+
+    #main-content{
+        min-height: 800px;
+    }
     #search-nav-container{
         height: $search-nav-container-height;
         padding: 3rem 1rem 1rem;
