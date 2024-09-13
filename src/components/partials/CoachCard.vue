@@ -25,7 +25,7 @@ export default{
 </script>
 
 <template>
-    <div class="card p-3 mb-2 d-flex flex-row">
+    <div class="card d-flex flex-row">
     <!-- Immagine a sinistra -->
     <div class="image-container">
         <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="icon" :alt="singleCoach.nickname" draggable="false">
@@ -33,7 +33,7 @@ export default{
     </div>
     
     <!-- Dettagli a destra -->
-    <div class="details-container ms-3 d-flex flex-column justify-content-between">
+    <div class="details-container d-flex flex-column justify-content-between">
         <!-- Nome e Prezzo -->
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="mb-0">{{ singleCoach.nickname }}</h6>
@@ -41,9 +41,7 @@ export default{
         </div>
         
         <!-- Giochi -->
-        <div class="badge mt-2">
-            <span v-for="(game, index) in singleCoach.games" :key="index">{{ game.name }}</span>
-        </div>
+        
         
         <!-- Email -->
         <h5 class="heading mt-2">{{ singleCoach.email }}</h5>
@@ -54,89 +52,131 @@ export default{
                 <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="vote mt-2">
-                <span class="text1">{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</span>
+                <span class="text1"></span>
                 <span class="text2"> of 5 max</span>
             </div>
         </div>
     </div>
 </div>
+<!-- card seconda -->
+<div class="card text-dark card-has-bg click-col" 
+     :style="{ backgroundImage: singleCoach.img_url ? 'url(' + singleCoach.img_url + ')' : 'url(' + randomImage() + ')' }">
+    <!-- Contenuto della card qui -->
 
+
+    <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
+    <div class="card-img-overlay d-flex flex-column">
+        <div class="card-body">
+            <small class="card-meta mb-2">Thought Leadership</small>
+            <h4 class="card-title mt-0 "><a class="text-dark" herf="https://creativemanner.com">Web Developmet Lorem Ipsum Sit Amet Consectetur dipisi?</a></h4>
+            <small><i class="far fa-clock"></i> October 15, 2020</small>
+        </div>
+            <div class="card-footer">
+                <div class="media">
+                    <img v-for="(game, index) in singleCoach.games" 
+                        :key="index" 
+                        class="mr-3 rounded-circle" 
+                        :src="game.img" 
+                        alt="Generic placeholder image" 
+                        style="max-width:50px">
+                    <div class="media-body">
+                        <h6 class="my-0 text-dark d-block">{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</h6>
+                        <small>Director of UI/UX</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <style scoped lang="scss">
-body {
-    background-color: #eee;
+body{
+background: #161616;
+}
+h1{
+  color:#fff;
+}
+.lead{
+  color:#aaa;
 }
 
-.card {
-    border: none;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: row;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.wrapper{margin:10vh}
+//post card styles
+
+.card{
+  border: none;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+ overflow:hidden;
+ border-radius:20px;
+ min-height:450px;
+   box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
+
+ @media (max-width: 768px) {
+  min-height:350px;
 }
 
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+@media (max-width: 420px) {
+  min-height:300px;
 }
 
-/* Immagine che occupa il 40% della card */
-.image-container {
-    width: 40%;
-}
+ &.card-has-bg{
+ transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  background-size:120%;
+  background-repeat:no-repeat;
+  background-position: center center;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);}
 
-.icon {
-    width: 100%;
-    height: 100%;
-    background-color: #eee;
-    border-radius: 10px;
-    object-fit: cover;
+  &:hover {
+    transform: scale(0.98);
+     box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
+    background-size:130%;
+     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
 }
+ .card-footer{
+  background: none;
+   border-top: none;
+    .media{
+     img{
+       border:solid 3px rgba(255,255,255,0.3);
+     }
+   }
+ }
+  .card-title{font-weight:800}
+ .card-meta{
+    color:rgba(0,0,0,0.3);
+  text-transform:uppercase;
+   font-weight:500;
+   letter-spacing:2px;}
+ .card-body{ 
+   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+ 
 
-/* Dettagli che occupano il 60% */
-.details-container {
-    width: 60%;
-    padding: 10px;
+  }
+ &:hover {
+   .card-body{
+     margin-top:30px;
+     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+   }
+ cursor: pointer;
+ transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
 }
+ .card-img-overlay {
+  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
 
-.c-details span {
-    font-weight: 300;
-    font-size: 13px;
 }
-
-.price {
-    font-weight: bold;
-    color: #555;
-}
-
-/* Badge per i giochi */
-.badge span {
-    background-color: #fffbec;
-    height: 25px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    display: inline-block;
-    color: #fed85d;
-    margin-right: 5px;
-}
-
-.progress {
-    height: 10px;
-    border-radius: 10px;
-}
-
-.progress div {
-    background-color: red;
-}
-
-.text1 {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.text2 {
-    color: #a5aec0;
 }
 
 </style>
