@@ -26,25 +26,33 @@ export default{
 
 <template>
 
-<div class="card text-dark card-has-bg click-col" :style="{ backgroundImage: singleCoach.img_url ? 'url(' + singleCoach.img_url + ')' : 'url(' + randomImage() + ')' }">
-    <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
+<div class="card text-dark card-has-bg" :style="{ backgroundImage: singleCoach.img_url ? 'url(' + singleCoach.img_url + ')' : 'url(' + randomImage() + ')' }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
-            <small class="card-meta mb-2">Thought Leadership</small>
-            <h4 class="card-title mt-0 "><a class="text-dark" herf="https://creativemanner.com">{{ singleCoach.nickname }}</a></h4>
-            <small><i class="far fa-clock"></i>{{ singleCoach.email }}</small>
+            <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
+            <small>{{ singleCoach.email }}</small>
         </div>
-            <div class="card-footer">
-                <div class="media">
-                    <img v-for="(game, index) in singleCoach.games" 
-                        :key="index" 
-                        class="mr-3 rounded-circle" 
-                        :src="game.img" 
-                        alt="Generic placeholder image" 
-                        style="max-width:50px">
+            <div class="card-footer bg-light bg-opacity-50 p-1 rounded">
+                <div class="d-flex justify-content-between">
                     <div class="media-body">
-                        <h6 class="my-0 text-dark d-block">{{ singleCoach.price }}&euro;</h6>
-                        <small>{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</small>
+                        <h5 class="my-0 text-dark d-block">{{ singleCoach.price }}&euro; / H</h5>
+                    </div>
+                    <div>
+                        <img v-for="(game, index) in singleCoach.games" 
+                            :key="index" 
+                            class="mr-3" 
+                            :src="game.img" 
+                            :alt="game.name" 
+                            style="max-width:50px">
+                    </div>
+                </div>
+                <div class="progress mt-2" style="width: 100%;">
+                    <div class="bg-success" 
+                        role="progressbar" 
+                        :style="{ width: (singleCoach.vote_average * 20) + '%' }" 
+                        :aria-valuenow="singleCoach.vote_average" 
+                        aria-valuemin="0" 
+                        aria-valuemax="5">
                     </div>
                 </div>
             </div>
@@ -63,30 +71,20 @@ h1{
   color:#aaa;
 }
 
-.wrapper{margin:10vh}
-
-
 .card{
   border: none;
   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
  overflow:hidden;
- border-radius:20px;
- min-height:450px;
+ border: radius 1rem;;
+ min-height:400px;
    box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
-
- @media (max-width: 768px) {
-  min-height:350px;
-}
-
-@media (max-width: 420px) {
-  min-height:300px;
-}
 
  &.card-has-bg{
  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
   background-size:120%;
   background-repeat:no-repeat;
   background-position: center center;
+  
   &:before {
     content: '';
     position: absolute;
@@ -103,13 +101,13 @@ h1{
      box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
     background-size:130%;
      transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+     outline: 3px solid #FF204E;
   }
 }
  .card-footer{
   background: none;
    border-top: none;
  }
-  .card-title{font-weight:800}
  .card-meta{
     color:rgba(0,0,0,0.3);
   text-transform:uppercase;
@@ -122,6 +120,7 @@ h1{
   }
  &:hover {
    .card-body{
+    
      margin-top:30px;
      transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
    }
