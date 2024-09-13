@@ -64,7 +64,7 @@ export default {
             <div class="gradient"></div>
         </div>
         <div class="info"
-            style="background: linear-gradient(90deg, rgba(18, 25, 34, 1) 0%, rgba(18, 25, 34, .8) 100%), url(https://s3-alpha-sig.figma.com/img/c30a/f47e/f41ee738ce99e874cde8d2b656d98a43?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LsMrBNdOh2XfTb2ungrKVIg~tuRIL3V8JmCwZ5HWToTO6xNupgL8qHvJFxqwK3I-4tWxN-ibwaclytifE2XmnI3cXUGAtvhv2W8c4U1Vpzo-LfviHVM1cv7EMVwREBGnbWToFzbbgVvhWeon6hNP01K8ivnO1524ohuTfvU2JfJEUoeoPI~C-ytIEwBHka8bmeBEQ-tONrFI4GdYW-xXYagVtZpXn60cOr-fTalFQHxgX2W6m4OP3ISnBwWD9N17L5F1muwQEH9m~oC-~MFVXQ9ZPwbmrVDCoAfpiicVnC2PFz3ubcOZTgPTzF8OyVTylsjjBoVPcFiYO~im3bzw3Q__);">
+            style="background: linear-gradient(to right, rgba(18, 25, 34, 1) 20%, rgba(18, 25, 34, .7) 100%), url(https://s3-alpha-sig.figma.com/img/c30a/f47e/f41ee738ce99e874cde8d2b656d98a43?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LsMrBNdOh2XfTb2ungrKVIg~tuRIL3V8JmCwZ5HWToTO6xNupgL8qHvJFxqwK3I-4tWxN-ibwaclytifE2XmnI3cXUGAtvhv2W8c4U1Vpzo-LfviHVM1cv7EMVwREBGnbWToFzbbgVvhWeon6hNP01K8ivnO1524ohuTfvU2JfJEUoeoPI~C-ytIEwBHka8bmeBEQ-tONrFI4GdYW-xXYagVtZpXn60cOr-fTalFQHxgX2W6m4OP3ISnBwWD9N17L5F1muwQEH9m~oC-~MFVXQ9ZPwbmrVDCoAfpiicVnC2PFz3ubcOZTgPTzF8OyVTylsjjBoVPcFiYO~im3bzw3Q__);">
             <section class="d-flex justify-content-between align-items-center">
                 <h1 class="d-inline"> {{ coach.nickname }} </h1>
                 <p class="pt-3">
@@ -87,18 +87,20 @@ export default {
                     </span>
                 </p>
             </section>
-            <p><span>{{ coach.name }} {{ coach.surname }}</span></p>
-            <p>Lingue: <span>{{ coach.language }}</span></p>
+            <p class="text-capitalize"><span>{{ coach.name }} {{ coach.surname }}</span></p>
+            <p>Lingue: <span class="text-capitalize">{{ coach.language }}</span></p>
             <p>Prezzo: {{ coach.price }} &euro;</p>
-            <p>Descrizione: <br>
-            <div class="summary"> <span>{{ coach.summary }} </span> </div>
-            </p>
-            <p>Recensioni:
-            <div class="review" v-for="review in coach.reviews" :key="review.id">
-                <h6>{{ review.username }}</h6>
-                <span>{{ review.description }}</span>
+            <div class="summary">
+                <p>Descrizione:</p>
+                <span >{{ coach.summary }} </span>
             </div>
-            </p>
+            <div>
+                <p>Recensioni:</p>
+                <section class="review" v-for="review in coach.reviews" :key="review.id">
+                    <h6>{{ review.username }}</h6>
+                    <span>{{ review.description }}</span>
+                </section>
+            </div>
             <button>&#9993; Invia Messaggio</button>
         </div>
 
@@ -155,10 +157,6 @@ div.show {
         p {
             text-shadow: $black-outline;
             font-size: 1.5rem;
-
-            span {
-                text-transform: capitalize;
-            }
         }
 
         .badge {
@@ -171,6 +169,8 @@ div.show {
 
         .summary {
             font-size: 1rem;
+            text-shadow: $black-outline;
+            margin-bottom: 2rem;
         }
 
         .review {
@@ -179,6 +179,8 @@ div.show {
             border-radius: 20px;
             padding: 1rem 2rem;
             margin-top: 1rem;
+            text-shadow: $black-outline;
+            margin-bottom: 2rem;
         }
     }
 }
