@@ -26,7 +26,7 @@ export default {
     width: 100%;
     height: 600px;
     background:
-        linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), ), url('../../assets/images/jumbo/676369.jpg');
+        linear-gradient(180deg, rgba(18, 25, 34, 0.5)20%, rgba(18, 25, 34, 1) 95%), url('../../assets/images/jumbo/676369.jpg');
     background-size: cover;
     background-position: center;
     color: #FFF;
