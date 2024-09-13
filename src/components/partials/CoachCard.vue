@@ -26,16 +26,18 @@ export default{
 
 <template>
 
-<div class="card text-dark card-has-bg" :style="{ backgroundImage: singleCoach.img_url ? 'url(' + singleCoach.img_url + ')' : 'url(' + randomImage() + ')' }">
+<div class="card text-white card-has-bg" :style="{ backgroundImage: singleCoach.img_url 
+            ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' 
+            : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
-            <small>{{ singleCoach.email }}</small>
+            <small>{{ singleCoach.language }}</small>
         </div>
-            <div class="card-footer bg-light bg-opacity-50 p-1 rounded">
+            <div class="card-footer p-1 rounded">
                 <div class="d-flex justify-content-between">
                     <div class="media-body">
-                        <h5 class="my-0 text-dark d-block">{{ singleCoach.price }}&euro; / H</h5>
+                        <h5 class="my-0 d-block">{{ singleCoach.price }}&euro; / H</h5>
                     </div>
                     <div>
                         <img v-for="(game, index) in singleCoach.games" 
@@ -79,13 +81,13 @@ h1{
  min-height:400px;
    box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
 
- &.card-has-bg{
- transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-  background-size:120%;
-  background-repeat:no-repeat;
-  background-position: center center;
-  
-  &:before {
+&.card-has-bg{
+    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.8) 100%);
+    background-size:120%;
+    background-repeat:no-repeat;
+    background-position: center center;  
+&:before {
     content: '';
     position: absolute;
     top: 0;
@@ -104,10 +106,7 @@ h1{
      outline: 3px solid #FF204E;
   }
 }
- .card-footer{
-  background: none;
-   border-top: none;
- }
+
  .card-meta{
     color:rgba(0,0,0,0.3);
   text-transform:uppercase;
