@@ -25,51 +25,14 @@ export default{
 </script>
 
 <template>
-    <div class="card d-flex flex-row">
-    <!-- Immagine a sinistra -->
-    <div class="image-container">
-        <img v-if="singleCoach.img_url" :src="singleCoach.img_url" class="icon" :alt="singleCoach.nickname" draggable="false">
-        <img v-else :src="randomImage()" class="icon" :alt="singleCoach.nickname">
-    </div>
-    
-    <!-- Dettagli a destra -->
-    <div class="details-container d-flex flex-column justify-content-between">
-        <!-- Nome e Prezzo -->
-        <div class="d-flex justify-content-between align-items-center">
-            <h6 class="mb-0">{{ singleCoach.nickname }}</h6>
-            <span class="price">{{ singleCoach.price }}&euro;</span>
-        </div>
-        
-        <!-- Giochi -->
-        
-        
-        <!-- Email -->
-        <h5 class="heading mt-2">{{ singleCoach.email }}</h5>
 
-        <!-- Progress bar e voto -->
-        <div class="progress-container mt-2">
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="vote mt-2">
-                <span class="text1"></span>
-                <span class="text2"> of 5 max</span>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- card seconda -->
-<div class="card text-dark card-has-bg click-col" 
-     :style="{ backgroundImage: singleCoach.img_url ? 'url(' + singleCoach.img_url + ')' : 'url(' + randomImage() + ')' }">
-    <!-- Contenuto della card qui -->
-
-
+<div class="card text-dark card-has-bg click-col" :style="{ backgroundImage: singleCoach.img_url ? 'url(' + singleCoach.img_url + ')' : 'url(' + randomImage() + ')' }">
     <img class="card-img d-none" src="https://source.unsplash.com/600x900/?tech,street" alt="Creative Manner Design Lorem Ipsum Sit Amet Consectetur dipisi?">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <small class="card-meta mb-2">Thought Leadership</small>
-            <h4 class="card-title mt-0 "><a class="text-dark" herf="https://creativemanner.com">Web Developmet Lorem Ipsum Sit Amet Consectetur dipisi?</a></h4>
-            <small><i class="far fa-clock"></i> October 15, 2020</small>
+            <h4 class="card-title mt-0 "><a class="text-dark" herf="https://creativemanner.com">{{ singleCoach.nickname }}</a></h4>
+            <small><i class="far fa-clock"></i>{{ singleCoach.email }}</small>
         </div>
             <div class="card-footer">
                 <div class="media">
@@ -80,8 +43,8 @@ export default{
                         alt="Generic placeholder image" 
                         style="max-width:50px">
                     <div class="media-body">
-                        <h6 class="my-0 text-dark d-block">{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</h6>
-                        <small>Director of UI/UX</small>
+                        <h6 class="my-0 text-dark d-block">{{ singleCoach.price }}&euro;</h6>
+                        <small>{{ parseFloat(singleCoach.vote_average).toFixed(2) }}</small>
                     </div>
                 </div>
             </div>
@@ -101,7 +64,7 @@ h1{
 }
 
 .wrapper{margin:10vh}
-//post card styles
+
 
 .card{
   border: none;
@@ -132,11 +95,8 @@ h1{
     bottom: 0;
     left: 0;
     background: inherit;
-    -webkit-filter: grayscale(1);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);}
+    
+}
 
   &:hover {
     transform: scale(0.98);
@@ -148,11 +108,6 @@ h1{
  .card-footer{
   background: none;
    border-top: none;
-    .media{
-     img{
-       border:solid 3px rgba(255,255,255,0.3);
-     }
-   }
  }
   .card-title{font-weight:800}
  .card-meta{
