@@ -25,107 +25,81 @@ export default{
 </script>
 
 <template>
-
-<div class="card text-white card-has-bg" :style="{ backgroundImage: singleCoach.img_url 
-            ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' 
-            : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
+<div class="card text-white card-has-bg" 
+    :style="{
+        backgroundImage: singleCoach.img_url ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
             <small>{{ singleCoach.language }}</small>
         </div>
-            <div class="card-footer p-1 rounded">
-                <div class="d-flex justify-content-between">
-                    <div class="media-body">
-                        <h5 class="my-0 d-block">{{ singleCoach.price }}&euro; / H</h5>
-                    </div>
-                    <div>
-                        <img v-for="(game, index) in singleCoach.games" 
-                            :key="index" 
-                            class="mr-3" 
-                            :src="game.img" 
-                            :alt="game.name" 
-                            style="max-width:50px">
-                    </div>
+        <div class="card-footer p-1 rounded">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>
                 </div>
-                <div class="rating mt-2">
-                    <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;</span>
-                    <small class="ms-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
+                <div>
+                    <img v-for="(game, index) in singleCoach.games" 
+                        :key="index" 
+                        class="mr-3" 
+                        :src="game.img" 
+                        :alt="game.name" 
+                        style="max-width:50px">
                 </div>
+            </div>
+            <div class="rating mt-2">
+                <span v-for="n in 5" 
+                    :key="n" 
+                    class="star" 
+                    :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;
+                </span>
+                <small class="ms-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <style scoped lang="scss">
-body{
-background: #161616;
-}
-h1{
-  color:#fff;
-}
-.lead{
-  color:#aaa;
+.card {
+    border: none;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    min-height: 400px;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    will-change: transform;
 }
 
-.card{
-  border: none;
-  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
- overflow:hidden;
- border: radius 1rem;;
- min-height:400px;
-   box-shadow: 0 0 12px 0 rgba(0,0,0,0.2);
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 5px -2px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.5s;
+    outline: 3px solid #FF204E;
+}
 
-&.card-has-bg{
-    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.8) 100%);
-    background-size:120%;
-    background-repeat:no-repeat;
-    background-position: center center;  
-&:before {
+.card-has-bg::before {
     content: '';
     position: absolute;
     top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    left: 0;
     background: inherit;
-    
+    z-index: -1;
+    background-size: cover;
+    background-position: top;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-  &:hover {
-    transform: scale(0.98);
-     box-shadow: 0 0 5px -2px rgba(0,0,0,0.3);
-    background-size:130%;
-     transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-     outline: 3px solid #FF204E;
-  }
+.card-has-bg:hover::before {
+    transform: scale(1.1);
 }
 
- .card-meta{
-    color:rgba(0,0,0,0.3);
-  text-transform:uppercase;
-   font-weight:500;
-   letter-spacing:2px;}
- .card-body{ 
-   transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
- 
 
-  }
- &:hover {
-   .card-body{
-    
-     margin-top:30px;
-     transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-   }
- cursor: pointer;
- transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-}
- .card-img-overlay {
-  transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
-
-}
-}
 .rating {
     display: flex;
     align-items: center;
@@ -134,9 +108,8 @@ h1{
 }
 
 .star {
-    cursor: pointer;
     transition: color 0.3s ease;
-    color: #ddd; 
+    color: #ddd;
 }
 
 .star.filled {
@@ -145,8 +118,7 @@ h1{
 
 .rating small {
     font-size: 1rem;
-    color: #333;
+    color: #fff;
 }
-
 
 </style>
