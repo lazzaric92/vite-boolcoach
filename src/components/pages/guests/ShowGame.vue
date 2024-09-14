@@ -35,7 +35,7 @@ export default {
         }
     },
     methods: {
-        getCoach(id) {
+        getGame(id) {
             axios.get(`http://127.0.0.1:8000/api/games/${id}`, {
                 params: {
                 }
@@ -52,7 +52,7 @@ export default {
         },
     },
     created() {
-        this.getCoach(this.$route.params.id);
+        this.getGame(this.$route.params.id);
     }
 }
 </script>
