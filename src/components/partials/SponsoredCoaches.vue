@@ -23,8 +23,8 @@ export default{
             axios.get('http://127.0.0.1:8000/api/coaches')
                 .then((response) => {
                     // handle success
-                    console.log(response.data.results);
-                    this.sponsoredCoaches = response.data.results
+                    console.log(response.data.results.sponsoredUsers);
+                    this.sponsoredCoaches = response.data.results.sponsoredUsers
                 })
                 .catch(function (error) {
                     // handle error
@@ -67,7 +67,7 @@ export default{
             @mousemove="isDragging"
             @mouseup="stopDrag"
             @mouseleave="stopDrag">
-                <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }"  class="ccol-sm-12 col-md-6 col-lg-4 my-5" v-for="(coach, index) in sponsoredCoaches" :key="index" style="cursor: pointer;">
+                <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }"  class="col-sm-12 col-md-6 col-lg-4 my-5" v-for="(coach, index) in sponsoredCoaches" :key="index" style="cursor: pointer;">
                     <CoachCard :single-coach="coach"/>
                 </RouterLink>
             </div>

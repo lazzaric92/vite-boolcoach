@@ -19,8 +19,8 @@ export default{
                 }
             })
             .then((response) =>{
-                console.log(response.data.results);
-                this.coachesList = response.data.results;
+                console.log(response.data.results.sponsoredUsers);
+                this.coachesList = response.data.results.sponsoredUsers;
             })
             .catch((error) => {
                 console.log(error);
