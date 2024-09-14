@@ -44,11 +44,10 @@ export default{
                         :key="index" 
                         class="mr-3" 
                         :src="game.img" 
-                        :alt="game.name" 
-                        style="max-width:50px">
+                        :alt="game.name" >
                 </div>
             </div>
-            <div class="rating mt-2">
+            <div class="rating">
                 <span v-for="n in 5" 
                     :key="n" 
                     class="star" 
@@ -73,6 +72,10 @@ export default{
     background-repeat: no-repeat;
     border-radius: 1rem;
     will-change: transform;
+}
+
+img {
+    height: 40px;
 }
 
 .card:hover {
