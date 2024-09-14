@@ -90,7 +90,6 @@ export default{
                     <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
                     <img src="../../../assets/images/amumu_sad_crying.png" alt="😭" >
                 </div>
-    
             </div>
         </div>
 
