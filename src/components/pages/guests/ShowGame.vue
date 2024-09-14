@@ -4,7 +4,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            game: null,
+            game: [],
             gamesAssets: [
                 {
                     id: 1,
@@ -59,6 +59,7 @@ export default {
 
 <template>
     <h1>{{ game.name }}</h1>
+    <p v-for="coach in game.users">{{ coach.name }}</p>
 </template>
 
 <style scoped lang="scss">

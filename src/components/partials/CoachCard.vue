@@ -75,7 +75,7 @@ export default{
 }
 
 img {
-    height: 40px;
+    height: 30px;
 }
 
 .card:hover {
