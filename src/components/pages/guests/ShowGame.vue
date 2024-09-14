@@ -42,7 +42,7 @@ export default {
                 })
                 .then((response) => {
                     console.log(response.data.results);
-                    this.game = response.data.results;
+                    this.game = response.data.results[0];
                     console.log(this.game);
                 })
                 .catch((error) => {
