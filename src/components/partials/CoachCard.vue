@@ -27,13 +27,14 @@ export default{
 <template>
 <div class="card text-white card-has-bg" 
     :style="{
-        backgroundImage: singleCoach.img_url ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
+        backgroundImage: singleCoach.img_url ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' 
+                                            : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
             <small>{{ singleCoach.language }}</small>
         </div>
-        <div class="card-footer p-1 rounded">
+        <div class="p-1">
             <div class="d-flex justify-content-between">
                 <div>
                     <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>

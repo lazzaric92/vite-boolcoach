@@ -40,7 +40,7 @@ export default {
 </script>
 
 <template>
-    <section class="wrapper mx-5">
+    <section class="wrapper my-5">
         <div v-for="item in gamesAssets" :key="item.id">
             <div class="bg" :style="{ background: 'url(' + item.background + ')' }">
                 <figure>
@@ -53,8 +53,6 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-    margin-top: 4rem;
-    margin-bottom: 4rem;
     display: flex;
     justify-content: space-evenly;
 }
