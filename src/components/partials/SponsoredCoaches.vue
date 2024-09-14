@@ -35,22 +35,20 @@ export default{
                 });
         },
         startDrag(event) {
-
-    this.isDown = true;
-    this.startX = event.pageX - this.$refs.carousel.offsetLeft;        
-    this.scrollLeft = this.$refs.carousel.scrollLeft;
-
-    },
-    stopDrag() {
-        this.isDown = false;
-    },
-    isDragging(event) {
-    if (!this.isDown) return;
-    event.preventDefault();
-    const x = event.pageX - this.$refs.carousel.offsetLeft;
-    const walk = (x - this.startX) * 2; // Velocità di scorrimento
-    this.$refs.carousel.scrollLeft = this.scrollLeft - walk;
-    }
+        this.isDown = true;
+        this.startX = event.pageX - this.$refs.carousel.offsetLeft;        
+        this.scrollLeft = this.$refs.carousel.scrollLeft;
+        },
+        stopDrag() {
+            this.isDown = false;
+        },
+        isDragging(event) {
+        if (!this.isDown) return;
+            event.preventDefault();
+            const x = event.pageX - this.$refs.carousel.offsetLeft;
+            const walk = (x - this.startX) * 2;
+            this.$refs.carousel.scrollLeft = this.scrollLeft - walk;
+        }
     },
     mounted(){
         this.getSponsoredPlayers();
