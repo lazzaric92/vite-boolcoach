@@ -110,7 +110,7 @@ export default{
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-12 col-md-4 my-5 card-wrapper" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 col-md-4 my-5 card-wrapper" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
@@ -176,7 +176,10 @@ article{
     &:hover .sponsored-star{
         transform: translate(+60%, -65%);
         font-size: 1.3rem;
-        transition: all, .5s, ease-in-out;
+        animation-name: wiggle;
+        animation-duration: 1000ms;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in-out;
     }
 }
 
@@ -203,5 +206,13 @@ article{
         scale: 1.2;
         transition: all .2s ease-in-out;
     }
+}
+
+@keyframes wiggle {
+    0% {transform: translate(+60%, -65%) rotate(10deg);}
+    25% {transform: translate(+60%, -65%) rotate(-10deg);}
+    50% {transform: translate(+60%, -65%) rotate(20deg);}
+    75% {transform: translate(+60%, -65%) rotate(-5deg);}
+    100% {transform: translate(+60%, -65%)rotate(0deg);}
 }
 </style>
