@@ -3,7 +3,7 @@ export default{
     data(){
         return {
             imgArray: [
-                'Ash Chibi.png',
+                'Ashe Chibi.png',
                 'Genji Chibi.png',
                 'Jager Chibi.png',
             ]
@@ -19,6 +19,9 @@ export default{
         randomImage(){
             const randomInt = Math.floor((Math.random() * this.imgArray.length), 10);
             return `src/assets/images/${this.imgArray[randomInt]}`;
+        },
+        getImagePath(img){
+            return `src/assets/images/${img}`;
         }
     }
 }
@@ -27,8 +30,7 @@ export default{
 <template>
 <div class="card text-white card-has-bg" 
     :style="{
-        backgroundImage: singleCoach.img_url ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' 
-                                            : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
+        backgroundImage: (singleCoach.img_url ? (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(${singleCoach.img_url})`) : (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(${getImagePath('spaceInvaders_neon.png')})`)) }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
