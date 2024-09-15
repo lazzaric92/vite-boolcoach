@@ -11,7 +11,9 @@ export default{
             isDown: false,
             startX: 0,
             scrollLeft: 0,
-            activeIndex: 1
+            activeIndex: 1,
+            activeIndexLeft: null,
+            activeIndexRight: null,
         }
     }, 
     computed: {
@@ -49,11 +51,59 @@ export default{
             const x = event.pageX - this.$refs.carousel.offsetLeft;
             const walk = (x - this.startX) * 2;
             this.$refs.carousel.scrollLeft = this.scrollLeft - walk;
+        },
+        nextSlide(){
+            if(this.activeIndex < this.sponsoredCoaches.length - 1){
+                this.activeIndex++;
+
+                if(this.activeIndexRight === this.sponsoredCoaches.length - 1) {
+                    this.activeIndexRight = 0;
+                } else {
+                    this.activeIndexRight++;
+                }
+
+                if(this.activeIndexLeft === this.sponsoredCoaches.length - 1){
+                    this.activeIndexLeft = 0;
+                } else {
+                    this.activeIndexLeft++;
+                }
+            } else {
+                this.activeIndex = 0;
+                this.activeIndexLeft ++;
+                this.activeIndexRight ++;
+            }
+            
+            // console.log(this.activeIndexLeft,'--> ' + this.activeIndex + ' <--', this.activeIndexRight)
+        },
+        prevSlide(){
+            if(this.activeIndex > 0){
+                this.activeIndex--;
+
+                if(this.activeIndexRight === 0) {
+                    this.activeIndexRight = this.sponsoredCoaches.length - 1;
+                } else {
+                    this.activeIndexRight--;
+                }
+
+                if(this.activeIndexLeft === 0){
+                    this.activeIndexLeft = this.sponsoredCoaches.length - 1;
+                } else {
+                    this.activeIndexLeft--;
+                }
+            } else {
+                this.activeIndex = this.sponsoredCoaches.length - 1;
+                this.activeIndexLeft --;
+                this.activeIndexRight = 0;
+            }
+            
+            console.log(this.activeIndexLeft,'--> ' + this.activeIndex + ' <--', this.activeIndexRight)
         }
     },
     mounted(){
         this.getSponsoredPlayers();
         // this.$refs.carousel.scrollLeft = this.$refs.carousel.scrollWidth / 3;
+        this.activeIndexLeft = this.activeIndex - 1;
+        this.activeIndexRight = this.activeIndex + 1;
     }
 }
 </script>
@@ -74,18 +124,24 @@ export default{
             </div> -->
             <div class="d-flex justify-content-between">
                 <div class="arrow-wrapper">
-                    <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow-icon"/>
+                    <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow-icon" @click="this.prevSlide()"/>
                 </div>
                 <div class="coaches-carousel justify-content-center">
                     
                     <template v-for="(coach, index) in sponsoredCoaches" :key="index">
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.activeIndex - 1 || index === this.activeIndex || index === this.activeIndex + 1" class="col-sm-12 col-md-4 my-5"  :class="(index === this.activeIndex - 1 || index === this.activeIndex + 1) ? 'smaller-card' : ''">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.activeIndexLeft" class="col-sm-12 col-md-4 my-5 smaller-card">
+                            <CoachCard :single-coach="coach"/>
+                        </RouterLink>
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.activeIndex" class="col-sm-12 col-md-4 my-5">
+                            <CoachCard :single-coach="coach"/>
+                        </RouterLink>
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.activeIndexRight" class="col-sm-12 col-md-4 my-5 smaller-card">
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
                     </template>
                 </div>
                 <div class="arrow-wrapper">
-                    <font-awesome-icon icon="fa-solid fa-chevron-right" class="arrow-icon"/>
+                    <font-awesome-icon icon="fa-solid fa-chevron-right" class="arrow-icon" @click="this.nextSlide()"/>
                 </div>
             </div>
         </div>
