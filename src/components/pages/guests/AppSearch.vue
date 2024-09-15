@@ -81,7 +81,7 @@ export default{
         <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
             <CoachesIndex v-if="searchOn === false"/>
             <div v-else>
-                <div v-if="searchResults.length > 0" class="row">
+                <div v-if="searchResults.length > 0" class="row justify-content-center">
                     <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
                         <CoachCard :singleCoach="coach"/>
                     </article>

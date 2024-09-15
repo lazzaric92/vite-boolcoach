@@ -74,6 +74,7 @@ export default{
     background-repeat: no-repeat;
     border-radius: 1rem;
     will-change: transform;
+    cursor: pointer;
 }
 
 img {
