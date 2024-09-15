@@ -41,10 +41,10 @@ export default{
                 <div>
                     <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>
                 </div>
-                <div>
+                <div class="p-1">
                     <img v-for="(game, index) in singleCoach.games" 
                         :key="index" 
-                        class="mr-3" 
+                        class="me-2 game-badge" 
                         :src="game.img" 
                         :alt="game.name" >
                 </div>
@@ -126,6 +126,12 @@ img {
 .rating small {
     font-size: 1rem;
     color: #fff;
+}
+
+.game-badge{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 3px;
 }
 
 </style>
