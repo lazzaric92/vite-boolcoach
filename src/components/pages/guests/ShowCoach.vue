@@ -1,4 +1,5 @@
 <script>
+import NewMessageForm from './NewMessageForm.vue';
 import axios from 'axios';
 
 export default {
@@ -34,6 +35,9 @@ export default {
             ]
         }
     },
+    components:{
+        NewMessageForm
+    },
     methods: {
         getCoach(id) {
             axios.get(`http://127.0.0.1:8000/api/coaches/${id}`, {
@@ -59,7 +63,9 @@ export default {
 </script>
 
 <template>
+    <!-- <NewMessageForm/> -->
     <div class="show d-flex align-items-start">
+
         <div class="image" :style="{ background: 'url(' + coach.img_url + ')' }">
             <div class="gradient"></div>
         </div>

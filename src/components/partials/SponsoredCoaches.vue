@@ -23,8 +23,8 @@ export default{
             axios.get('http://127.0.0.1:8000/api/coaches')
                 .then((response) => {
                     // handle success
-                    console.log(response.data.results);
-                    this.sponsoredCoaches = response.data.results
+                    console.log(response.data.results.sponsoredUsers);
+                    this.sponsoredCoaches = response.data.results.sponsoredUsers
                 })
                 .catch(function (error) {
                     // handle error
@@ -35,22 +35,20 @@ export default{
                 });
         },
         startDrag(event) {
-
-    this.isDown = true;
-    this.startX = event.pageX - this.$refs.carousel.offsetLeft;        
-    this.scrollLeft = this.$refs.carousel.scrollLeft;
-
-    },
-    stopDrag() {
-        this.isDown = false;
-    },
-    isDragging(event) {
-    if (!this.isDown) return;
-    event.preventDefault();
-    const x = event.pageX - this.$refs.carousel.offsetLeft;
-    const walk = (x - this.startX) * 2; // Velocità di scorrimento
-    this.$refs.carousel.scrollLeft = this.scrollLeft - walk;
-    }
+        this.isDown = true;
+        this.startX = event.pageX - this.$refs.carousel.offsetLeft;        
+        this.scrollLeft = this.$refs.carousel.scrollLeft;
+        },
+        stopDrag() {
+            this.isDown = false;
+        },
+        isDragging(event) {
+        if (!this.isDown) return;
+            event.preventDefault();
+            const x = event.pageX - this.$refs.carousel.offsetLeft;
+            const walk = (x - this.startX) * 2;
+            this.$refs.carousel.scrollLeft = this.scrollLeft - walk;
+        }
     },
     mounted(){
         this.getSponsoredPlayers();
@@ -63,13 +61,13 @@ export default{
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h2 class="text-center text-uppercase mb-5">Coach in primo piano</h2>
+            <h2 class="text-center text-uppercase">Coach in primo piano</h2>
             <div class="coaches-carousel d-flex" ref="carousel"
             @mousedown="startDrag"
             @mousemove="isDragging"
             @mouseup="stopDrag"
             @mouseleave="stopDrag">
-                <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }"  class="col-3 mb-3 mx-3" v-for="(coach, index) in sponsoredCoaches" :key="index" style="cursor: pointer;">
+                <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }"  class="col-sm-12 col-md-6 col-lg-4 my-5" v-for="(coach, index) in sponsoredCoaches" :key="index" style="cursor: pointer;">
                     <CoachCard :single-coach="coach"/>
                 </RouterLink>
             </div>

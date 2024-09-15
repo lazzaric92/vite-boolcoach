@@ -43,58 +43,56 @@ export default{
 <template>
 
 
-    <div class="container-fluid my_background">
-        <div class="container">
-            <div id="search-nav-container" >
-                <div class="d-flex">
-                    <!-- ! GAME_ID -->
-                    <select id="game_id" v-model="this.gameId" class="text-center">
-                        <option value="" selected disabled>-- Videogioco --</option>
-                        <option value="1">League of Legends</option>
-                        <option value="2">Tom Clancy's Rainbow Six Siege</option>
-                        <option value="3">FIFA 25</option>
-                        <option value="4">Overwatch</option>
-                        <option value="5">Rocket League</option>
-                    </select>
-                    
-                    <!-- ! VOTE_AVG -->
-                    <select id="vote_avg" v-model="this.voteAvg" class="text-center">
-                        <option value="" selected disabled>-- Voto --</option>
-                        <option value="0">0 &#9733; o superiore</option>
-                        <option value="1">1 &#9733; o superiore</option>
-                        <option value="2">2 &#9733; o superiore</option>
-                        <option value="3">3 &#9733; o superiore</option>
-                        <option value="4">4 &#9733; o superiore</option>
-                        <option value="5">5 &#9733;</option>
-                    </select>
-                    
-                    <!-- ! NICKNAME -->
-                    <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString">
-                    
-                    <!-- ! BUTTON -->
-                    <button class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
-                        <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="lens" />
-                    </button>
-                </div>
+    <div class="container-fluid my_background p-3">
+        <div id="search-nav-container" >
+            <div class="d-flex">
+                <!-- ! GAME_ID -->
+                <select id="game_id" v-model="this.gameId" class="text-center">
+                    <option value="" selected disabled>-- Videogioco --</option>
+                    <option value="1">League of Legends</option>
+                    <option value="2">Tom Clancy's Rainbow Six Siege</option>
+                    <option value="3">FIFA 25</option>
+                    <option value="4">Overwatch</option>
+                    <option value="5">Rocket League</option>
+                </select>
                 
-                <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
+                <!-- ! VOTE_AVG -->
+                <select id="vote_avg" v-model="this.voteAvg" class="text-center">
+                    <option value="" selected disabled>-- Voto --</option>
+                    <option value="0">0 &#9733; o superiore</option>
+                    <option value="1">1 &#9733; o superiore</option>
+                    <option value="2">2 &#9733; o superiore</option>
+                    <option value="3">3 &#9733; o superiore</option>
+                    <option value="4">4 &#9733; o superiore</option>
+                    <option value="5">5 &#9733;</option>
+                </select>
+                
+                <!-- ! NICKNAME -->
+                <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString">
+                
+                <!-- ! BUTTON -->
+                <button class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
+                    <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="lens" />
+                </button>
             </div>
-            <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
-                <CoachesIndex v-if="searchOn === false"/>
-                <div v-else>
-                    <div v-if="searchResults.length > 0" class="row">
-                        <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
-                            <CoachCard :singleCoach="coach"/>
-                        </article>
-                    </div>
-                    <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
-                        <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
-                        <img src="../../../assets/images/amumu_sad_crying.png" alt="😭" >
-                    </div>
-        
+            
+            <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
+        </div>
+        <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
+            <CoachesIndex v-if="searchOn === false"/>
+            <div v-else>
+                <div v-if="searchResults.length > 0" class="row">
+                    <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
+                        <CoachCard :singleCoach="coach"/>
+                    </article>
+                </div>
+                <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
+                    <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
+                    <img src="../../../assets/images/amumu_sad_crying.png" alt="😭" >
                 </div>
             </div>
         </div>
+
     </div>
 
 </template>
