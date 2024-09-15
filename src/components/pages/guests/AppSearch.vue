@@ -23,6 +23,7 @@ export default{
     },
     methods: {
         getSearchedCoaches(game, vote, nick){
+            this.isLoading = true;
             axios.get('http://127.0.0.1:8000/api/coaches/search',{
                 params:{
                 game_id: game,
@@ -31,7 +32,6 @@ export default{
             }
             })
             .then((response) => {
-                this.isLoading = true;
                 this.loadingFunction();
                 console.log(response.data.results);
                 this.searchResults = response.data.results;
@@ -44,7 +44,7 @@ export default{
         loadingFunction(){
             setTimeout(() => {
                 this.isLoading = false;
-            }, 2000);
+            }, 1500);
         },
     }
 }
@@ -94,9 +94,12 @@ export default{
                 <AppLoader v-if="this.isLoading === true"/>
                 <div v-else>
                     <div v-if="searchResults.length > 0" class="row justify-content-center">
-                        <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
-                            <CoachCard :singleCoach="coach"/>
-                        </article>
+                        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
+                            <article>
+                                <CoachCard :singleCoach="coach"/>
+                            </article>
+                        </router-link>
+                        
                     </div>
                     <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
                         <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>

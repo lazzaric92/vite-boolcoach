@@ -37,14 +37,14 @@ export default{
             <small>{{ singleCoach.language }}</small>
         </div>
         <div class="p-1">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>
                 </div>
-                <div class="p-1">
+                <div class="p-1 d-flex flex-wrap justify-content-end">
                     <img v-for="(game, index) in singleCoach.games" 
                         :key="index" 
-                        class="me-2 game-badge" 
+                        class="me-2 mb-1 game-badge" 
                         :src="game.img" 
                         :alt="game.name" >
                 </div>

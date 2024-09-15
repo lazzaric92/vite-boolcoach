@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router';
 import CoachCard from './CoachCard.vue';
 import axios from 'axios';
+import SponsoredStar from './SponsoredStar.vue';
 
 export default{
     data(){
@@ -21,6 +22,7 @@ export default{
     },
     components: {
         CoachCard,
+        SponsoredStar
     },
     methods: {
         getSponsoredPlayers(){
@@ -103,15 +105,17 @@ export default{
                     <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow-icon" @click="this.prevCard()"/>
                 </div>
                 <div class="coaches-carousel justify-content-center">
-                    
                     <template v-for="(coach, index) in sponsoredCoaches" :key="index" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block col-md-4 my-5 smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                            <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-12 col-md-4 my-5" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-12 col-md-4 my-5 card-wrapper" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                            <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block col-md-4 my-5 smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                            <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
                     </template>
@@ -151,10 +155,29 @@ h2{
 }
 
 article{
-        user-select: none;
-        flex: 0 0 auto;
-        width: calc((100% / 4) - 2rem);
-        overflow: hidden;
+    user-select: none;
+    flex: 0 0 auto;
+    width: calc((100% / 4) - 2rem);
+    overflow: hidden;
+}
+
+.card-wrapper {
+    position: relative;
+    
+    .sponsored-star {
+        color: $primary-red;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        transform: translate(+25%, -25%);
+    }
+
+    &:hover .sponsored-star{
+        transform: translate(+60%, -65%);
+        font-size: 1.3rem;
+        transition: all, .5s, ease-in-out;
+    }
 }
 
 .smaller-card{
