@@ -22,7 +22,7 @@ export default {
                 ]
         }
             
-            axios.post(`http://localhost:8000/api/coaches/${id}`, formData)
+            axios.post(`http://localhost:8000/api/coaches/${this.$route.params.id}`, formData)
             .then(response => {
                 console.log('messaggio correttamente inviato')
                 console.log(response);
