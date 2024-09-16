@@ -42,16 +42,16 @@ export default {
 </script>
 
 <template>
-    <form v-on:submit="submitReview($event, $route.params.id)">
-        <div class="">
+    <form v-on:submit="submitReview($event, $route.params.id)" class="d-flex flex-column align-items-end w-100">
+        <div>
             <input id="review-username-id" type="text" placeholder="Username" required />
         </div>
-        <div class="col-3">
+        <div>
             <input id="review-email-id" type="email" placeholder="Email" required />
 
         </div>
-        <div class="col-6">
-            <textarea id="review-description-id" placeholder="Description" class="w-100" required></textarea>
+        <div class="w-100 d-flex justify-content-end">
+            <input id="review-description-id" type="text" placeholder="Contenuto" class="w-75" required></input>
         </div>
 
         <button type="submit">Invia Recensione</button>
@@ -59,18 +59,28 @@ export default {
 </template>
 
 <style scoped lang="scss">
+@use '../../assets/styles/partials/variables' as *;
+
 button:hover {
     scale: 1.05;
     transition: all .2s ease-in-out;
 }
 
-input,
-textarea {
+input {
     background-color: transparent;
     color: white;
     padding: .5rem 1rem;
-    border: 2px solid white;
+    border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
     margin-bottom: 1rem;
+    &:focus {
+        outline: $primary-violet;
+    }
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.808);
+        text-align: end;
+        text-shadow: none;
+    }
 }
 </style>
