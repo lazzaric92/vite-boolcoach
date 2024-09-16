@@ -68,8 +68,8 @@ export default {
                 }
             })
             .then((response) =>{
-                console.log(response.data.results.sponsoredUsers);
                 this.coaches = response.data.results.sponsoredUsers;
+                console.log(this.coaches);
             })
             .catch((error) => {
                 console.log(error);
@@ -78,6 +78,7 @@ export default {
     },
     created() {
         this.getGame(this.$route.params.id);
+        this.getCoachesList();
     }
 }
 </script>

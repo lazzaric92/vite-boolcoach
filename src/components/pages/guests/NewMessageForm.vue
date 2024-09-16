@@ -15,15 +15,15 @@ export default {
                 messages: [
                     {
                         coach_id: this.$route.params.id,
-                        username: document.getElementById('username-id').value,
-                        email: document.getElementById('email-id').value,
-                        title: document.getElementById('title-id').value,
-                        content: document.getElementById('content-id').value
+                        username: document.getElementById('message-username-id').value,
+                        email: document.getElementById('message-email-id').value,
+                        title: document.getElementById('message-title-id').value,
+                        content: document.getElementById('message-content-id').value
                     }
                 ]
             }
             
-            axios.post(`http://localhost:8000/api/coaches/${id}`, formData)
+            axios.post(`http://localhost:8000/api/coaches/${this.$route.params.id}`, formData)
             .then(response => {
                 console.log('messaggio correttamente inviato')
                 console.log(response.data);
@@ -63,20 +63,20 @@ export default {
         <form class="mb-5" v-on:submit="submitMessage($event, $route.params.id)">
             <div class="row mb-3">
                 <div class="col-12">
-                    <input id="title-id" type="text" class="form-control" placeholder="Title" required />
+                    <input id="message-title-id" type="text" class="form-control" placeholder="Title" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-6">
-                    <input id="username-id" type="text" class="form-control" placeholder="Username" required />
+                    <input id="message-username-id" type="text" class="form-control" placeholder="Username" required />
                 </div>
                 <div class="col-6">
-                    <input id="email-id" type="email" class="form-control" placeholder="Email" required />
+                    <input id="message-email-id" type="email" class="form-control" placeholder="Email" required />
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col-12">
-                    <textarea id="content-id" class="form-control" rows="8" placeholder="Content" required></textarea>
+                    <textarea id="message-content-id" class="form-control" rows="8" placeholder="Content" required></textarea>
                 </div>
             </div>
             <div class="row">
