@@ -1,6 +1,7 @@
 <script>
 import NewMessageForm from './NewMessageForm.vue';
 import axios from 'axios';
+import NewReviewForm from './NewReviewForm.vue';
 
 export default {
     data() {
@@ -41,17 +42,17 @@ export default {
         }
     },
     components:{
-        NewMessageForm
+        NewMessageForm,
+        NewReviewForm
     },
     methods: {
         getCoach(id) {
             axios.get(`http://127.0.0.1:8000/api/coaches/${id}`, {
                 params: {
-
                 }
             })
                 .then((response) => {
-                    console.log(response.data.results);
+                    // console.log(response.data.results);
                     this.coach = response.data.results;
                     console.log(this.coach);
                 })
@@ -75,7 +76,6 @@ export default {
 </script>
 
 <template>
-    <!-- <NewMessageForm/> -->
     <div class="show d-flex align-items-start">
 
         <div class="image" :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
@@ -87,22 +87,9 @@ export default {
                 <h1 class="d-inline"> {{ coach.nickname }} </h1>
                 <p class="pt-3">
                     <span class="badge" v-for="game in coach.games" :key="game.id">
-                        <img v-show="game.id == 1"
-                            src="https://s3-alpha-sig.figma.com/img/8a9a/b436/cfb21689e2dba2768a2644e9e998a40b?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IKyJ53PvjIeCWwpE2fd45jhoxFHUXTg39hA9iP3YZHB6qe7lxQmLjKm0fEXjqf6NQbMZzXjPXowqgpPfK6fifwJvHbkVFYqGpTgmFoakepUlq~EQEmQzV~ckuK-64C-2zmFLn0ICRCA4bZzfT1t2R9ClU6hHk4u8bwEooVTEZwfHfSV1wrr6pYdKcfSheFAXMne119svG2XAD6DD~5wnwRD9il0blyqv3v1MHTs99fZQAAG32WylhYbQVaj5wrvITtqD8CG-domUdOsLbkeCLZS5iv2mlZZNkgfSNWs0a3I0Gr~eR7FYKWlXoSHTQnHciwymdMqE1fI81WpfPgB1bQ__"
-                            :alt="game.name">
-                        <img v-show="game.id == 2"
-                            src="https://s3-alpha-sig.figma.com/img/86c1/98ba/e588a0b75bcbaaa3e197d187fd159912?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=D7hNrwkIuyt7t1tKD3zelJXj365CKjWUfgHBkH1bIY6AFzqonRkAyf9rAsSeJJJE9~BR63CpQGnl-Nnvud4FHfYCgqGrZ1b9kqX26-yBB8PGtv1O5fqIqHWZ27h9KvqBisRHCe4NJ6Yy9IVkc6riIHBfBf~0vz3TH70~Hun8Lu3UbyCDXEaMsMJqG8OWDLD-UWhk2SimSV2aNQNALLUt4NI9uKwTaJ8i6Wy~ykBwYgyNEbmqvsc8u~f3lrz1CvjNRJDfn~8g5Qj74PH7O-KBOzrvgRyY0WD~7UkNnriU1UdrcBvZYAAfRwLA0fO7inKVXuwT~I49j0Ebh6hUrshhqQ__"
-                            :alt="game.name">
-                        <img v-show="game.id == 3" class="mt-2"
-                            src="https://s3-alpha-sig.figma.com/img/a751/3cfa/9c68bb3547fe84c442fbe86d703f5f9a?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rt9wI5rwhlP14wDjMmfa0JbeFhI6NzORgcoqY3Pf7OynWA7ZelIsi40KJyfNo4wkSo01ckW20UhdeuNTo~P23HF9mJDKpjIxtPCCQbyAuN6LKit14ngqWyKkbN1482LGmMwwJD6rG79FgrQYEfGslPenIpr587~U2CmXyytrZW66GBMIgeR7FGfgkJMYmQipmerFOEF2mg6rTev2nMDuvRPhYuPPF~cuj27LB6qb0mQlAE0zrFBXyNnejo9j-Zt2gA4u6uscKmwgoN0TyrcC6Ufl2kSUWOaeSlwSW~YsZcooufsOMapaVce4DSgMcfKMYf3dtAimM0e-zboD3klv~A__"
-                            :alt="game.name">
-                        <img v-show="game.id == 4"
-                            src="https://s3-alpha-sig.figma.com/img/6ecc/1d5d/74240ceb07688ef9becef6875f1b4ed3?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=WllW4zKwyFZbWAtf6iqFY6YB7Be15Loftun4ztUC61bzZNmvOHyw-qjQ4O5egmXOVj33-XCb9EjPn-a3w9oOOZNd2yT4Gtc04Nr5VD-MjWEdJ-RBpdJdNLxaWBXzkJ4LdsNz7jov5mzzw~YPARfOp4aaDcFerRtHIWNee7b5XlMNw0Nq-4CK0ZWOZzcDeaMiSRHTv~PE~n6FwOKdDAa2mPmuDull~p74fdkvb~ohsiO5DTcTnsaBiF0Y8qORNXVpEeBQV-JHNpRQ14DBA8kkQ6nG~UnopXIlDudAFaQzSAE0AhyK1yAzBQqe-Pptd06Mq2HW0OTWvf1aYRNzEvLXdw__"
-                            :alt="game.name">
-                        <img v-show="game.id == 5"
-                            src="https://s3-alpha-sig.figma.com/img/a751/3cfa/9c68bb3547fe84c442fbe86d703f5f9a?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Rt9wI5rwhlP14wDjMmfa0JbeFhI6NzORgcoqY3Pf7OynWA7ZelIsi40KJyfNo4wkSo01ckW20UhdeuNTo~P23HF9mJDKpjIxtPCCQbyAuN6LKit14ngqWyKkbN1482LGmMwwJD6rG79FgrQYEfGslPenIpr587~U2CmXyytrZW66GBMIgeR7FGfgkJMYmQipmerFOEF2mg6rTev2nMDuvRPhYuPPF~cuj27LB6qb0mQlAE0zrFBXyNnejo9j-Zt2gA4u6uscKmwgoN0TyrcC6Ufl2kSUWOaeSlwSW~YsZcooufsOMapaVce4DSgMcfKMYf3dtAimM0e-zboD3klv~A__"
-                            :alt="game.name">
+                        <img :src="game.img" :alt="game.name" :class="{ 'mt-2': game.id === 3 }">
                     </span>
+
                 </p>
             </section>
             <p class="text-capitalize"><span>{{ coach.name }} {{ coach.surname }}</span></p>
@@ -119,8 +106,10 @@ export default {
                     <span>{{ review.description }}</span>
                 </section>
             </div>
-            <button>&#9993; Invia Messaggio</button>
+            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
         </div>
+        <NewMessageForm/>
+        <!-- <NewReviewForm/> -->
 
     </div>
 </template>

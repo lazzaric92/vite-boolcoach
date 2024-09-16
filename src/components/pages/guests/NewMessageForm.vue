@@ -4,50 +4,78 @@ import axios from 'axios';
 export default {
     data() {
         return {
-        username: '',
-        email: '',
-        title: '',
-        content: ''
         };
     },
-
     methods: {
-        submitMessage(){
-            const data = {
-                username: this.username,
-                email: this.email,
-                title: this.title,
-                content: this.content
-            }
-
-            axios.post(`/api/coaches/${this.$route.params.id}`, data)
+        async submitMessage(id){
+            event.preventDefault();
+            
+            const formData = {
+                messages: [
+                    {
+                        coach_id: this.$route.params.id,
+                        username: document.getElementById('username-id').value,
+                        email: document.getElementById('email-id').value,
+                        title: document.getElementById('title-id').value,
+                        content: document.getElementById('content-id').value
+                    }
+                ]
+        }
+            
+            axios.post(`http://localhost:8000/api/coaches/${id}`, formData)
             .then(response => {
-                console.log(response.data.message);
+                console.log('messaggio correttamente inviato')
+                console.log(response);
             })
             .catch(error => {
-                console.error('There was an error!', error);
+                console.log('ERRORRRE')
+                console.log(this.$route.params)
+                console.log(formData)
+
+                console.error('There was an error!', error.message);
             });
         },
     },
-    mounted:{
-    }
+
 };
 </script>
 
 <template>
-<div class="container">
-    <div class="row">
-        <div class="col-12 d-flex flex-column">
-            <form @submit.prevent="submitMessage" method="POST">
-                <input v-model="username" type="text" placeholder="Username" required />
-                <input v-model="email" type="email" placeholder="Email" required />
-                <input v-model="title" type="text" placeholder="Title" required />
-                <textarea v-model="content" placeholder="Content" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </div>
+<div class="offcanvas offcanvas-start w-50 h-100" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="offcanvas-header position-relative">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Invia un messaggio al coach</h5>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        <form class="flex-grow-1" v-on:submit="submitMessage($event, $route.params.id)">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <input id="title-id" type="text" class="form-control" placeholder="Title" required />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <input id="username-id" type="text" class="form-control" placeholder="Username" required />
+                </div>
+                <div class="col-6">
+                    <input id="email-id" type="email" class="form-control" placeholder="Email" required />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <textarea id="content-id" class="form-control" rows="8" placeholder="Content" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="w-100">&#9993; Invia Messaggio</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+
 </template>
 
 <style scoped lang="scss">
