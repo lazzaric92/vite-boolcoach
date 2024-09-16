@@ -13,10 +13,10 @@ export default {
                 messages: [
                     {
                         coach_id: this.$route.params.id,
-                        username: document.getElementById('username-id').value,
-                        email: document.getElementById('email-id').value,
-                        title: document.getElementById('title-id').value,
-                        content: document.getElementById('content-id').value
+                        username: document.getElementById('message-username-id').value,
+                        email: document.getElementById('message-email-id').value,
+                        title: document.getElementById('message-title-id').value,
+                        content: document.getElementById('message-content-id').value
                     }
                 ]
         }
@@ -44,10 +44,10 @@ export default {
     <div class="row">
         <div class="col-12 d-flex flex-column">
             <form v-on:submit="submitMessage($event, $route.params.id)">
-                <input id="username-id" type="text" placeholder="Username" required />
-                <input id="email-id" type="email" placeholder="Email" required />
-                <input id="title-id" type="text" placeholder="Title" required />
-                <textarea id="content-id" placeholder="Content" required></textarea>
+                <input id="message-username-id" type="text" placeholder="Username" required />
+                <input id="message-email-id" type="email" placeholder="Email" required />
+                <input id="message-title-id" type="text" placeholder="Title" required />
+                <textarea id="message-content-id" placeholder="Content" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
         </div>
