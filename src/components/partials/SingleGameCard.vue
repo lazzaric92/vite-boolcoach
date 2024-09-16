@@ -33,15 +33,13 @@ export default {
 <style lang="scss" scoped>
 
 
-article:last-child {
-    div.bg {
-        figure {
-            margin-top: 2rem;
-            height: 70px;
+.bg:nth-of-type(3) {
+    figure {
+        margin-top: 2rem;
+        height: 70px;
 
-            img {
-                height: 100%;
-            }
+        img {
+            height: 100%;
         }
     }
 }

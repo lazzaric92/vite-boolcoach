@@ -47,7 +47,7 @@ export default {
 <template>
     <section class="wrapper mx-5">
         <SingleGameCard v-for="item in gamesAssets" :key="index" :background_image="item.background"
-            :logo_image="item.logo" :game_name="item.name" />
+            :logo_image="item.logo" :game_name="item.name" :id="item.id"/>
     </section>
 </template>
 
