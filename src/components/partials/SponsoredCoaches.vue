@@ -3,13 +3,14 @@ import { RouterLink } from 'vue-router';
 import CoachCard from './CoachCard.vue';
 import axios from 'axios';
 import SponsoredStar from './SponsoredStar.vue';
+import { store } from '@/store';
 
 export default{
     data(){
         return {
+            store,
             message: 'Sponsored Coaches',
             sponsoredCoaches: [],
-            newArray: [],
             isDown: false,
             startX: 0,
             scrollLeft: 0,
@@ -30,7 +31,8 @@ export default{
                 .then((response) => {
                     // handle success
                     console.log(response.data.results.sponsoredUsers);
-                    this.sponsoredCoaches = response.data.results.sponsoredUsers
+                    this.store.carouselSponsoredCoaches = response.data.results.sponsoredUsers;
+                    this.sponsoredCoaches = response.data.results.sponsoredUsers;
                 })
                 .catch(function (error) {
                     // handle error
@@ -82,6 +84,7 @@ export default{
         this.getSponsoredPlayers();
         // this.$refs.carousel.scrollLeft = this.$refs.carousel.scrollWidth / 3;
         this.startCarouselClock();
+        // console.log(this.store.sponsoredCoaches);
     }
 }
 </script>

@@ -2,6 +2,8 @@
 import AppLoader from '@/components/partials/AppLoader.vue';
 import CoachCard from '@/components/partials/CoachCard.vue';
 import CoachesIndex from '@/components/partials/CoachesIndex.vue';
+import SponsoredStar from '@/components/partials/SponsoredStar.vue';
+import { store } from '@/store';
 import axios from 'axios';
 
 export default{
@@ -13,16 +15,20 @@ export default{
             nicknameString: '',
             string: '',
             searchResults: [],
-            isLoading: false
+            isLoading: false,
+            store,
+            sponsored: []
         }
     },
     components: {
         CoachesIndex,
         CoachCard,
-        AppLoader
+        AppLoader,
+        SponsoredStar
     },
     methods: {
         getSearchedCoaches(game, vote, nick){
+            this.sponsored = [];
             this.isLoading = true;
             axios.get('http://127.0.0.1:8000/api/coaches/search',{
                 params:{
@@ -35,6 +41,7 @@ export default{
                 this.loadingFunction();
                 console.log(response.data.results);
                 this.searchResults = response.data.results;
+                this.checkIfSponsored();
             })
             .catch((error) =>{
                 console.log(error);
@@ -46,7 +53,21 @@ export default{
                 this.isLoading = false;
             }, 1500);
         },
-    }
+        checkIfSponsored(){
+            // scorro l'array di ricerca
+            this.searchResults.forEach(coach => {
+                // se l'array degli utenti sponsorizzati contiene un elemento con quell'id
+                for (let index = 0; index < this.store.sponsoredCoaches.length; index++) {
+                    const spCoach = this.store.sponsoredCoaches[index];
+                    if(coach.id === spCoach.id){
+                        // inserisco l'id nell'array sponsored
+                        this.sponsored.push(spCoach.id)
+                    }
+                }
+            });
+            console.log(this.sponsored);
+        }
+    },
 }
 </script>
 
@@ -94,8 +115,9 @@ export default{
                 <AppLoader v-if="this.isLoading === true"/>
                 <div v-else>
                     <div v-if="searchResults.length > 0" class="row justify-content-center">
-                        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
+                        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-3 mb-3 card-wrapper" v-for="coach in searchResults" key="coach.id" :class="sponsored.includes(coach.id) ? 'order-0' : 'order-1'">
                             <article>
+                                <SponsoredStar class="sponsored-star" v-if="sponsored.includes(coach.id)"/>
                                 <CoachCard :singleCoach="coach"/>
                             </article>
                         </router-link>
@@ -179,5 +201,35 @@ export default{
 
     p#clear-search {
         cursor: pointer;
+    }
+
+    .card-wrapper {
+        position: relative;
+        
+        .sponsored-star {
+            color: $primary-red;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            transform: translate(-35%, -25%);
+        }
+
+        &:hover .sponsored-star{
+            transform: translate(+15%, -70%);
+            font-size: 1.3rem;
+            animation-name: wiggle;
+            animation-duration: 1000ms;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-in-out;
+        }
+    }
+
+    @keyframes wiggle {
+        0% {transform: translate(+15%, -70%) rotate(10deg);}
+        25% {transform: translate(+15%, -70%) rotate(-10deg);}
+        50% {transform: translate(+15%, -70%) rotate(20deg);}
+        75% {transform: translate(+15%, -70%) rotate(-5deg);}
+        100% {transform: translate(+15%, -70%)rotate(0deg);}
     }
 </style>
