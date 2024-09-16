@@ -8,14 +8,14 @@ export default {
     },
 
     methods: {
-        async submitReview(id){
+        async submitReview(event, id){
             const formData = {
                 reviews: [
                     {
                         coach_id: this.$route.params.id,
-                        username: document.getElementById('username-id').value,
-                        email: document.getElementById('email-id').value,
-                        description: document.getElementById('description-id').value
+                        username: document.getElementById('review-username-id').value,
+                        email: document.getElementById('review-email-id').value,
+                        description: document.getElementById('review-description-id').value
                     }
                 ]
         }
@@ -34,7 +34,6 @@ export default {
             });
         },
     },
-
 };
 </script>
 
@@ -43,14 +42,14 @@ export default {
     <form v-on:submit="submitReview($event, $route.params.id)">
         <div class="row">
             <div class="col-3">
-                <input id="username-id" type="text" placeholder="Username" required />
+                <input id="review-username-id" type="text" placeholder="Username" required />
             </div>
             <div class="col-3">
-                <input id="email-id" type="email" placeholder="Email" required />
+                <input id="review-email-id" type="email" placeholder="Email" required />
 
             </div>
             <div class="col-6">
-                <textarea id="description-id" placeholder="Description" class="w-100" required></textarea>
+                <textarea id="review-description-id" placeholder="Description" class="w-100" required></textarea>
                 
             </div>
             
