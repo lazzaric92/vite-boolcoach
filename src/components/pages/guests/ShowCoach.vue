@@ -2,6 +2,7 @@
 import NewMessageForm from './NewMessageForm.vue';
 import axios from 'axios';
 import NewReviewForm from './NewReviewForm.vue';
+import NewVoteForm from './NewVoteForm.vue';
 
 export default {
     data() {
@@ -43,21 +44,24 @@ export default {
     },
     components:{
         NewMessageForm,
-        NewReviewForm
+        NewReviewForm,
+        NewVoteForm
     },
     methods: {
         getCoach(id) {
+
             axios.get(`http://127.0.0.1:8000/api/coaches/${id}`, {
                 params: {
                 }
             })
                 .then((response) => {
-                    // console.log(response.data.results);
+                    console.log('il coach non è stato trovato')
+                    console.log(response.data.results);
                     this.coach = response.data.results;
                     console.log(this.coach);
                 })
                 .catch((error) => {
-                    this.$router.push({ name: '404-not-found' });
+                    // this.$router.push({ name: '404-not-found' });
                     console.log(error);
                 });
         },
@@ -70,6 +74,7 @@ export default {
         }
     },
     created() {
+        console.log(this.$route.params)
         this.getCoach(this.$route.params.id);
     }
 }
@@ -108,10 +113,9 @@ export default {
             </div>
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
         </div>
-        <NewMessageForm/>
-        <!-- <NewReviewForm/> -->
-
+        <NewMessageForm/>   
     </div>
+    <NewReviewForm/>
 </template>
 
 <style scoped lang="scss">
