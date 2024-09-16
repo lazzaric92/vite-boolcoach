@@ -7,6 +7,7 @@ export default {
     data() {
         return {
             game: [],
+            coaches: [],
             gamesAssets: [
                 {
                     id: 1,
@@ -60,6 +61,20 @@ export default {
                     console.log(error);
                 });
         },
+        getCoachesList() {
+            axios.get('http://127.0.0.1:8000/api/coaches',{
+                params: {
+
+                }
+            })
+            .then((response) =>{
+                console.log(response.data.results.sponsoredUsers);
+                this.coaches = response.data.results.sponsoredUsers;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
     },
     created() {
         this.getGame(this.$route.params.id);

@@ -65,6 +65,7 @@ export default{
 <style scoped lang="scss">
 .card {
     border: none;
+    text-transform: capitalize;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     overflow: hidden;
     min-height: 400px;
@@ -129,7 +130,6 @@ img {
 }
 
 .game-badge{
-    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     padding: 3px;
 }
