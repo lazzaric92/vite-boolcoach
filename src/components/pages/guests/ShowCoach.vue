@@ -81,8 +81,7 @@ export default {
 </script>
 
 <template>
-    <div class="show d-flex align-items-start">
-
+    <div class="show d-flex align-items-start justify-content-center">
         <div class="image" :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <div class="gradient"></div>
         </div>
@@ -112,14 +111,13 @@ export default {
                 </section>
             </div>
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
+            <NewVoteForm/>
+            <NewReviewForm/>
         </div>
         <NewMessageForm/>
-        <NewReviewForm/>
-        <NewVoteForm/>
-
-
+        
+        
     </div>
-    <NewReviewForm/>
 </template>
 
 <style scoped lang="scss">
@@ -129,9 +127,6 @@ div.show {
     height: calc(100vh - $header-height - $footer-height);
     width: 100%;
     border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     outline: 0px solid #000000;
     transition: all 0.3s ease 0s;
 

@@ -62,7 +62,6 @@ export default {
 </script>
 
 <template>
-<div class="container">
     <div class="row">
         <div class="col-12 d-flex flex-column">
             <form v-on:submit="submitVote($event, $route.params.id)">
@@ -79,7 +78,6 @@ export default {
             </form>
         </div>
     </div>
-</div>
 </template>
 
 <style scoped lang="scss">

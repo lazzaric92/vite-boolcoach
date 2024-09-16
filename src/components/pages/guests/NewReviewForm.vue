@@ -38,7 +38,7 @@ export default {
 </script>
 
 <template>
-<div class="container">
+
     <form v-on:submit="submitReview($event, $route.params.id)">
         <div class="row">
             <div class="col-3">
@@ -56,7 +56,7 @@ export default {
             <button type="submit">Send Review</button>
         </div>
     </form>
-</div>
+
 </template>
 
 <style scoped lang="scss">
