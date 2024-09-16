@@ -20,7 +20,7 @@ export default {
                 ]
         }
             event.preventDefault();
-            axios.post(`http://localhost:8000/api/coaches/${id}`, formData)
+            axios.post(`http://localhost:8000/api/coaches/${this.$route.params.id}`, formData)
             .then(response => {
                 console.log('recensione correttamente inviata')
                 console.log(response);
@@ -39,18 +39,23 @@ export default {
 
 <template>
 <div class="container">
-    <div class="row">
-        <div class="col-12 d-flex flex-column">
+    <form v-on:submit="submitReview($event, $route.params.id)">
+        <div class="row">
+            <div class="col-3">
+                <input id="username-id" type="text" placeholder="Username" required />
+            </div>
+            <div class="col-3">
+                <input id="email-id" type="email" placeholder="Email" required />
 
-            <form v-on:submit="submitReview($event, $route.params.id)">
-                <input id="review-username-id" type="text" placeholder="Username" required />
-                <input id="review-email-id" type="email" placeholder="Email" required />
-                <textarea id="review-description-id" placeholder="Description" required></textarea>
-                <button type="submit">Send Review</button>
-            </form>
-
+            </div>
+            <div class="col-6">
+                <textarea id="description-id" placeholder="Description" class="w-100" required></textarea>
+                
+            </div>
+            
+            <button type="submit">Send Review</button>
         </div>
-    </div>
+    </form>
 </div>
 </template>
 
