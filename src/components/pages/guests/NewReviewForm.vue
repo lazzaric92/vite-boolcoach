@@ -8,22 +8,21 @@ export default {
     },
 
     methods: {
-        async submitMessage(id){
+        async submitReview(id){
             const formData = {
-                messages: [
+                reviews: [
                     {
                         coach_id: this.$route.params.id,
                         username: document.getElementById('username-id').value,
                         email: document.getElementById('email-id').value,
-                        title: document.getElementById('title-id').value,
-                        content: document.getElementById('content-id').value
+                        description: document.getElementById('description-id').value
                     }
                 ]
         }
             event.preventDefault();
             axios.post(`http://localhost:8000/api/coaches/${id}`, formData)
             .then(response => {
-                console.log('messaggio correttamente inviato')
+                console.log('recensione correttamente inviata')
                 console.log(response);
             })
             .catch(error => {
@@ -43,13 +42,14 @@ export default {
 <div class="container">
     <div class="row">
         <div class="col-12 d-flex flex-column">
-            <form v-on:submit="submitMessage($event, $route.params.id)">
+
+            <form v-on:submit="submitReview($event, $route.params.id)">
                 <input id="username-id" type="text" placeholder="Username" required />
                 <input id="email-id" type="email" placeholder="Email" required />
-                <input id="title-id" type="text" placeholder="Title" required />
-                <textarea id="content-id" placeholder="Content" required></textarea>
-                <button type="submit">Send Message</button>
+                <textarea id="description-id" placeholder="Description" required></textarea>
+                <button type="submit">Send Review</button>
             </form>
+
         </div>
     </div>
 </div>
