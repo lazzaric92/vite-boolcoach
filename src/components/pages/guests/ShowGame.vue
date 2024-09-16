@@ -93,7 +93,7 @@ export default {
             <img :src="game.img">
         </section>
         <div class="wrapper">
-            <router-link to="{ name: 'coach-details', params: { id: coach.id } }" v-for="coach in game.users" :key="coach.id" class="w-33">
+            <router-link :to="{ name: 'coach-details', params: { id: coach.id } }"v-for="coach in game.users" :key="coach.id" class="w-33">
                 <article>
                     <SponsoredStar class="sponsored-star" />
                     <CoachCard :singleCoach="coach" />
