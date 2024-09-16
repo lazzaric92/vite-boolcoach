@@ -47,13 +47,12 @@ export default {
         getCoach(id) {
             axios.get(`http://127.0.0.1:8000/api/coaches/${id}`, {
                 params: {
-
                 }
             })
                 .then((response) => {
-                    console.log(response.data.results);
+                    // console.log(response.data.results);
                     this.coach = response.data.results;
-                    console.log(this.coach);
+                    // console.log(this.coach);
                 })
                 .catch((error) => {
                     this.$router.push({ name: '404-not-found' });
@@ -75,7 +74,6 @@ export default {
 </script>
 
 <template>
-    <!-- <NewMessageForm/> -->
     <div class="show d-flex align-items-start">
 
         <div class="image" :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
@@ -121,7 +119,7 @@ export default {
             </div>
             <button>&#9993; Invia Messaggio</button>
         </div>
-
+        <NewMessageForm/>
     </div>
 </template>
 
