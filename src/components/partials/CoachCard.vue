@@ -3,7 +3,7 @@ export default{
     data(){
         return {
             imgArray: [
-                'Ash Chibi.png',
+                'Ashe Chibi.png',
                 'Genji Chibi.png',
                 'Jager Chibi.png',
             ]
@@ -19,6 +19,9 @@ export default{
         randomImage(){
             const randomInt = Math.floor((Math.random() * this.imgArray.length), 10);
             return `src/assets/images/${this.imgArray[randomInt]}`;
+        },
+        getImagePath(img){
+            return `src/assets/images/${img}`;
         }
     }
 }
@@ -27,22 +30,21 @@ export default{
 <template>
 <div class="card text-white card-has-bg" 
     :style="{
-        backgroundImage: singleCoach.img_url ? 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(' + singleCoach.img_url + ')' 
-                                            : 'linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(' + randomImage() + ')' }">
+        backgroundImage: (singleCoach.img_url ? (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(${singleCoach.img_url})`) : (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(${getImagePath('spaceInvaders_neon.png')})`)) }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
             <small>{{ singleCoach.language }}</small>
         </div>
         <div class="p-1">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between align-items-center">
                 <div>
                     <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>
                 </div>
-                <div>
+                <div class="p-1 d-flex flex-wrap justify-content-end">
                     <img v-for="(game, index) in singleCoach.games" 
                         :key="index" 
-                        class="mr-3" 
+                        class="me-2 mb-1 game-badge" 
                         :src="game.img" 
                         :alt="game.name" >
                 </div>
@@ -72,6 +74,7 @@ export default{
     background-repeat: no-repeat;
     border-radius: 1rem;
     will-change: transform;
+    cursor: pointer;
 }
 
 img {
@@ -123,6 +126,12 @@ img {
 .rating small {
     font-size: 1rem;
     color: #fff;
+}
+
+.game-badge{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    padding: 3px;
 }
 
 </style>

@@ -32,6 +32,11 @@ export default {
                     name: "FC 25",
                     background: "https://s3-alpha-sig.figma.com/img/c829/9992/c1719f81e55f4c75b6d6a8bbb483d07e?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXCODJu0M3GdvgPzgMI4taSU25Gji-n0J1qGKw5jjL-1pKwWTSHurAfFsyH8AYbQHaKLLg1g7lCzwhJYpfYcvGado6eixs7k6AwCaZX9ADNDBmrmHYVWTR8jtS5QRJ597zbz0-PwQCJwIadul9WRxl6~55rPBCgJ0wTAevsmF9K0ebuRjM0Vlb99ydChCG-xAOQnmqVpEin0FNRLU48EmoXaXnC80NivnjtL5sVEVHJBQWD2gMgJclRaL9-nVnJ0QmX1j7DSz93yzpt9TzrL4-ATiTANVkIu-S06aMFxWL~~GAk031Xv5ehM0GSAmtFvWLuHy10nZr1h81weVoKlNQ__"
                 }
+            ],
+            imgArray: [
+                'Ashe Chibi.png',
+                'Genji Chibi.png',
+                'Jager Chibi.png',
             ]
         }
     },
@@ -55,6 +60,13 @@ export default {
                     console.log(error);
                 });
         },
+        randomImage(){
+            const randomInt = Math.floor((Math.random() * this.imgArray.length), 10);
+            return `src/assets/images/${this.imgArray[randomInt]}`;
+        },
+        getImagePath(img){
+            return `/src/assets/images/${img}`;
+        }
     },
     created() {
         this.getCoach(this.$route.params.id);
@@ -66,7 +78,7 @@ export default {
     <!-- <NewMessageForm/> -->
     <div class="show d-flex align-items-start">
 
-        <div class="image" :style="{ background: 'url(' + coach.img_url + ')' }">
+        <div class="image" :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <div class="gradient"></div>
         </div>
         <div class="info"
