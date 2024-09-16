@@ -1,7 +1,7 @@
 <script>
 import NewMessageForm from './NewMessageForm.vue';
 import axios from 'axios';
-import NewReviewForm from './NewReviewForm.vue';
+import NewReviewForm from '../../partials/NewReviewForm.vue';
 import NewVoteForm from './NewVoteForm.vue';
 
 export default {
@@ -42,7 +42,7 @@ export default {
             ]
         }
     },
-    components:{
+    components: {
         NewMessageForm,
         NewReviewForm,
         NewVoteForm
@@ -65,11 +65,11 @@ export default {
                     console.log(error);
                 });
         },
-        randomImage(){
+        randomImage() {
             const randomInt = Math.floor((Math.random() * this.imgArray.length), 10);
             return `src/assets/images/${this.imgArray[randomInt]}`;
         },
-        getImagePath(img){
+        getImagePath(img) {
             return `/src/assets/images/${img}`;
         }
     },
@@ -83,7 +83,10 @@ export default {
 <template>
     <div class="show d-flex align-items-start">
 
-        <div class="image" :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
+        <div class="image"
+            :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
+            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
             <div class="gradient"></div>
         </div>
         <div class="info"
@@ -102,7 +105,7 @@ export default {
             <p>Prezzo: {{ coach.price }} &euro;</p>
             <div class="summary">
                 <p>Descrizione:</p>
-                <span >{{ coach.summary }} </span>
+                <span>{{ coach.summary }} </span>
             </div>
             <div>
                 <p>Recensioni:</p>
@@ -111,15 +114,15 @@ export default {
                     <span>{{ review.description }}</span>
                 </section>
             </div>
-            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
+            <NewReviewForm />
         </div>
-        <NewMessageForm/>   
+        <NewMessageForm />
     </div>
-    <NewReviewForm/>
 </template>
 
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/variables' as *;
+
 
 div.show {
     height: calc(100vh - $header-height - $footer-height);
@@ -138,6 +141,18 @@ div.show {
         border-radius: 0 20px 20px 0;
         background-size: cover !important;
         background-position: center !important;
+        position: relative;
+
+        button {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+
+            &:hover {
+                scale: 1.05;
+                transition: all .2s ease-in-out;
+            }
+        }
 
         .gradient {
             height: 100%;
