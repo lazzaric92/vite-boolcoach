@@ -1,4 +1,5 @@
 <script>
+import AppLoader from '@/components/partials/AppLoader.vue';
 import CoachCard from '@/components/partials/CoachCard.vue';
 import CoachesIndex from '@/components/partials/CoachesIndex.vue';
 import axios from 'axios';
@@ -11,15 +12,18 @@ export default{
             voteAvg: '',
             nicknameString: '',
             string: '',
-            searchResults: []
+            searchResults: [],
+            isLoading: false
         }
     },
     components: {
         CoachesIndex,
-        CoachCard
+        CoachCard,
+        AppLoader
     },
     methods: {
         getSearchedCoaches(game, vote, nick){
+            this.isLoading = true;
             axios.get('http://127.0.0.1:8000/api/coaches/search',{
                 params:{
                 game_id: game,
@@ -28,6 +32,7 @@ export default{
             }
             })
             .then((response) => {
+                this.loadingFunction();
                 console.log(response.data.results);
                 this.searchResults = response.data.results;
             })
@@ -35,7 +40,12 @@ export default{
                 console.log(error);
                 this.$router.push({ name: '404-not-found' });
             });
-        }
+        },
+        loadingFunction(){
+            setTimeout(() => {
+                this.isLoading = false;
+            }, 1500);
+        },
     }
 }
 </script>
@@ -43,58 +53,62 @@ export default{
 <template>
 
 
-    <div class="container-fluid my_background">
-        <div class="container">
-            <div id="search-nav-container" >
-                <div class="d-flex">
-                    <!-- ! GAME_ID -->
-                    <select id="game_id" v-model="this.gameId" class="text-center">
-                        <option value="" selected disabled>-- Videogioco --</option>
-                        <option value="1">League of Legends</option>
-                        <option value="2">Tom Clancy's Rainbow Six Siege</option>
-                        <option value="3">FIFA 25</option>
-                        <option value="4">Overwatch</option>
-                        <option value="5">Rocket League</option>
-                    </select>
-                    
-                    <!-- ! VOTE_AVG -->
-                    <select id="vote_avg" v-model="this.voteAvg" class="text-center">
-                        <option value="" selected disabled>-- Voto --</option>
-                        <option value="0">0 &#9733; o superiore</option>
-                        <option value="1">1 &#9733; o superiore</option>
-                        <option value="2">2 &#9733; o superiore</option>
-                        <option value="3">3 &#9733; o superiore</option>
-                        <option value="4">4 &#9733; o superiore</option>
-                        <option value="5">5 &#9733;</option>
-                    </select>
-                    
-                    <!-- ! NICKNAME -->
-                    <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString">
-                    
-                    <!-- ! BUTTON -->
-                    <button class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
-                        <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="lens" />
-                    </button>
-                </div>
+    <div class="container-fluid my_background p-3">
+        <div id="search-nav-container" >
+            <div class="d-flex">
+                <!-- ! GAME_ID -->
+                <select id="game_id" v-model="this.gameId" class="text-center">
+                    <option value="" selected disabled>-- Videogioco --</option>
+                    <option value="1">League of Legends</option>
+                    <option value="2">Tom Clancy's Rainbow Six Siege</option>
+                    <option value="3">FIFA 25</option>
+                    <option value="4">Overwatch</option>
+                    <option value="5">Rocket League</option>
+                </select>
                 
-                <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
+                <!-- ! VOTE_AVG -->
+                <select id="vote_avg" v-model="this.voteAvg" class="text-center">
+                    <option value="" selected disabled>-- Voto --</option>
+                    <option value="0">0 &#9733; o superiore</option>
+                    <option value="1">1 &#9733; o superiore</option>
+                    <option value="2">2 &#9733; o superiore</option>
+                    <option value="3">3 &#9733; o superiore</option>
+                    <option value="4">4 &#9733; o superiore</option>
+                    <option value="5">5 &#9733;</option>
+                </select>
+                
+                <!-- ! NICKNAME -->
+                <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString">
+                
+                <!-- ! BUTTON -->
+                <button class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
+                    <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="lens" />
+                </button>
             </div>
-            <div id="main-content" class="container-fluid" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
-                <CoachesIndex v-if="searchOn === false"/>
+            
+            <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
+        </div>
+        <div id="main-content" class="container-fluid p-relative" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
+            <CoachesIndex v-if="searchOn === false"/>
+            <div v-else>
+                <AppLoader v-if="this.isLoading === true"/>
                 <div v-else>
-                    <div v-if="searchResults.length > 0" class="row">
-                        <article class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
-                            <CoachCard :singleCoach="coach"/>
-                        </article>
+                    <div v-if="searchResults.length > 0" class="row justify-content-center">
+                        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-3 mb-3" v-for="coach in searchResults" key="coach.id">
+                            <article>
+                                <CoachCard :singleCoach="coach"/>
+                            </article>
+                        </router-link>
+                        
                     </div>
                     <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
                         <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
                         <img src="../../../assets/images/amumu_sad_crying.png" alt="😭" >
                     </div>
-        
                 </div>
             </div>
         </div>
+
     </div>
 
 </template>
