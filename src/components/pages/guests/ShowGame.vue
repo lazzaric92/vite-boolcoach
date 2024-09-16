@@ -1,10 +1,13 @@
 <script>
 import axios from 'axios';
-
+import CoachCard from '@/components/partials/CoachCard.vue';
+import SponsoredStar from '@/components/partials/SponsoredStar.vue';
+import { router } from '@/router';
 export default {
     data() {
         return {
             game: [],
+            coaches: [],
             gamesAssets: [
                 {
                     id: 1,
@@ -31,15 +34,23 @@ export default {
                     name: "FC 25",
                     background: "https://s3-alpha-sig.figma.com/img/c829/9992/c1719f81e55f4c75b6d6a8bbb483d07e?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXCODJu0M3GdvgPzgMI4taSU25Gji-n0J1qGKw5jjL-1pKwWTSHurAfFsyH8AYbQHaKLLg1g7lCzwhJYpfYcvGado6eixs7k6AwCaZX9ADNDBmrmHYVWTR8jtS5QRJ597zbz0-PwQCJwIadul9WRxl6~55rPBCgJ0wTAevsmF9K0ebuRjM0Vlb99ydChCG-xAOQnmqVpEin0FNRLU48EmoXaXnC80NivnjtL5sVEVHJBQWD2gMgJclRaL9-nVnJ0QmX1j7DSz93yzpt9TzrL4-ATiTANVkIu-S06aMFxWL~~GAk031Xv5ehM0GSAmtFvWLuHy10nZr1h81weVoKlNQ__"
                 }
-            ]
+            ],
         }
     },
+    components: {
+        CoachCard,
+        SponsoredStar
+    },
     methods: {
+        getGameBackground(id) {
+            const gameAsset = this.gamesAssets.find(asset => asset.id === id);
+            return gameAsset ? gameAsset.background : '';
+        },
         getGame(id) {
             axios.get(`http://127.0.0.1:8000/api/games/${id}`, {
                 params: {
                 }
-                })
+            })
                 .then((response) => {
                     console.log(response.data.results);
                     this.game = response.data.results[0];
@@ -50,6 +61,20 @@ export default {
                     console.log(error);
                 });
         },
+        getCoachesList() {
+            axios.get('http://127.0.0.1:8000/api/coaches',{
+                params: {
+
+                }
+            })
+            .then((response) =>{
+                console.log(response.data.results.sponsoredUsers);
+                this.coaches = response.data.results.sponsoredUsers;
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
     },
     created() {
         this.getGame(this.$route.params.id);
@@ -58,11 +83,106 @@ export default {
 </script>
 
 <template>
-    <h1>{{ game.name }}</h1>
-    <p v-for="coach in game.users">{{ coach.name }}</p>
+    <div v-if="game"
+        :style="{ backgroundImage: `linear-gradient(to right,rgba(18, 25, 34, .9) 1%, rgba(18, 25, 34, 0.7) 50%, rgba(18, 25, 34, .9) 100%), url(${getGameBackground(game.id)})` }">
+        <section>
+            <img :src="game.img">
+    
+                <h1> Coach di {{ game.name }} </h1>
+
+            <img :src="game.img">
+        </section>
+        <div class="wrapper">
+            <router-link to="{ name: 'coach-details', params: { id: coach.id } }" v-for="coach in game.users" :key="coach.id" class="w-33">
+                <article>
+                    <SponsoredStar class="sponsored-star" />
+                    <CoachCard :singleCoach="coach" />
+                </article>
+            </router-link>
+        </div>
+    </div>
 </template>
+
 
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/variables' as *;
 
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+
+    h1, h2 {
+        font-size: 3.5rem;
+        font-family: 'Jaro';
+        text-shadow: $black-outline;
+    }
+
+
+
+    img {
+        height: 3rem;
+        margin: 0 1rem;
+    }
+}
+
+.w-33 {
+   
+    width:calc(
+        33% - 5rem
+        );
+
+    article {
+        position: relative;
+        margin-bottom: 3rem;
+
+        .sponsored-star {
+            color: $primary-red;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            transform: translate(+25%, -25%);
+        }
+
+        &:hover .sponsored-star {
+            transform: translate(+60%, -65%);
+            font-size: 1.3rem;
+            animation-name: wiggle;
+            animation-duration: 1000ms;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes wiggle {
+            0% {
+                transform: translate(+60%, -65%) rotate(10deg);
+            }
+
+            25% {
+                transform: translate(+60%, -65%) rotate(-10deg);
+            }
+
+            50% {
+                transform: translate(+60%, -65%) rotate(20deg);
+            }
+
+            75% {
+                transform: translate(+60%, -65%) rotate(-5deg);
+            }
+
+            100% {
+                transform: translate(+60%, -65%)rotate(0deg);
+            }
+        }
+    }
+
+}
 </style>

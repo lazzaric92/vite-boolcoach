@@ -30,7 +30,7 @@ export default{
 <template>
 <div class="card text-white card-has-bg" 
     :style="{
-        backgroundImage: (singleCoach.img_url ? (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(${singleCoach.img_url})`) : (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url(${getImagePath('spaceInvaders_neon.png')})`)) }">
+        backgroundImage: (singleCoach.img_url ? (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 1) 70%), url(${singleCoach.img_url})`) : (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 1) 70%), url(${getImagePath('spaceInvaders_neon.png')})`)) }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
@@ -65,6 +65,7 @@ export default{
 <style scoped lang="scss">
 .card {
     border: none;
+    text-transform: capitalize;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     overflow: hidden;
     min-height: 400px;
@@ -129,7 +130,6 @@ img {
 }
 
 .game-badge{
-    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 12px;
     padding: 3px;
 }
