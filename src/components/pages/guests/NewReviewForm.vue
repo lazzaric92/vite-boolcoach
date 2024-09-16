@@ -8,7 +8,7 @@ export default {
     },
 
     methods: {
-        async submitMessage(id){
+        async submitReview(id){
             const formData = {
                 reviews: [
                     {
@@ -43,7 +43,7 @@ export default {
     <div class="row">
         <div class="col-12 d-flex flex-column">
 
-            <form v-on:submit="submitMessage($event, $route.params.id)">
+            <form v-on:submit="submitReview($event, $route.params.id)">
                 <input id="username-id" type="text" placeholder="Username" required />
                 <input id="email-id" type="email" placeholder="Email" required />
                 <textarea id="description-id" placeholder="Description" required></textarea>
