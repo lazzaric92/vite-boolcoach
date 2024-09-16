@@ -1,6 +1,7 @@
 <script>
 import NewMessageForm from './NewMessageForm.vue';
 import axios from 'axios';
+import NewReviewForm from './NewReviewForm.vue';
 
 export default {
     data() {
@@ -41,7 +42,8 @@ export default {
         }
     },
     components:{
-        NewMessageForm
+        NewMessageForm,
+        NewReviewForm
     },
     methods: {
         getCoach(id) {
@@ -120,6 +122,8 @@ export default {
             <button>&#9993; Invia Messaggio</button>
         </div>
         <NewMessageForm/>
+        <NewReviewForm/>
+
     </div>
 </template>
 
