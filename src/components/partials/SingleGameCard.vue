@@ -13,19 +13,21 @@ export default {
         game_name: {
             type: String,
             required: true
+        },
+        id: {
+            type: Number,
+            required: true
         }
     }
 }
 </script>
 
 <template>
-        <article>
-            <div class="bg" :style="{ backgroundImage: 'url(' + background_image + ')' }">
-                <figure>
-                    <img :src="logo_image" :alt="game_name">
-                </figure>
-            </div>
-        </article>
+        <RouterLink  :to="{ name: 'game-details', params: { id: id } }" class="bg" :style="{ backgroundImage: 'url(' + background_image + ')' }">
+            <figure>
+                <img :src="logo_image" :alt="game_name">
+            </figure>
+        </RouterLink>
 </template>
 
 <style lang="scss" scoped>
