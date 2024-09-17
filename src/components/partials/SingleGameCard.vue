@@ -66,6 +66,7 @@ export default {
     align-items: center;
     outline: 0px solid #000000;
     transition: all 0.3s ease 0s;
+    margin-bottom: 1.5rem;
 
     &:hover {
         cursor: pointer;
