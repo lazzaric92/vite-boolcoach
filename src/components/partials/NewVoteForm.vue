@@ -62,8 +62,7 @@ export default {
 </script>
 
 <template>
-    <div class="row">
-        <div class="col-12 d-flex flex-column">
+        <div class="d-flex flex-column mb-5">
             <form v-on:submit="submitVote($event, $route.params.id)">
                 <select name="vote" id="select-vote-value" v-model="selectedVote">
                     <option 
@@ -74,12 +73,15 @@ export default {
                         {{ vote.lable }}
                     </option>
                 </select>
-                <button type="submit">Send Vote</button>
+                <button class="ms-4" type="submit">Send Vote</button>
             </form>
         </div>
-    </div>
 </template>
 
 <style scoped lang="scss">
+select {
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+}
 
 </style>

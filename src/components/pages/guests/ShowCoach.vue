@@ -86,7 +86,7 @@ export default {
         <div class="image"
             :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
+                aria-controls="offcanvasWithBothOptions"></button>
             <div class="gradient"></div>
         </div>
         <div class="info"
@@ -117,9 +117,12 @@ export default {
                 </div>
                 <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
             </div>
-            <div class="container-fluid">
-                <NewVoteForm/>
-                <NewReviewForm/>
+            <p class="text-end">Invia il tuo Feedback</p>
+            <div class="vote-form">
+                <NewVoteForm />
+            </div>
+            <div class="review-form">
+                <NewReviewForm />
             </div>
         </div>
         <NewMessageForm/>
@@ -218,6 +221,11 @@ div.show {
         .review-form{
             width: 75%;
             margin-left: auto;
+        }
+
+        .vote-form {
+            display: flex;
+            justify-content: end;
         }
     }
 }
