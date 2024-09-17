@@ -50,8 +50,9 @@ export default {
             <input id="review-email-id" type="email" placeholder="Email" required />
 
         </div>
-        <div class="w-100 d-flex justify-content-end">
-            <input id="review-description-id" type="text" placeholder="Contenuto" class="w-75" required></input>
+        <div class="w-100 d-flex justify-content-end content">
+            <textarea id="review-description-id" type="text" class="w-75" rows="5" required>
+            </textarea>
         </div>
 
         <button type="submit">Invia Recensione</button>
@@ -66,7 +67,7 @@ button:hover {
     transition: all .2s ease-in-out;
 }
 
-input {
+input, textarea {
     background-color: transparent;
     color: white;
     padding: .5rem 1rem;
@@ -79,8 +80,15 @@ input {
 
     &::placeholder {
         color: rgba(255, 255, 255, 0.808);
-        text-align: end;
+
         text-shadow: none;
     }
+
+    
 }
+
+textarea {
+    border-radius: 30px;
+}
+
 </style>
