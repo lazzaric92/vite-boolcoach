@@ -114,11 +114,9 @@ export default {
                     <span>{{ review.description }}</span>
                 </section>
             </div>
-            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
             <div class="container-fluid">
                 <NewVoteForm/>
                 <NewReviewForm/>
-
             </div>
         </div>
         <NewMessageForm/>
