@@ -2,7 +2,7 @@
 import NewMessageForm from './NewMessageForm.vue';
 import axios from 'axios';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
-import NewVoteForm from './NewVoteForm.vue';
+import NewVoteForm from '../../partials/NewVoteForm.vue';
 
 export default {
     data() {
