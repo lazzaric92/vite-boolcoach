@@ -53,6 +53,11 @@ export default {
 </template>
 
 <style lang=scss scoped>
+@use '../../assets/styles/partials/variables' as *;
+
+h2 {
+    text-shadow: $black-outline;
+}
 .wrapper {
     margin-top: 4rem;
     margin-bottom: 4rem;

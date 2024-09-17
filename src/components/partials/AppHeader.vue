@@ -54,13 +54,13 @@ export default {
 <style scoped lang="scss">
 /* Media query per mobile specifico */
 @use'../../assets/styles/partials/variables' as *;
-@media (max-width: 575.98px) {
+@media (max-width: 766.98px) {
     div.logo-container {
-        width: 400px !important;
-        height: 65px !important;
+        width: 300px !important;
+        height: 70px !important;
 
         span {
-            font-size: 250% !important;
+            display: none;
         }
     }
 
@@ -68,24 +68,19 @@ export default {
         font-size: 1rem;
         padding: .3rem 1rem;
     }
-
-    .decoration,
-    .decoration.small {
-        display: none;
-    }
 }
 
 .decoration {
     position: absolute;
     height: 2rem;
     top: 10px;
-    left: 50%;
+    left: 700px;
     transform: rotate(35deg);
 
     &.small {
         height: 1.5rem;
-        top: 15px;
-        left: 43%;
+        top: 40px;
+        left: 660px;
     }
 }
 
@@ -94,11 +89,13 @@ export default {
 div.logo-container {
     position: absolute;
     display: flex;
-    top: 0;
+    top: -7px;
     left: -16px;
-    height: 100px;
-    width: 800px;
+    height: 110px;
+    width: 700px;
     background-image: url('../../assets/images/Untitled-1.svg');
+    background-position: right;
+    background-size: cover;
     background-repeat: no-repeat;
 
     img {
@@ -113,30 +110,40 @@ div.logo-container {
 }
 
 header {
-    position: absolute;
+    position: relative;
     font-family: 'Jaro', sans-serif;
     background: #FF204E;
     border-bottom: 3px solid black;
 
+    
+    button{
+        background-color: #7E3CC1;
+        &:hover {
+            scale: 1.05;
+        }
+    }
     .nav {
         display: flex;
         justify-content: end;
     }
-
+    
     .navbar {
         margin: 0 !important;
     }
-
+    
     .logo {
         height: 3rem;
     }
-
+    
     .circle {
         height: 3rem;
         width: 3rem;
         background-color: #7E3CC1;
         border: black 3px solid;
         border-radius: 50%;
+        &:hover {
+            scale: 1.1;
+        }
     }
 
     .login-button {
