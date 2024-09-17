@@ -107,12 +107,15 @@ export default {
                 <p>Descrizione:</p>
                 <span>{{ coach.summary }} </span>
             </div>
-            <div>
+            <div class="mb-5">
                 <p>Recensioni:</p>
-                <section class="review" v-for="review in coach.reviews" :key="review.id">
-                    <h6>{{ review.username }}</h6>
-                    <span>{{ review.description }}</span>
-                </section>
+                <div v-if="coach.reviews.length > 0">
+                    <section class="review" v-for="review in coach.reviews" :key="review.id">
+                        <h6>{{ review.username }}</h6>
+                        <span>{{ review.description }}</span>
+                    </section>
+                </div>
+                <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
             </div>
             <div class="review-form">
                 <NewReviewForm />
