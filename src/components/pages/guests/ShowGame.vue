@@ -37,6 +37,7 @@ export default {
             ],
             sponsoredCoaches: [],
             sponsored: [],
+            vote: ''
         }
     },
     components: {
@@ -111,6 +112,20 @@ export default {
 
             <img :src="game.img">
         </section>
+        <div class="d-flex justify-content-end align-items-start mt-1 mb-4 me-5 pb-3 pe-3">
+            <section class="vote-select">
+                <label for="vote_avg" class="me-3">Voto da: </label>
+                <select id="vote_avg" v-model="this.vote" class="text-center">
+                    <option value="" selected disabled>-- &#9733; --</option>
+                    <option value="0">0 &#9733;</option>
+                    <option value="1">1 &#9733;</option>
+                    <option value="2">2 &#9733;</option>
+                    <option value="3">3 &#9733;</option>
+                    <option value="4">4 &#9733;</option>
+                    <option value="5">5 &#9733;</option>
+                </select>
+            </section>
+        </div>
         <div class="wrapper">
             <router-link :to="{ name: 'coach-details', params: { id: coach.id } }"v-for="coach in game.users" :key="coach.id" class="w-33" :class="sponsored.includes(coach.id) ? 'order-0' : 'order-1'">
                 <article>
@@ -126,9 +141,17 @@ export default {
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/variables' as *;
 
-.background{
-    background-position: center;
-    background-size: cover;
+.vote-select {
+    background-color: $primary-violet;
+    border: 3px solid black;
+    border-radius: 32px;
+    padding: 1rem 2.5rem;
+    display: inline-block;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(255, 255, 255, 0.5) inset;
+
+    select{
+        padding: 3px 6px;
+    }
 }
 
 .wrapper{
