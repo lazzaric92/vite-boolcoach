@@ -37,7 +37,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+@media (max-width: 767.98px){
+    .bg {
+        width: 100% !important;
+        margin-bottom: 2rem;
+    }
+}
 
 .bg:nth-of-type(3) {
     figure {

@@ -89,7 +89,9 @@ export default {
         <div class="image"
             :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions" @click="this.store.isOffcanvasOpen = true">&#9993; Invia Messaggio</button>
+                aria-controls="offcanvasWithBothOptions" @click="this.store.isOffcanvasOpen = true">
+                <img src="../../../assets/images/WhatsApp-logo.png" alt="">
+            </button>
             <div class="gradient"></div>
         </div>
         <div class="info"
@@ -134,7 +136,44 @@ export default {
 
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/variables' as *;
+@media (max-width: 766.98px) {
+    div.show {
+        flex-direction: column;
+        height: unset !important;
 
+
+        .image {
+            width: 100% !important;
+            height: 500px!important;
+            background-position: top;
+            .gradient{
+                background: linear-gradient(180deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%) !important;
+            }
+        }
+
+        .info {
+            overflow-y: unset !important;
+            height: fit-content !important;
+            background: #121922 !important;
+            background-repeat: no-repeat !important;
+            width: 100% !important;
+            section {
+                flex-direction: column;
+                margin-bottom: 2rem;
+                h1{
+                    font-size: 4rem !important;
+                }
+            }
+
+            .review-form {
+            width: 100% !important;
+
+        }
+        }
+    }
+
+    
+}
 
 div.show {
     height: calc(100vh - $header-height - $footer-height);
@@ -152,14 +191,24 @@ div.show {
         width: 40%;
         border-radius: 0 20px 20px 0;
         background-size: cover !important;
-        background-position: center !important;
         position: relative;
 
         button {
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
             bottom: 50px;
             left: 50%;
             transform: translateX(-50%);
+
+            img{
+                height: 8rem;
+                padding: .5rem;
+            }
 
             &:hover {
                 scale: 1.05;
@@ -222,7 +271,7 @@ div.show {
             margin-bottom: 5rem;
         }
 
-        .review-form{
+        .review-form {
             width: 75%;
             margin-left: auto;
         }
