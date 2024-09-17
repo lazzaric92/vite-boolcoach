@@ -49,7 +49,7 @@ export default {
             return gameAsset ? gameAsset.background : '';
         },
         getGame(id) {
-            axios.get(`http://127.0.0.1:8000/api/games/${id}`, {
+            axios.get(`http://127.0.0.1:8000/api/games/${this.$route.params.id}`, {
                 params: {
                 }
             })
