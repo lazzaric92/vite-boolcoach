@@ -90,10 +90,10 @@ export default{
 </script>
 
 <template>
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
         <div class="col-12">
-            <h2 class="text-center text-uppercase">Coach in primo piano</h2>
+            <h2 class="text-center text-uppercase">I nostri Coach in primo piano</h2>
             <!-- <div class="coaches-carousel d-flex" ref="carousel"
             @mousedown="startDrag"
             @mousemove="isDragging"
@@ -144,7 +144,7 @@ h2{
     overflow-x: auto;
     gap: 2rem;
     align-items: center;
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
     scrollbar-width: none;
     transition: scroll-left 0.2s ease-in-out;
 

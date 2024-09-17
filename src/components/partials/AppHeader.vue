@@ -24,7 +24,7 @@ export default {
                 </div>
 
                 <!-- Hamburger menu per mobile -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler burger" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -57,7 +57,7 @@ export default {
 @media (max-width: 766.98px) {
     div.logo-container {
         width: 300px !important;
-        height: 70px !important;
+        height: 75px !important;
 
         span {
             display: none;
@@ -118,6 +118,10 @@ header {
     
     button{
         background-color: #7E3CC1;
+        &.burger{
+            border: 2px solid black;
+
+        }
         &:hover {
             scale: 1.05;
         }

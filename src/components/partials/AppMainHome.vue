@@ -62,6 +62,7 @@ h2 {
     margin-top: 4rem;
     margin-bottom: 4rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 </style>

@@ -30,9 +30,9 @@ export default {
             padding: 0 2rem;
         }
         h1 {
-            font-size: 4rem !important;
+            font-size: 5rem !important;
             padding-top: 0 !important;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         p {
