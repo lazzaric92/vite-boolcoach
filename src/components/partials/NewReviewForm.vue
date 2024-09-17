@@ -62,14 +62,14 @@ export default {
 <style scoped lang="scss">
 @use '../../assets/styles/partials/variables' as *;
 @media (max-width: 766.98px) {
+    .form-element{
+        width: 100%;
+    }
 
     input,
     textarea {width: 100% !important;}
 }
 
-.form-element{
-    width: 100%;
-}
 
 button:hover {
     scale: 1.05;

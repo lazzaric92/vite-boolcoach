@@ -221,7 +221,7 @@ article{
 
 @media (max-width: 576px){
     .card-wrapper:not(.smaller-card) {
-        width: 97%;
+        width: 92%;
     }
 
     .card-wrapper.smaller-card{

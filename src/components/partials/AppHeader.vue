@@ -86,6 +86,10 @@ export default {
 
 /* Header */
 
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
 div.logo-container {
     position: absolute;
     display: flex;
@@ -143,6 +147,7 @@ header {
     .circle {
         height: 3rem;
         width: 3rem;
+        color: white;
         background-color: #7E3CC1;
         border: black 3px solid;
         border-radius: 50%;
