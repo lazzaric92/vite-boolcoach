@@ -63,6 +63,7 @@ export default{
 </template>
 
 <style scoped lang="scss">
+
 .card {
     border: none;
     text-transform: capitalize;

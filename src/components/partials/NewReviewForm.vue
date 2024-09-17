@@ -43,10 +43,10 @@ export default {
 
 <template>
     <form v-on:submit="submitReview($event, $route.params.id)" class="d-flex flex-column align-items-end w-100">
-        <div>
+        <div class="form-element">
             <input id="review-username-id" type="text" placeholder="Username" required />
         </div>
-        <div>
+        <div class="form-element">
             <input id="review-email-id" type="email" placeholder="Email" required />
 
         </div>
@@ -61,19 +61,30 @@ export default {
 
 <style scoped lang="scss">
 @use '../../assets/styles/partials/variables' as *;
+@media (max-width: 766.98px) {
+
+    input,
+    textarea {width: 100% !important;}
+}
+
+.form-element{
+    width: 100%;
+}
 
 button:hover {
     scale: 1.05;
     transition: all .2s ease-in-out;
 }
 
-input, textarea {
+input,
+textarea {
     background-color: transparent;
     color: white;
     padding: .5rem 1rem;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
     margin-bottom: 1rem;
+
     &:focus {
         outline: $primary-violet;
     }
@@ -84,11 +95,10 @@ input, textarea {
         text-shadow: none;
     }
 
-    
+
 }
 
 textarea {
     border-radius: 30px;
 }
-
 </style>

@@ -89,6 +89,7 @@ export default {
 div.logo-container {
     position: absolute;
     display: flex;
+    z-index: 1;
     top: -7px;
     left: -16px;
     height: 110px;
