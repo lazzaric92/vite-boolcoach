@@ -3,6 +3,7 @@ import NewMessageForm from './NewMessageForm.vue';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
 import NewVoteForm from '../../partials/NewVoteForm.vue';
 import axios from 'axios';
+import { store } from '@/store';
 
 
 export default {
@@ -40,7 +41,8 @@ export default {
                 'Ashe Chibi.png',
                 'Genji Chibi.png',
                 'Jager Chibi.png',
-            ]
+            ],
+            store
         }
     },
     components: {
@@ -87,7 +89,7 @@ export default {
         <div class="image"
             :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"></button>
+                aria-controls="offcanvasWithBothOptions" @click="this.store.isOffcanvasOpen = true">&#9993; Invia Messaggio</button>
             <div class="gradient"></div>
         </div>
         <div class="info"
@@ -126,7 +128,7 @@ export default {
                 <NewReviewForm />
             </div>
         </div>
-        <NewMessageForm />
+        <NewMessageForm v-show="this.store.isOffcanvasOpen === true"/>
     </div>
 </template>
 

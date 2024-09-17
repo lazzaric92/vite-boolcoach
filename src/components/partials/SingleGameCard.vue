@@ -23,7 +23,7 @@ export default {
 </script>
 
 <template>
-    <RouterLink  :to="{ name: 'game-details', params: { id: id } }" class="bg" :style="{ backgroundImage: 'url(' + background_image + ')' }">
+    <RouterLink  :to="{ name: 'search' }" class="bg" :style="{ backgroundImage: 'url(' + background_image + ')' }" :game-selected = id>
         <figure>
             <img :src="logo_image" :alt="game_name">
         </figure>

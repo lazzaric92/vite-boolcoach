@@ -17,7 +17,12 @@ export default{
             searchResults: [],
             isLoading: false,
             store,
-            sponsored: []
+            sponsored: [],
+        }
+    },
+    props: {
+        gameSelected: {
+            type: Number
         }
     },
     components: {
@@ -68,6 +73,11 @@ export default{
             console.log(this.sponsored);
         }
     },
+    created(){
+        if(this.gameSelected != null){
+            this.getSearchedCoaches(this.gameSelected, '', '');
+        }
+    }
 }
 </script>
 
