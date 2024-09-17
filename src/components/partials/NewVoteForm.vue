@@ -44,6 +44,7 @@ export default {
                 console.log('voto correttamente inviato')
                 console.log(formData)
                 console.log(response);
+                this.reloadPage();
             })
             .catch(error => {
                 console.log('VOTO SELEZIONATO DI ERRORE')
@@ -53,6 +54,9 @@ export default {
                 console.error('There was an error!', error.message);
             });
         },
+        reloadPage() {
+            window.location.reload();
+        }
     },
 
     mounted(){
