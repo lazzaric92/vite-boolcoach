@@ -2,19 +2,16 @@
 export default{
     data(){
         return {
-            message: 'Coaches'
+        
         }
-    },
-    methods: {
-        // getCoachesIndex
     }
 }
 </script>
 
 <template>
-<h1> {{ message }} </h1>
+    <font-awesome-icon icon="fa-solid fa-star" />
 </template>
 
 <style scoped lang="scss">
-
+@use '../../assets/styles/partials/variables' as *;
 </style>
