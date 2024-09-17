@@ -1,6 +1,7 @@
 <script>
 import AppJumbo from '@/components/partials/AppJumbo.vue';
 import AppMainHome from '@/components/partials/AppMainHome.vue';
+import CheatSection from '@/components/partials/CheatSection.vue';
 import SponsoredCoaches from '@/components/partials/SponsoredCoaches.vue';
 
 export default {
@@ -12,7 +13,8 @@ export default {
     components: {
         AppJumbo,
         AppMainHome,
-        SponsoredCoaches
+        SponsoredCoaches,
+        CheatSection
     }
 }
 </script>
@@ -22,6 +24,7 @@ export default {
         <AppJumbo/>
         <AppMainHome />
         <SponsoredCoaches/>
+        <CheatSection/>
     </main>
 </template>
 

@@ -20,9 +20,9 @@ export default {
                     <li class="mx-3"><a href="https://www.youtube.com/watch?v=RvY5ploo1OI&ab_channel=Wisby">Acquisto di Cheat</a></li>
                 </ul>
             </nav>
-            <h6 class="text-center mt-5">
+            <p class="text-center mt-3">
                 Sito Web creato dal team dei Cavallones (best team EU) tutti i cavalli riservati
-            </h6>
+            </p>
         </div>
         <!-- <NewMessageForm/> -->
     </footer>
@@ -58,7 +58,7 @@ footer {
         cursor: pointer;
     }
 
-    h6 {
+    p {
         font-size: small;
     }
 }
