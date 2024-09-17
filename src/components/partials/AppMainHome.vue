@@ -1,4 +1,5 @@
 <script>
+import { store } from '@/store';
 import SingleGameCard from './SingleGameCard.vue';
 
 export default {
@@ -35,11 +36,15 @@ export default {
                     logo: "https://s3-alpha-sig.figma.com/img/7cb7/7783/4f8fcfbbd7b7168aea9d8e93dbdc2788?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ph8JAxi4cc7pE-WiNja5TSdEFLs8UK6qkCgS9kLqWvgimm5IMiKDyjVkeVHD2JKxa9rz8bzgZoLSzVUP0G3RYyVh47nsHZ0CPcC0PRVRmryq4p95T8yPPbT3EAPePZmQCm2fuN2WFmeuuuiErfnLozDMeoDMiWbFTxFVIOM35pqaGB6fN6X6n33IZ4pMHJhmA6tk6mfwrb36C2GwtDx85p0Gyxg1icehUvg~WMFXcNCRxcaW7N1jo7P8ByX36cBYfnVJA6Y9cG4CWwNooBwOR6sAe2OXKpXbNbQ8naROEOWuNM47hnPulrubCnpniWVwBp~zVhRHIhMkM3nd2x0lew__",
                     background: "https://s3-alpha-sig.figma.com/img/1d20/94e2/e8713d52fdaa48a36530b684282bb50d?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iLXfEgMX2C5GxSOcoKtqPVnvgyD2~-fem3~hlhBBboZcHQ6GqjRBGUV2ZmV7jfM1s3JM4G5ClplWi8qeyvQ8VuYzEjmwU42bw4B0AsMMntXD7A3w3ajDKxKuROtaMUyqO5RitRh3hBspDqQ-evrNWMKfR8dHxQ-JkFGFCGhr3d0b8E7mFMt6HdYk43V~WRcW~6N8S1qQBrCKaDRDXYc4YTodHrLhJYVCuWWuUYK1zKdQZzXhbHrxgqoxF9yk1Z5SQ6BV~NdrZLnLrY5cAzvkqw9~s5vGGKe2PC5yo0vbyNjTxnQNQGXN6YDY0ImqK-8vIRKpBQyuhDHi~Uw5UAyhmg__"
                 },
-            ]
+            ],
+            store
         }
     },
     components: {
         SingleGameCard
+    },
+    created(){
+        this.store.gameSelected = 0;
     }
 }
 </script>

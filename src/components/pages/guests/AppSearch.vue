@@ -10,6 +10,32 @@ export default{
     data(){
         return {
             searchOn: false,
+            gamesOptions: [
+                {
+                    "value": 0,
+                    "title": "-- Videogioco --",
+                },
+                {
+                    "value": 1,
+                    "title": "League of Legends",
+                },
+                {
+                    "value": 2,
+                    "title": "Tom Clancy's Rainbow Six Siege",
+                },
+                {
+                    "value": 3,
+                    "title": "FIFA 25",
+                },
+                {
+                    "value": 4,
+                    "title": "Overwatch",
+                },
+                {
+                    "value": 5,
+                    "title": "Rocket League",
+                },
+            ],
             gameId: '',
             voteAvg: '',
             nicknameString: '',
@@ -18,11 +44,6 @@ export default{
             isLoading: false,
             store,
             sponsored: [],
-        }
-    },
-    props: {
-        gameSelected: {
-            type: Number
         }
     },
     components: {
@@ -74,9 +95,12 @@ export default{
         }
     },
     created(){
-        if(this.gameSelected != null){
-            this.getSearchedCoaches(this.gameSelected, '', '');
-        }
+        if(this.store.gameSelected != 0){
+            this.searchOn = true
+            this.getSearchedCoaches(this.store.gameSelected, this.voteAvg, this.nicknameString);
+            // document.querySelector('button#search-btn').click();
+        };
+        console.log(this.store.gameSelected, typeof(this.store.gameSelected))
     }
 }
 </script>
@@ -89,12 +113,14 @@ export default{
             <div class="d-flex">
                 <!-- ! GAME_ID -->
                 <select id="game_id" v-model="this.gameId" class="text-center">
-                    <option value="" selected disabled>-- Videogioco --</option>
-                    <option value="1">League of Legends</option>
-                    <option value="2">Tom Clancy's Rainbow Six Siege</option>
-                    <option value="3">FIFA 25</option>
-                    <option value="4">Overwatch</option>
-                    <option value="5">Rocket League</option>
+                    <!-- <option v-for="option in gamesOptions" value="{{ option.value }}" :disabled="option.value === 0" :selected="option.value === this.store.gameSelected">{{ option.title }}</option> -->
+
+                    <option value="" disabled :selected="this.store.gameSelected === 0">-- Videogioco --</option>
+                    <option value="1" :selected="this.store.gameSelected === 1">League of Legends</option>
+                    <option value="2" :selected="this.store.gameSelected === 2">Tom Clancy's Rainbow Six Siege</option>
+                    <option value="3" :selected="this.store.gameSelected === 3">FIFA 25</option>
+                    <option value="4" :selected="this.store.gameSelected === 4">Overwatch</option>
+                    <option value="5" :selected="this.store.gameSelected === 5">Rocket League</option>
                 </select>
                 
                 <!-- ! VOTE_AVG -->
@@ -109,15 +135,15 @@ export default{
                 </select>
                 
                 <!-- ! NICKNAME -->
-                <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString">
+                <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString" @keyup.enter="[getSearchedCoaches(this.gameID, this.voteAvg, this.nicknameString), searchOn = true]">
                 
                 <!-- ! BUTTON -->
-                <button class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
+                <button id="search-btn" class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
                     <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="lens" />
                 </button>
             </div>
             
-            <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
+            <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '', this.store.gameSelected = 0]">Rimuovi filtri</p>
         </div>
         <div id="main-content" class="container-fluid p-relative" :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
             <CoachesIndex v-if="searchOn === false"/>

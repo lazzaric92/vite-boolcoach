@@ -1,4 +1,5 @@
 <script>
+import { store } from '@/store';
 import axios from 'axios';
 export default {
     props: {
@@ -18,12 +19,17 @@ export default {
             type: Number,
             required: true
         }
+    },
+    data(){
+        return {
+            store
+        }
     }
 }
 </script>
 
 <template>
-    <RouterLink  :to="{ name: 'search' }" class="bg" :style="{ backgroundImage: 'url(' + background_image + ')' }" :game-selected = id>
+    <RouterLink  :to="{ name: 'search' }" class="bg" :style="{ backgroundImage: 'url(' + background_image + ')' }" @click="this.store.gameSelected = id">
         <figure>
             <img :src="logo_image" :alt="game_name">
         </figure>
