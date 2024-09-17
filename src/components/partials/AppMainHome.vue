@@ -45,6 +45,7 @@ export default {
 </script>
 
 <template>
+    <h2 class="text-center text-uppercase mt-3">Comincia la tua ricerca</h2>
     <section class="wrapper mx-5">
         <SingleGameCard v-for="item in gamesAssets" :key="index" :background_image="item.background"
             :logo_image="item.logo" :game_name="item.name" :id="item.id"/>
