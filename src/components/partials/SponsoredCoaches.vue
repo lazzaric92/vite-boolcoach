@@ -109,7 +109,7 @@ export default{
                 </div>
                 <div class="coaches-carousel justify-content-center">
                     <template v-for="(coach, index) in sponsoredCoaches" :key="index" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block col-md- my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
@@ -217,5 +217,15 @@ article{
     50% {transform: translate(+60%, -65%) rotate(20deg);}
     75% {transform: translate(+60%, -65%) rotate(-5deg);}
     100% {transform: translate(+60%, -65%)rotate(0deg);}
+}
+
+@media (max-width: 576px){
+    .card-wrapper:not(.smaller-card) {
+        width: 97%;
+    }
+
+    .card-wrapper.smaller-card{
+        display: none;
+    }
 }
 </style>

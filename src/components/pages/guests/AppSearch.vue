@@ -17,7 +17,7 @@ export default {
             searchResults: [],
             isLoading: false,
             store,
-            sponsored: []
+            sponsored: [],
         }
     },
     components: {
@@ -68,6 +68,14 @@ export default {
             console.log(this.sponsored);
         }
     },
+    created(){
+        if(this.store.gameSelected != 0){
+            this.gameId = this.store.gameSelected;
+            this.searchOn = true
+            this.getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString);
+        };
+        // console.log(this.store.gameSelected)
+    }
 }
 </script>
 
@@ -79,12 +87,12 @@ export default {
             <div class="d-flex wrapper">
                 <!-- ! GAME_ID -->
                 <select id="game_id" v-model="this.gameId" class="text-center">
-                    <option value="" selected disabled>-- Videogioco --</option>
-                    <option value="1">League of Legends</option>
-                    <option value="2">Tom Clancy's Rainbow Six Siege</option>
-                    <option value="3">FIFA 25</option>
-                    <option value="4">Overwatch</option>
-                    <option value="5">Rocket League</option>
+                    <option value="" disabled :selected="this.store.gameSelected === 0">-- Videogioco --</option>
+                    <option value="1" >League of Legends</option>
+                    <option value="2" >Tom Clancy's Rainbow Six Siege</option>
+                    <option value="3" >FIFA 25</option>
+                    <option value="4" >Overwatch</option>
+                    <option value="5" >Rocket League</option>
                 </select>
 
                 <!-- ! VOTE_AVG -->
@@ -99,18 +107,15 @@ export default {
                 </select>
 
                 <!-- ! NICKNAME -->
-                <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search"
-                    v-model="this.nicknameString">
-
+                <input class="form-control" name="nickname" type="search" placeholder="Nome coach" aria-label="Search" v-model="this.nicknameString" @keyup.enter="[getSearchedCoaches(this.gameID, this.voteAvg, this.nicknameString), searchOn = true]">
+                
                 <!-- ! BUTTON -->
-                <button class="btn align-self-center"
-                    @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
+                <button class="btn align-self-center" @click="[getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString), searchOn = true]">
                     <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="lens" />
                 </button>
             </div>
-
-            <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0"
-                @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '']">Rimuovi filtri</p>
+            
+            <p v-if="searchOn === true" id="clear-search" class="ms-3 text-white text-decoration-underline mb-0" @click="[searchOn = false, gameId = '', voteAvg = '', nicknameString = '', this.store.gameSelected = 0]">Rimuovi filtri</p>
         </div>
         <div id="main-content" class="container-fluid p-relative"
             :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">

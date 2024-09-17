@@ -3,6 +3,8 @@ import NewMessageForm from './NewMessageForm.vue';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
 import NewVoteForm from '../../partials/NewVoteForm.vue';
 import axios from 'axios';
+import { store } from '@/store';
+
 
 export default {
     data() {
@@ -39,7 +41,8 @@ export default {
                 'Ashe Chibi.png',
                 'Genji Chibi.png',
                 'Jager Chibi.png',
-            ]
+            ],
+            store
         }
     },
     components: {
@@ -125,7 +128,7 @@ export default {
                 <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
             </div>
         </div>
-        <NewMessageForm />
+        <NewMessageForm v-show="this.store.isOffcanvasOpen === true"/>
     </div>
 </template>
 
