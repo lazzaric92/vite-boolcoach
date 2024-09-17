@@ -86,7 +86,7 @@ export default {
         <div class="image"
             :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"><img src="../../../assets/images/WhatsApp-logo.png" alt=""></button>
+                aria-controls="offcanvasWithBothOptions"><img src="../../../assets/images/envelope-regular.svg" alt=""></button>
             <div class="gradient"></div>
         </div>
         <div class="info"
@@ -107,6 +107,13 @@ export default {
                 <p>Descrizione:</p>
                 <span>{{ coach.summary }} </span>
             </div>
+            <p class="text-end">Invia il tuo Feedback</p>
+            <div class="vote-form">
+                <NewVoteForm />
+            </div>
+            <div class="review-form mb-5">
+                <NewReviewForm />
+            </div>
             <div class="mb-5">
                 <p>Recensioni:</p>
                 <div v-if="coach.reviews.length > 0">
@@ -116,13 +123,6 @@ export default {
                     </section>
                 </div>
                 <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
-            </div>
-            <p class="text-end">Invia il tuo Feedback</p>
-            <div class="vote-form">
-                <NewVoteForm />
-            </div>
-            <div class="review-form">
-                <NewReviewForm />
             </div>
         </div>
         <NewMessageForm />
@@ -201,7 +201,7 @@ div.show {
             transform: translateX(-50%);
 
             img{
-                height: 8rem;
+                height: 4rem;
                 padding: .5rem;
             }
 
