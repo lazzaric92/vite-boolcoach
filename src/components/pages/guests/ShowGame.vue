@@ -3,11 +3,11 @@ import axios from 'axios';
 import CoachCard from '@/components/partials/CoachCard.vue';
 import SponsoredStar from '@/components/partials/SponsoredStar.vue';
 import { router } from '@/router';
+
 export default {
     data() {
         return {
             game: [],
-            coaches: [],
             gamesAssets: [
                 {
                     id: 1,
@@ -35,6 +35,8 @@ export default {
                     background: "https://s3-alpha-sig.figma.com/img/c829/9992/c1719f81e55f4c75b6d6a8bbb483d07e?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXCODJu0M3GdvgPzgMI4taSU25Gji-n0J1qGKw5jjL-1pKwWTSHurAfFsyH8AYbQHaKLLg1g7lCzwhJYpfYcvGado6eixs7k6AwCaZX9ADNDBmrmHYVWTR8jtS5QRJ597zbz0-PwQCJwIadul9WRxl6~55rPBCgJ0wTAevsmF9K0ebuRjM0Vlb99ydChCG-xAOQnmqVpEin0FNRLU48EmoXaXnC80NivnjtL5sVEVHJBQWD2gMgJclRaL9-nVnJ0QmX1j7DSz93yzpt9TzrL4-ATiTANVkIu-S06aMFxWL~~GAk031Xv5ehM0GSAmtFvWLuHy10nZr1h81weVoKlNQ__"
                 }
             ],
+            sponsoredCoaches: [],
+            sponsored: [],
         }
     },
     components: {
@@ -68,17 +70,33 @@ export default {
                 }
             })
             .then((response) =>{
-                this.coaches = response.data.results.sponsoredUsers;
-                console.log(this.coaches);
+                this.sponsoredCoaches = response.data.results.sponsoredUsers;
+                console.log(this.sponsoredCoaches);
+                this.checkIfSponsored();
             })
             .catch((error) => {
                 console.log(error);
             });
+        },
+        checkIfSponsored(){
+            // scorro l'array di ricerca
+            this.game.users.forEach(coach => {
+                // se l'array degli utenti sponsorizzati contiene un elemento con quell'id
+                for (let index = 0; index < this.sponsoredCoaches.length; index++) {
+                    const spCoach = this.sponsoredCoaches[index];
+                    if(coach.id === spCoach.id){
+                        // inserisco l'id nell'array sponsored
+                        this.sponsored.push(spCoach.id)
+                    }
+                }
+            });
+            console.log(this.sponsored);
         }
     },
     created() {
         this.getGame(this.$route.params.id);
         this.getCoachesList();
+        // console.log(this.store.sponsoredCoaches)
     }
 }
 </script>
@@ -94,9 +112,9 @@ export default {
             <img :src="game.img">
         </section>
         <div class="wrapper">
-            <router-link :to="{ name: 'coach-details', params: { id: coach.id } }"v-for="coach in game.users" :key="coach.id" class="w-33">
+            <router-link :to="{ name: 'coach-details', params: { id: coach.id } }"v-for="coach in game.users" :key="coach.id" class="w-33" :class="sponsored.includes(coach.id) ? 'order-0' : 'order-1'">
                 <article>
-                    <SponsoredStar class="sponsored-star" />
+                    <SponsoredStar class="sponsored-star" v-if="sponsored.includes(coach.id)"/>
                     <CoachCard :singleCoach="coach" />
                 </article>
             </router-link>
@@ -109,6 +127,7 @@ export default {
 @use '../../../assets/styles/partials/variables' as *;
 
 .wrapper{
+    min-height: 800px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

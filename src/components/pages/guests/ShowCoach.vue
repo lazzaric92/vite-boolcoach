@@ -114,7 +114,9 @@ export default {
                     <span>{{ review.description }}</span>
                 </section>
             </div>
-            <NewReviewForm />
+            <div class="review-form">
+                <NewReviewForm />
+            </div>
         </div>
         <NewMessageForm />
     </div>
@@ -145,8 +147,9 @@ div.show {
 
         button {
             position: absolute;
-            bottom: 30px;
+            bottom: 50px;
             left: 50%;
+            transform: translateX(-50%);
 
             &:hover {
                 scale: 1.05;
@@ -206,7 +209,12 @@ div.show {
             padding: 1rem 2rem;
             margin-top: 1rem;
             text-shadow: $black-outline;
-            margin-bottom: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .review-form{
+            width: 75%;
+            margin-left: auto;
         }
     }
 }
