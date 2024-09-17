@@ -44,6 +44,7 @@ export default {
                 console.log('voto correttamente inviato')
                 console.log(formData)
                 console.log(response);
+                this.reloadPage();
             })
             .catch(error => {
                 console.log('VOTO SELEZIONATO DI ERRORE')
@@ -53,6 +54,9 @@ export default {
                 console.error('There was an error!', error.message);
             });
         },
+        reloadPage() {
+            window.location.reload();
+        }
     },
 
     mounted(){
@@ -62,9 +66,7 @@ export default {
 </script>
 
 <template>
-<div class="container">
-    <div class="row">
-        <div class="col-12 d-flex flex-column">
+        <div class="d-flex flex-column mb-5">
             <form v-on:submit="submitVote($event, $route.params.id)">
                 <select name="vote" id="select-vote-value" v-model="selectedVote">
                     <option 
@@ -75,13 +77,15 @@ export default {
                         {{ vote.lable }}
                     </option>
                 </select>
-                <button type="submit">Send Vote</button>
+                <button class="ms-4" type="submit">Send Vote</button>
             </form>
         </div>
-    </div>
-</div>
 </template>
 
 <style scoped lang="scss">
+select {
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+}
 
 </style>

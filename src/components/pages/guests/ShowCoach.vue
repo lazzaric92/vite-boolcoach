@@ -1,8 +1,9 @@
 <script>
 import NewMessageForm from './NewMessageForm.vue';
-import axios from 'axios';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
 import NewVoteForm from '../../partials/NewVoteForm.vue';
+import axios from 'axios';
+
 
 export default {
     data() {
@@ -86,7 +87,7 @@ export default {
         <div class="image"
             :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
+                aria-controls="offcanvasWithBothOptions"></button>
             <div class="gradient"></div>
         </div>
         <div class="info"
@@ -116,6 +117,10 @@ export default {
                     </section>
                 </div>
                 <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
+            </div>
+            <p class="text-end">Invia il tuo Feedback</p>
+            <div class="vote-form">
+                <NewVoteForm />
             </div>
             <div class="review-form">
                 <NewReviewForm />
@@ -218,6 +223,11 @@ div.show {
         .review-form{
             width: 75%;
             margin-left: auto;
+        }
+
+        .vote-form {
+            display: flex;
+            justify-content: end;
         }
     }
 }
