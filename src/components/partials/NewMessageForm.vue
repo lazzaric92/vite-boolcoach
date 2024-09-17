@@ -97,7 +97,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-@use '../../../assets/styles/partials/variables' as *;
+@use '../../assets/styles/partials/variables' as *;
 @media (max-width: 766.98px){
 .full-md{
     width: 100% !important;

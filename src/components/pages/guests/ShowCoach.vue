@@ -1,5 +1,5 @@
 <script>
-import NewMessageForm from './NewMessageForm.vue';
+import NewMessageForm from '../../partials/NewMessageForm.vue';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
 import NewVoteForm from '../../partials/NewVoteForm.vue';
 import axios from 'axios';
@@ -89,7 +89,7 @@ export default {
         <div class="image"
             :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"><img src="../../../assets/images/envelope-regular.svg" alt=""></button>
+                aria-controls="offcanvasWithBothOptions" @click="this.store.isOffcanvasOpen = true"><img src="../../../assets/images/envelope-regular.svg" alt=""></button>
             <div class="gradient"></div>
         </div>
         <div class="info"
