@@ -111,8 +111,11 @@ export default {
                 </section>
             </div>
             <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
-            <NewVoteForm/>
-            <NewReviewForm/>
+            <div class="container-fluid">
+                <NewVoteForm/>
+                <NewReviewForm/>
+
+            </div>
         </div>
         <NewMessageForm/>
         
