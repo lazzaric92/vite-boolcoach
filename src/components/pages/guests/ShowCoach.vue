@@ -203,9 +203,8 @@ div.show {
             justify-content: center;
             align-items: center;
             position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 60px;
+            left: calc(50% - 2.5rem);
 
             img{
                 height: 4rem;
@@ -213,7 +212,7 @@ div.show {
             }
 
             &:hover {
-                scale: 1.05;
+                scale: 1.1;
                 transition: all .2s ease-in-out;
             }
         }
