@@ -48,7 +48,7 @@ height: fit-content !important;
 
     .jumbo-container {
         height: unset !important;
-        margin-bottom: 4rem;
+        margin: 4rem 0;
 
         .small-size {
             width: 100% !important;
