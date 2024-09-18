@@ -118,7 +118,7 @@ header {
     position: relative;
     font-family: 'Jaro', sans-serif;
     background: #FF204E;
-    border-bottom: 3px solid black;
+    border-bottom: 4px solid black;
 
     
     button{

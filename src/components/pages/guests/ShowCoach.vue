@@ -92,8 +92,7 @@ export default {
                 aria-controls="offcanvasWithBothOptions" @click="this.store.isOffcanvasOpen = true"><img src="../../../assets/images/envelope-regular.svg" alt=""></button>
             <div class="gradient"></div>
         </div>
-        <div class="info"
-            style="background: linear-gradient(to right, rgba(18, 25, 34, 1) 20%, rgba(18, 25, 34, .7) 100%), url(https://s3-alpha-sig.figma.com/img/c30a/f47e/f41ee738ce99e874cde8d2b656d98a43?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LsMrBNdOh2XfTb2ungrKVIg~tuRIL3V8JmCwZ5HWToTO6xNupgL8qHvJFxqwK3I-4tWxN-ibwaclytifE2XmnI3cXUGAtvhv2W8c4U1Vpzo-LfviHVM1cv7EMVwREBGnbWToFzbbgVvhWeon6hNP01K8ivnO1524ohuTfvU2JfJEUoeoPI~C-ytIEwBHka8bmeBEQ-tONrFI4GdYW-xXYagVtZpXn60cOr-fTalFQHxgX2W6m4OP3ISnBwWD9N17L5F1muwQEH9m~oC-~MFVXQ9ZPwbmrVDCoAfpiicVnC2PFz3ubcOZTgPTzF8OyVTylsjjBoVPcFiYO~im3bzw3Q__);">
+        <div class="info">
             <section class="d-flex justify-content-between align-items-center">
                 <h1 class="d-inline"> {{ coach.nickname }} </h1>
                 <p class="pt-3">
@@ -138,8 +137,8 @@ export default {
     div.show {
         flex-direction: column;
         height: unset !important;
-
-
+        
+        
         .image {
             width: 100% !important;
             height: 500px!important;
@@ -148,12 +147,11 @@ export default {
                 background: linear-gradient(180deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%) !important;
             }
         }
-
+        
         .info {
+            background: linear-gradient(to bottom, rgba(18, 25, 34, 1) 0%, rgba(18, 25, 34, .9) 100%), url(https://i1.wp.com/nerdpool.it/wp-content/uploads/2020/09/mondiali2020.1-1024x683.jpg) !important;
             overflow-y: unset !important;
             height: fit-content !important;
-            background: #121922 !important;
-            background-repeat: no-repeat !important;
             width: 100% !important;
             section {
                 flex-direction: column;
@@ -162,17 +160,22 @@ export default {
                     font-size: 4rem !important;
                 }
             }
-
+            
             .review-form {
-            width: 100% !important;
-
-        }
+                width: 100% !important;
+                
+            }
         }
     }
-
+    
     
 }
 
+.gradient {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%);
+}
 div.show {
     height: calc(100vh - $header-height - $footer-height);
     width: 100%;
@@ -189,6 +192,7 @@ div.show {
         width: 40%;
         border-radius: 0 20px 20px 0;
         background-size: cover !important;
+        background-repeat: no-repeat;
         position: relative;
 
         button {
@@ -199,9 +203,8 @@ div.show {
             justify-content: center;
             align-items: center;
             position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 60px;
+            left: calc(50% - 2.5rem);
 
             img{
                 height: 4rem;
@@ -209,16 +212,11 @@ div.show {
             }
 
             &:hover {
-                scale: 1.05;
+                scale: 1.1;
                 transition: all .2s ease-in-out;
             }
         }
 
-        .gradient {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%);
-        }
 
         .bg-blue {
             background-color: #121922;
@@ -229,6 +227,10 @@ div.show {
     .info {
         width: 60%;
         height: calc(100vh - $header-height - $footer-height);
+        background: linear-gradient(to right, rgba(18, 25, 34, 1) 20%, rgba(18, 25, 34, .8) 100%), url(https://i1.wp.com/nerdpool.it/wp-content/uploads/2020/09/mondiali2020.1-1024x683.jpg);
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
         padding: 2rem 5rem;
         overflow-y: scroll;
 
