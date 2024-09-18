@@ -43,7 +43,7 @@ height: fit-content !important;
         height: 100vw !important;
     }
     video {
-        width: 300% !important;
+        width: 250% !important;
     }
 
     .jumbo-container {
