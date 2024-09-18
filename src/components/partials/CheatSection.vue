@@ -10,7 +10,7 @@ export default {
 
 <template>
     <section>
-        <p>In caso tu fossi davvero scarso e neanche i nostri Coach fossero in grado di aiutarti potresti passare al
+        <p>In caso tu fossi davvero scarso e neanche i nostri Coach fossero in grado di aiutarti, potresti passare al
             lato oscuro...</p>
         <button>
             <a href="https://www.youtube.com/watch?v=RvY5ploo1OI&ab_channel=Wisby">Acquista dei Cheat</a>

@@ -117,7 +117,7 @@ export default {
                 <NewReviewForm />
             </div>
             <div class="mb-5">
-                <p>Recensioni:</p>
+                <p>Recensioni degli utenti:</p>
                 <div v-if="coach.reviews.length > 0">
                     <section class="review" v-for="review in coach.reviews" :key="review.id">
                         <h6>{{ review.username }}</h6>
@@ -203,7 +203,7 @@ div.show {
             justify-content: center;
             align-items: center;
             position: absolute;
-            bottom: 60px;
+            bottom: 70px;
             left: calc(50% - 2.5rem);
 
             img{
