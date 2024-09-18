@@ -40,6 +40,7 @@ export default {
 @media (max-width: 767.98px){
     .bg {
         width: 100% !important;
+        height: 30vw !important;
         margin-bottom: 2rem;
     }
 }
@@ -56,8 +57,8 @@ export default {
 }
 
 .bg {
-    height: 30vh;
-    width: 30vh;
+    height: 15vw;
+    width: 15vw;
     border-radius: 15px;
     background-size: 220% !important;
     background-position: center !important;
