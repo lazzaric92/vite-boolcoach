@@ -5,4 +5,6 @@ export const store = reactive({
     loading: true,
     carouselSponsoredCoaches: [],
     sponsoredCoaches: [],
+    isOffcanvasOpen: false,
+    gameSelected: 0
 });
