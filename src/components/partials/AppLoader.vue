@@ -74,4 +74,12 @@ export default{
     75%   { background-position:bottom, bottom 54px left 0,bottom 3px left 0,bottom 0 left 50%;left:calc(100% - 56px)}
     75.1% { background-position:bottom, bottom 10px left 0,bottom 3px left 0,bottom 0 left 50%;left:calc(100% - 56px)}
 }
+
+@media (max-width: 767px){
+    .loader-wrapper{
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+}
 </style>

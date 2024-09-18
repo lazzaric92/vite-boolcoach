@@ -51,7 +51,7 @@ export default {
         loadingFunction() {
             setTimeout(() => {
                 this.isLoading = false;
-            }, 1500);
+            }, 1470);
         },
         checkIfSponsored() {
             // scorro l'array di ricerca
@@ -135,7 +135,7 @@ export default {
 
                     </div>
                     <div v-else class="no-results pt-5 d-flex flex-column align-items-center">
-                        <h2 class="text-center text-white mb-4">No results found. <br> Unlucky.</h2>
+                        <h2 class="text-center text-white mb-4">Nessun risultato. <br> Unlucky.</h2>
                         <img src="../../../assets/images/amumu_sad_crying.png" alt="😭">
                     </div>
                 </div>
