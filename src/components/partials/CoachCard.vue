@@ -55,7 +55,8 @@ export default{
                     class="star" 
                     :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;
                 </span>
-                <small class="ms-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
+                <small class="mx-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
+                <small>({{ singleCoach.votes.length }})</small>
             </div>
         </div>
     </div>
@@ -63,6 +64,7 @@ export default{
 </template>
 
 <style scoped lang="scss">
+
 .card {
     border: none;
     text-transform: capitalize;

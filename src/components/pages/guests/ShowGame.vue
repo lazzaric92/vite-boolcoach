@@ -153,6 +153,10 @@ export default {
         padding: 3px 6px;
     }
 }
+.background{
+    background-position: center;
+    background-size: cover;
+}
 
 .wrapper{
     min-height: 800px;
