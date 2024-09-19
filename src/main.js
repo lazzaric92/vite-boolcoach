@@ -10,12 +10,18 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 /* import specific icons */
 
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 /* add icons to the library */
-library.add();
+library.add( faMagnifyingGlass, fasStar, faChevronLeft, faChevronRight );
 
 const app = createApp(App);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(router);
 app.mount('#app');
+
+// console.log('commit di prova')
