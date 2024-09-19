@@ -200,7 +200,7 @@ div.show {
             justify-content: center;
             align-items: center;
             position: absolute;
-            bottom: 70px;
+            bottom: 10vh;
             left: calc(50% - 2.5rem);
 
             img{
