@@ -119,7 +119,7 @@ export default {
         </div>
         <div id="main-content" class="container-fluid p-relative"
             :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
-            <CoachesIndex v-if="searchOn === false" />
+            <CoachesIndex v-if="searchOn === false"  class="me-auto"/>
             <div v-else>
                 <AppLoader v-if="this.isLoading === true" />
                 <div v-else>
@@ -238,6 +238,7 @@ p#clear-search {
 
 .card-wrapper {
     position: relative;
+    margin-right: auto;
 
     .sponsored-star {
         color: $primary-red;
