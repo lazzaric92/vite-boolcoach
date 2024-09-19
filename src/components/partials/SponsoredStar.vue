@@ -14,4 +14,9 @@ export default{
 
 <style scoped lang="scss">
 @use '../../assets/styles/partials/variables' as *;
+
+.fa-star {
+    scale: 1.5;
+}
+
 </style>
