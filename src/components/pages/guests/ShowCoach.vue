@@ -4,6 +4,7 @@ import NewReviewForm from '../../partials/NewReviewForm.vue';
 import NewVoteForm from '../../partials/NewVoteForm.vue';
 import axios from 'axios';
 import { store } from '@/store';
+import { errorMessages } from 'vue/compiler-sfc';
 
 
 export default {
@@ -106,8 +107,8 @@ export default {
             <p>Lingue: <span class="text-capitalize">{{ coach.language }}</span></p>
             <p>Prezzo: {{ coach.price }} &euro;</p>
             <div class="summary">
-                <p>Descrizione:</p>
-                <span>{{ coach.summary }} </span>
+                <p>Sommario:</p>
+                <span :class="coach.summary ?? 'fst-italic'">{{ coach.summary ?? 'Questo coach deve ancora inserire un sommario'}} </span>
             </div>
             <p class="text-end">Invia il tuo Feedback</p>
             <div class="vote-form">
@@ -124,7 +125,7 @@ export default {
                         <span>{{ review.description }}</span>
                     </section>
                 </div>
-                <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
+                <p v-else class="fs-6">Non ci sono ancora recensioni. Lasciane una!</p>
             </div>
         </div>
         <NewMessageForm v-show="this.store.isOffcanvasOpen === true"/>
