@@ -39,7 +39,7 @@ export default{
         <div class="p-1">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>
+                    <h5 class="my-0">{{ $formatNumber(singleCoach.price) }}&euro; / H</h5>
                 </div>
                 <div class="p-1 d-flex flex-wrap justify-content-end">
                     <img v-for="(game, index) in singleCoach.games" 

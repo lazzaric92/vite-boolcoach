@@ -105,7 +105,7 @@ export default {
             </section>
             <p class="text-capitalize"><span>{{ coach.name }} {{ coach.surname }}</span></p>
             <p>Lingue: <span class="text-capitalize">{{ coach.language }}</span></p>
-            <p>Prezzo: {{ coach.price }} &euro;</p>
+            <p>Prezzo: {{ $formatNumber(coach.price) }} &euro;</p>
             <div class="summary">
                 <p>Sommario:</p>
                 <span :class="coach.summary ?? 'fst-italic'">{{ coach.summary ?? 'Questo coach deve ancora inserire un sommario'}} </span>
