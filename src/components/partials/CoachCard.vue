@@ -56,7 +56,7 @@ export default{
                     :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;
                 </span>
                 <small class="mx-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
-                <small>({{ singleCoach.votes.length }})</small>
+                <small>({{ singleCoach.vote_average }})</small>
             </div>
         </div>
     </div>

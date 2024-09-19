@@ -3,7 +3,6 @@ import NewMessageForm from '../../partials/NewMessageForm.vue';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
 import axios from 'axios';
 import NewVoteForm from '../../partials/NewVoteForm.vue';
-import axios from 'axios';
 import { store } from '@/store';
 
 
