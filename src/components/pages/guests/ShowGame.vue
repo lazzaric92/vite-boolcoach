@@ -3,6 +3,7 @@ import axios from 'axios';
 import CoachCard from '@/components/partials/CoachCard.vue';
 import SponsoredStar from '@/components/partials/SponsoredStar.vue';
 import { router } from '@/router';
+
 export default {
     data() {
         return {
@@ -16,24 +17,27 @@ export default {
                 {
                     id: 2,
                     name: "Rainbow Six Siege",
-                    background: "https://s3-alpha-sig.figma.com/img/f2a1/d577/3b362951622c01d909cee8a230dce6e5?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=exlQl7fSRI6egBlwSdLnrVCtqBAtJRHUYESUE4LTlmWNuRmqhLGjD~qhGHZzzwR8EBxw-Bs1uQ-59OqsxUO4xYJQ2TLZmvJcy65TZlndVkPr~XJunQisHccNQu2EQtgjcAU6enUEhRF8fMXLoU51bioAWTj8bZphM2Di1sorCoJETXuKkw3sUYQigXKuz8dr0JFl0EoYqhEc3sTM4SyqCaQl8W7IvDy-sLuvjBnyv8VdaOkZLKXDAK8wPm~XDfN4Y817WbExK42QMK8m0QbccFwwT4YfktFbgealP3JhxGiw6msbOnlk~UroGSiY3BcY1RufGVO6QGsp-NImBxNTMA__"
+                    background: "https://www.gamewallpapers.com/download.php?img=wallpaper_tom_clancys_rainbow_six_siege_06_1920x1080.jpg"
                 },
                 {
                     id: 3,
+                    name: "FC 25",
+                    background: "https://s3-alpha-sig.figma.com/img/c829/9992/c1719f81e55f4c75b6d6a8bbb483d07e?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXCODJu0M3GdvgPzgMI4taSU25Gji-n0J1qGKw5jjL-1pKwWTSHurAfFsyH8AYbQHaKLLg1g7lCzwhJYpfYcvGado6eixs7k6AwCaZX9ADNDBmrmHYVWTR8jtS5QRJ597zbz0-PwQCJwIadul9WRxl6~55rPBCgJ0wTAevsmF9K0ebuRjM0Vlb99ydChCG-xAOQnmqVpEin0FNRLU48EmoXaXnC80NivnjtL5sVEVHJBQWD2gMgJclRaL9-nVnJ0QmX1j7DSz93yzpt9TzrL4-ATiTANVkIu-S06aMFxWL~~GAk031Xv5ehM0GSAmtFvWLuHy10nZr1h81weVoKlNQ__"
+                },
+                {
+                    id: 4,
                     name: "Overwatch 2",
                     background: "https://s3-alpha-sig.figma.com/img/d258/ad95/ffb609ecd311943a741f1cbb3953bfb9?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JUSutUzRx6xXfjVQPw~86JpiUjSr9WBRfztTFp-VPPtdUpAYdQLtxUinSyUzrxalpJDRFemdPnpVi0VSJUPvjNe5P~sM1LNn0BB4pMSesFVc5wZc3W~yB4A9CneHZVnxnGnjH1WfrIQWtxa92xjBqigLq-eQYqYJxlcc9iX~g3N5If8eHSgr1kvW7HkPvflG~vAOCN~bDMkfUBZgNkmc0yov-BXuZ-SZICLxYpCqC8fvJ6Wbn~LFHNMX5u5YQEKaoTEDkrBv7OTUFyEsBawxxQTVKn67Sbo4Lekz4lemGELPRA14onQMGMiCXEVvM1iTWB5524ouLBgnFk-PQLjS7w__"
                 },
                 {
-                    id: 4,
+                    id: 5,
                     name: "Rocket League",
                     background: "https://s3-alpha-sig.figma.com/img/1d20/94e2/e8713d52fdaa48a36530b684282bb50d?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iLXfEgMX2C5GxSOcoKtqPVnvgyD2~-fem3~hlhBBboZcHQ6GqjRBGUV2ZmV7jfM1s3JM4G5ClplWi8qeyvQ8VuYzEjmwU42bw4B0AsMMntXD7A3w3ajDKxKuROtaMUyqO5RitRh3hBspDqQ-evrNWMKfR8dHxQ-JkFGFCGhr3d0b8E7mFMt6HdYk43V~WRcW~6N8S1qQBrCKaDRDXYc4YTodHrLhJYVCuWWuUYK1zKdQZzXhbHrxgqoxF9yk1Z5SQ6BV~NdrZLnLrY5cAzvkqw9~s5vGGKe2PC5yo0vbyNjTxnQNQGXN6YDY0ImqK-8vIRKpBQyuhDHi~Uw5UAyhmg__"
                 },
-                {
-                    id: 5,
-                    name: "FC 25",
-                    background: "https://s3-alpha-sig.figma.com/img/c829/9992/c1719f81e55f4c75b6d6a8bbb483d07e?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXCODJu0M3GdvgPzgMI4taSU25Gji-n0J1qGKw5jjL-1pKwWTSHurAfFsyH8AYbQHaKLLg1g7lCzwhJYpfYcvGado6eixs7k6AwCaZX9ADNDBmrmHYVWTR8jtS5QRJ597zbz0-PwQCJwIadul9WRxl6~55rPBCgJ0wTAevsmF9K0ebuRjM0Vlb99ydChCG-xAOQnmqVpEin0FNRLU48EmoXaXnC80NivnjtL5sVEVHJBQWD2gMgJclRaL9-nVnJ0QmX1j7DSz93yzpt9TzrL4-ATiTANVkIu-S06aMFxWL~~GAk031Xv5ehM0GSAmtFvWLuHy10nZr1h81weVoKlNQ__"
-                }
             ],
+            sponsoredCoaches: [],
+            sponsored: [],
+            vote: ''
         }
     },
     components: {
@@ -60,15 +64,46 @@ export default {
                     console.log(error);
                 });
         },
+        getCoachesList() {
+            axios.get('http://127.0.0.1:8000/api/coaches',{
+                params: {
+
+                }
+            })
+            .then((response) =>{
+                this.sponsoredCoaches = response.data.results.sponsoredUsers;
+                console.log(this.sponsoredCoaches);
+                this.checkIfSponsored();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+        checkIfSponsored(){
+            // scorro l'array di ricerca
+            this.game.users.forEach(coach => {
+                // se l'array degli utenti sponsorizzati contiene un elemento con quell'id
+                for (let index = 0; index < this.sponsoredCoaches.length; index++) {
+                    const spCoach = this.sponsoredCoaches[index];
+                    if(coach.id === spCoach.id){
+                        // inserisco l'id nell'array sponsored
+                        this.sponsored.push(spCoach.id)
+                    }
+                }
+            });
+            console.log(this.sponsored);
+        }
     },
     created() {
         this.getGame(this.$route.params.id);
+        this.getCoachesList();
+        // console.log(this.store.sponsoredCoaches)
     }
 }
 </script>
 
 <template>
-    <div v-if="game"
+    <div class="background" v-if="game"
         :style="{ backgroundImage: `linear-gradient(to right,rgba(18, 25, 34, .9) 1%, rgba(18, 25, 34, 0.7) 50%, rgba(18, 25, 34, .9) 100%), url(${getGameBackground(game.id)})` }">
         <section>
             <img :src="game.img">
@@ -77,10 +112,24 @@ export default {
 
             <img :src="game.img">
         </section>
+        <div class="d-flex justify-content-end align-items-start mt-1 mb-4 me-5 pb-3 pe-3">
+            <section class="vote-select">
+                <label for="vote_avg" class="me-3">Voto da: </label>
+                <select id="vote_avg" v-model="this.vote" class="text-center">
+                    <option value="" selected disabled>-- &#9733; --</option>
+                    <option value="0">0 &#9733;</option>
+                    <option value="1">1 &#9733;</option>
+                    <option value="2">2 &#9733;</option>
+                    <option value="3">3 &#9733;</option>
+                    <option value="4">4 &#9733;</option>
+                    <option value="5">5 &#9733;</option>
+                </select>
+            </section>
+        </div>
         <div class="wrapper">
-            <router-link to="{ name: 'coach-details', params: { id: coach.id } }" v-for="coach in game.users" :key="coach.id" class="w-33">
+            <router-link :to="{ name: 'coach-details', params: { id: coach.id } }"v-for="coach in game.users" :key="coach.id" class="w-33" :class="sponsored.includes(coach.id) ? 'order-0' : 'order-1'">
                 <article>
-                    <SponsoredStar class="sponsored-star" />
+                    <SponsoredStar class="sponsored-star" v-if="sponsored.includes(coach.id)"/>
                     <CoachCard :singleCoach="coach" />
                 </article>
             </router-link>
@@ -92,7 +141,25 @@ export default {
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/variables' as *;
 
+.vote-select {
+    background-color: $primary-violet;
+    border: 3px solid black;
+    border-radius: 32px;
+    padding: 1rem 2.5rem;
+    display: inline-block;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(255, 255, 255, 0.5) inset;
+
+    select{
+        padding: 3px 6px;
+    }
+}
+.background{
+    background-position: center;
+    background-size: cover;
+}
+
 .wrapper{
+    min-height: 800px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

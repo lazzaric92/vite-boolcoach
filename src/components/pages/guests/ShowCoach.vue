@@ -1,8 +1,10 @@
 <script>
-import NewMessageForm from './NewMessageForm.vue';
+import NewMessageForm from '../../partials/NewMessageForm.vue';
+import NewReviewForm from '../../partials/NewReviewForm.vue';
+import NewVoteForm from '../../partials/NewVoteForm.vue';
 import axios from 'axios';
-import NewReviewForm from './NewReviewForm.vue';
-import NewVoteForm from './NewVoteForm.vue';
+import { store } from '@/store';
+
 
 export default {
     data() {
@@ -39,10 +41,11 @@ export default {
                 'Ashe Chibi.png',
                 'Genji Chibi.png',
                 'Jager Chibi.png',
-            ]
+            ],
+            store
         }
     },
-    components:{
+    components: {
         NewMessageForm,
         NewReviewForm,
         NewVoteForm
@@ -65,11 +68,11 @@ export default {
                     console.log(error);
                 });
         },
-        randomImage(){
+        randomImage() {
             const randomInt = Math.floor((Math.random() * this.imgArray.length), 10);
             return `src/assets/images/${this.imgArray[randomInt]}`;
         },
-        getImagePath(img){
+        getImagePath(img) {
             return `/src/assets/images/${img}`;
         }
     },
@@ -83,11 +86,13 @@ export default {
 <template>
     <div class="show d-flex align-items-start">
 
-        <div class="image" :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
+        <div class="image"
+            :style="{ background: (coach.img_url) ? `url(${coach.img_url})` : `url(${this.getImagePath('spaceInvaders_neon.png')})` }">
+            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions" @click="this.store.isOffcanvasOpen = true"><img src="../../../assets/images/envelope-regular.svg" alt=""></button>
             <div class="gradient"></div>
         </div>
-        <div class="info"
-            style="background: linear-gradient(to right, rgba(18, 25, 34, 1) 20%, rgba(18, 25, 34, .7) 100%), url(https://s3-alpha-sig.figma.com/img/c30a/f47e/f41ee738ce99e874cde8d2b656d98a43?Expires=1727049600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LsMrBNdOh2XfTb2ungrKVIg~tuRIL3V8JmCwZ5HWToTO6xNupgL8qHvJFxqwK3I-4tWxN-ibwaclytifE2XmnI3cXUGAtvhv2W8c4U1Vpzo-LfviHVM1cv7EMVwREBGnbWToFzbbgVvhWeon6hNP01K8ivnO1524ohuTfvU2JfJEUoeoPI~C-ytIEwBHka8bmeBEQ-tONrFI4GdYW-xXYagVtZpXn60cOr-fTalFQHxgX2W6m4OP3ISnBwWD9N17L5F1muwQEH9m~oC-~MFVXQ9ZPwbmrVDCoAfpiicVnC2PFz3ubcOZTgPTzF8OyVTylsjjBoVPcFiYO~im3bzw3Q__);">
+        <div class="info">
             <section class="d-flex justify-content-between align-items-center">
                 <h1 class="d-inline"> {{ coach.nickname }} </h1>
                 <p class="pt-3">
@@ -102,25 +107,75 @@ export default {
             <p>Prezzo: {{ coach.price }} &euro;</p>
             <div class="summary">
                 <p>Descrizione:</p>
-                <span >{{ coach.summary }} </span>
+                <span>{{ coach.summary }} </span>
             </div>
-            <div>
-                <p>Recensioni:</p>
-                <section class="review" v-for="review in coach.reviews" :key="review.id">
-                    <h6>{{ review.username }}</h6>
-                    <span>{{ review.description }}</span>
-                </section>
+            <p class="text-end">Invia il tuo Feedback</p>
+            <div class="vote-form">
+                <NewVoteForm />
             </div>
-            <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">&#9993; Invia Messaggio</button>
+            <div class="review-form mb-5">
+                <NewReviewForm />
+            </div>
+            <div class="mb-5">
+                <p>Recensioni degli utenti:</p>
+                <div v-if="coach.reviews.length > 0">
+                    <section class="review" v-for="review in coach.reviews" :key="review.id">
+                        <h6>{{ review.username }}</h6>
+                        <span>{{ review.description }}</span>
+                    </section>
+                </div>
+                <p v-else class="fs-6">Non ci sono recensioni. Lasciane una!</p>
+            </div>
         </div>
-        <NewMessageForm/>   
+        <NewMessageForm v-show="this.store.isOffcanvasOpen === true"/>
     </div>
-    <NewReviewForm/>
 </template>
 
 <style scoped lang="scss">
 @use '../../../assets/styles/partials/variables' as *;
+@media (max-width: 766.98px) {
+    div.show {
+        flex-direction: column;
+        height: unset !important;
+        
+        
+        .image {
+            width: 100% !important;
+            height: 500px!important;
+            background-position: top;
+            .gradient{
+                background: linear-gradient(180deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%) !important;
+            }
+        }
+        
+        .info {
+            background: linear-gradient(to bottom, rgba(18, 25, 34, 1) 0%, rgba(18, 25, 34, .9) 100%), url(https://i1.wp.com/nerdpool.it/wp-content/uploads/2020/09/mondiali2020.1-1024x683.jpg) !important;
+            overflow-y: unset !important;
+            height: fit-content !important;
+            width: 100% !important;
+            section {
+                flex-direction: column;
+                margin-bottom: 2rem;
+                h1{
+                    font-size: 4rem !important;
+                }
+            }
+            
+            .review-form {
+                width: 100% !important;
+                
+            }
+        }
+    }
+    
+    
+}
 
+.gradient {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%);
+}
 div.show {
     height: calc(100vh - $header-height - $footer-height);
     width: 100%;
@@ -137,13 +192,31 @@ div.show {
         width: 40%;
         border-radius: 0 20px 20px 0;
         background-size: cover !important;
-        background-position: center !important;
+        background-repeat: no-repeat;
+        position: relative;
 
-        .gradient {
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(90deg, rgba(2, 0, 36, 0) 60%, rgba(18, 25, 34, 1) 100%);
+        button {
+            height: 5rem;
+            width: 5rem;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 70px;
+            left: calc(50% - 2.5rem);
+
+            img{
+                height: 4rem;
+                padding: .5rem;
+            }
+
+            &:hover {
+                scale: 1.1;
+                transition: all .2s ease-in-out;
+            }
         }
+
 
         .bg-blue {
             background-color: #121922;
@@ -154,6 +227,10 @@ div.show {
     .info {
         width: 60%;
         height: calc(100vh - $header-height - $footer-height);
+        background: linear-gradient(to right, rgba(18, 25, 34, 1) 20%, rgba(18, 25, 34, .8) 100%), url(https://i1.wp.com/nerdpool.it/wp-content/uploads/2020/09/mondiali2020.1-1024x683.jpg);
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        background-position: center !important;
         padding: 2rem 5rem;
         overflow-y: scroll;
 
@@ -191,7 +268,17 @@ div.show {
             padding: 1rem 2rem;
             margin-top: 1rem;
             text-shadow: $black-outline;
-            margin-bottom: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .review-form {
+            width: 75%;
+            margin-left: auto;
+        }
+
+        .vote-form {
+            display: flex;
+            justify-content: end;
         }
     }
 }

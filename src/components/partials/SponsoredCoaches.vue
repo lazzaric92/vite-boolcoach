@@ -68,7 +68,7 @@ export default{
             this.sponsoredCoaches.pop();
         },
         startCarouselClock(){
-            if(this.isAutoScrollActive === false){
+            if(this.isAutoScrollActive === false && this.sponsoredCoaches.length > 3){
                 this.carouselClock = setInterval(this.nextCard, 4000);
                 this.isAutoScrollActive = true; 
             }
@@ -90,10 +90,10 @@ export default{
 </script>
 
 <template>
-<div class="container-fluid">
+<div class="container-fluid mt-5">
     <div class="row">
         <div class="col-12">
-            <h2 class="text-center text-uppercase">Coach in primo piano</h2>
+            <h2 class="text-center text-uppercase">I nostri Coach in primo piano</h2>
             <!-- <div class="coaches-carousel d-flex" ref="carousel"
             @mousedown="startDrag"
             @mousemove="isDragging"
@@ -109,15 +109,15 @@ export default{
                 </div>
                 <div class="coaches-carousel justify-content-center">
                     <template v-for="(coach, index) in sponsoredCoaches" :key="index" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block  my-5 card-wrapper " :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 col-md-4 my-5 card-wrapper" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 my-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block my-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
@@ -144,7 +144,7 @@ h2{
     overflow-x: auto;
     gap: 2rem;
     align-items: center;
-    margin-bottom: 2em;
+    margin-bottom: 2rem;
     scrollbar-width: none;
     transition: scroll-left 0.2s ease-in-out;
 
@@ -217,5 +217,15 @@ article{
     50% {transform: translate(+60%, -65%) rotate(20deg);}
     75% {transform: translate(+60%, -65%) rotate(-5deg);}
     100% {transform: translate(+60%, -65%)rotate(0deg);}
+}
+
+@media (max-width: 576px){
+    .card-wrapper:not(.smaller-card) {
+        width: 92%;
+    }
+
+    .card-wrapper.smaller-card{
+        display: none;
+    }
 }
 </style>

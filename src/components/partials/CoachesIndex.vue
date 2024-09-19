@@ -40,7 +40,7 @@ export default{
 <template>
 <div class="container-fluid">
     <div class="row justify-content-center pt-4">
-        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-3 mb-3" v-for="coach in this.store.sponsoredCoaches" key="coach.id">
+        <router-link :to="{ name: 'coach-details', params: { id: coach.id } }" class="col-md-4 col-12 mb-3" v-for="coach in this.store.sponsoredCoaches" key="coach.id">
             <article>
                 <SponsoredStar class="sponsored-star"/>
                 <CoachCard :singleCoach="coach"/>
