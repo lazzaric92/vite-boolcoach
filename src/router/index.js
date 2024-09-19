@@ -39,7 +39,16 @@ const router = createRouter({
       name: 'NotFound',
       component: Error404
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;  // Torna alla posizione precedente se stai usando il pulsante "indietro"
+    } else {
+      return { top: 0 }; // Scroll all'inizio
+    }
+  }
 })
+
+
 
 export { router };

@@ -70,6 +70,7 @@ export default {
     },
     created(){
         if(this.store.gameSelected != 0){
+            
             this.gameId = this.store.gameSelected;
             this.searchOn = true
             this.getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString);

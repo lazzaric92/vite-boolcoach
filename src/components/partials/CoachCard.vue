@@ -30,7 +30,7 @@ export default{
 <template>
 <div class="card text-white card-has-bg" 
     :style="{
-        backgroundImage: (singleCoach.img_url ? (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 1) 70%), url(${singleCoach.img_url})`) : (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 1) 70%), url(${getImagePath('spaceInvaders_neon.png')})`)) }">
+        backgroundImage: (singleCoach.img_url ? (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 1) 70%), url(${singleCoach.img_url})`) : (`linear-gradient(to bottom, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 1) 70%), url(${this.getImagePath('spaceInvaders_neon.png')})`)) }">
     <div class="card-img-overlay d-flex flex-column">
         <div class="card-body">
             <h4 class="fw-bolder">{{ singleCoach.nickname }}</h4>
@@ -39,7 +39,7 @@ export default{
         <div class="p-1">
             <div class="d-flex justify-content-between align-items-center">
                 <div>
-                    <h5 class="my-0">{{ singleCoach.price }}&euro; / H</h5>
+                    <h5 class="my-0">{{ $formatNumber(singleCoach.price) }}&euro; / H</h5>
                 </div>
                 <div class="p-1 d-flex flex-wrap justify-content-end">
                     <img v-for="(game, index) in singleCoach.games" 
@@ -56,7 +56,7 @@ export default{
                     :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;
                 </span>
                 <small class="mx-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
-                <small>({{ singleCoach.votes.length }})</small>
+                <small>({{ singleCoach.vote_average }})</small>
             </div>
         </div>
     </div>

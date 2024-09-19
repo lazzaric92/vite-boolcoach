@@ -40,7 +40,7 @@ export default {
                             </router-link>
                         </li>
                         <li class="nav-item d-flex justify-content-end">
-                            <a href="http://127.0.0.1:8000/login" class="nav-link">
+                            <a href="http://127.0.0.1:8000/users" class="nav-link">
                                 <button class="login-button">ACCESSO</button>
                             </a>
                         </li>

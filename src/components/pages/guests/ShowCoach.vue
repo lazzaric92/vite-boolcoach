@@ -1,8 +1,8 @@
 <script>
 import NewMessageForm from '../../partials/NewMessageForm.vue';
 import NewReviewForm from '../../partials/NewReviewForm.vue';
-import NewVoteForm from '../../partials/NewVoteForm.vue';
 import axios from 'axios';
+import NewVoteForm from '../../partials/NewVoteForm.vue';
 import { store } from '@/store';
 import { errorMessages } from 'vue/compiler-sfc';
 
@@ -105,7 +105,7 @@ export default {
             </section>
             <p class="text-capitalize"><span>{{ coach.name }} {{ coach.surname }}</span></p>
             <p>Lingue: <span class="text-capitalize">{{ coach.language }}</span></p>
-            <p>Prezzo: {{ coach.price }} &euro;</p>
+            <p>Prezzo: {{ $formatNumber(coach.price) }} &euro;</p>
             <div class="summary">
                 <p>Sommario:</p>
                 <span :class="coach.summary ?? 'fst-italic'">{{ coach.summary ?? 'Questo coach deve ancora inserire un sommario'}} </span>
@@ -181,9 +181,6 @@ div.show {
     height: calc(100vh - $header-height - $footer-height);
     width: 100%;
     border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     outline: 0px solid #000000;
     transition: all 0.3s ease 0s;
 
