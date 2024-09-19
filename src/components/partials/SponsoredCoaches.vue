@@ -68,7 +68,7 @@ export default{
             this.sponsoredCoaches.pop();
         },
         startCarouselClock(){
-            if(this.isAutoScrollActive === false){
+            if(this.isAutoScrollActive === false && this.sponsoredCoaches.length > 3){
                 this.carouselClock = setInterval(this.nextCard, 4000);
                 this.isAutoScrollActive = true; 
             }
@@ -109,15 +109,15 @@ export default{
                 </div>
                 <div class="coaches-carousel justify-content-center">
                     <template v-for="(coach, index) in sponsoredCoaches" :key="index" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block  my-5 card-wrapper " :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 col-md-4 my-5 card-wrapper" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 my-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block col-md-4 my-5 card-wrapper smaller-card" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block my-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
