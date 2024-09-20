@@ -191,6 +191,7 @@ div.show {
         border-radius: 0 20px 20px 0;
         background-size: cover !important;
         background-repeat: no-repeat;
+        background-position: center!important;
         position: relative;
 
         button {
