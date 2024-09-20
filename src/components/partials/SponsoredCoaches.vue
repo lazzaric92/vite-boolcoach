@@ -107,17 +107,17 @@ export default{
                 <div class="arrow-wrapper">
                     <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow-icon" @click="this.prevCard()"/>
                 </div>
-                <div class="coaches-carousel justify-content-center">
+                <div class="coaches-carousel carousel-mobile-small justify-content-center">
                     <template v-for="(coach, index) in sponsoredCoaches" :key="index" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block  my-5 card-wrapper " :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex" class="d-sm-none d-md-block  my-sm-5 card-wrapper " :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 my-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 my-sm-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3 mobile-small' : 'col-md-4'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block my-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 2" class="d-sm-none d-md-block my-sm-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3' : 'col-md-4 smaller-card'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
@@ -220,11 +220,22 @@ article{
 }
 
 @media (max-width: 576px){
-    .card-wrapper:not(.smaller-card) {
+    .carousel-mobile-small{
+        flex-wrap: wrap;
+        align-content: flex-start;
+
+        .card-wrapper.mobile-small {
+            margin: 1rem 0;
+        }
+    }
+
+    .card-wrapper:not(.smaller-card),
+    .card-wrapper.mobile-small {
         width: 92%;
     }
 
-    .card-wrapper.smaller-card{
+    .card-wrapper.smaller-card,
+    .card-wrapper:not(.mobile-small){
         display: none;
     }
 }
