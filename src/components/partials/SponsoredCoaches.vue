@@ -16,7 +16,9 @@ export default{
             scrollLeft: 0,
             currentIndex: 0,
             isAutoScrollActive: false,
-            carouselClock: null
+            carouselClock: null,
+            isMoreThan3: false,
+            checkArrayLength: null
         }
     }, 
     computed: {
@@ -83,8 +85,20 @@ export default{
     mounted(){
         this.getSponsoredPlayers();
         // this.$refs.carousel.scrollLeft = this.$refs.carousel.scrollWidth / 3;
-        this.startCarouselClock();
-        // console.log(this.store.sponsoredCoaches);
+        this.checkArrayLength = setInterval(() => {
+            if(this.isMoreThan3 === false && this.sponsoredCoaches.length > 3){
+                this.startCarouselClock();
+                this.isMoreThan3 = true;
+                // console.log('START');
+                // console.log(this.sponsoredCoaches.length, this.isAutoScrollActive)
+                if(this.isMoreThan3 === true){
+                    clearInterval(this.checkArrayLength);
+                    // console.log('STOP')
+                }
+            }
+        }, 1000);
+        
+        console.log(this.sponsoredCoaches.length, this.isAutoScrollActive)
     }
 }
 </script>
@@ -113,7 +127,7 @@ export default{
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
-                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 my-sm-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3 mobile-small' : 'col-md-4'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
+                        <RouterLink  :to="{ name: 'coach-details', params: { id: coach.id } }" v-if="index === this.currentIndex + 1" class="col-sm-11 my-sm-5 card-wrapper" :class="(sponsoredCoaches.length < 3) ? 'col-md-3 mobile-small' : 'col-md-4 mobile-small'" @mouseover="stopCarouselClock()" @mouseleave="startCarouselClock()">
                             <SponsoredStar class="sponsored-star"/>
                             <CoachCard :single-coach="coach"/>
                         </RouterLink>
@@ -177,7 +191,7 @@ article{
     }
 
     &:hover .sponsored-star{
-        transform: translate(+60%, -65%);
+        transform: translate(+50%, -55%);
         font-size: 1.3rem;
         animation-name: wiggle;
         animation-duration: 1000ms;
@@ -212,11 +226,11 @@ article{
 }
 
 @keyframes wiggle {
-    0% {transform: translate(+60%, -65%) rotate(10deg);}
-    25% {transform: translate(+60%, -65%) rotate(-10deg);}
-    50% {transform: translate(+60%, -65%) rotate(20deg);}
-    75% {transform: translate(+60%, -65%) rotate(-5deg);}
-    100% {transform: translate(+60%, -65%)rotate(0deg);}
+    0% {transform: translate(+50%, -55%) rotate(10deg);}
+    25% {transform: translate(+50%, -55%) rotate(-10deg);}
+    50% {transform: translate(+50%, -55%) rotate(20deg);}
+    75% {transform: translate(+50%, -55%) rotate(-5deg);}
+    100% {transform: translate(+50%, -55%)rotate(0deg);}
 }
 
 @media (max-width: 576px){
