@@ -191,7 +191,7 @@ article{
     }
 
     &:hover .sponsored-star{
-        transform: translate(+60%, -65%);
+        transform: translate(+50%, -55%);
         font-size: 1.3rem;
         animation-name: wiggle;
         animation-duration: 1000ms;
@@ -226,11 +226,11 @@ article{
 }
 
 @keyframes wiggle {
-    0% {transform: translate(+60%, -65%) rotate(10deg);}
-    25% {transform: translate(+60%, -65%) rotate(-10deg);}
-    50% {transform: translate(+60%, -65%) rotate(20deg);}
-    75% {transform: translate(+60%, -65%) rotate(-5deg);}
-    100% {transform: translate(+60%, -65%)rotate(0deg);}
+    0% {transform: translate(+50%, -55%) rotate(10deg);}
+    25% {transform: translate(+50%, -55%) rotate(-10deg);}
+    50% {transform: translate(+50%, -55%) rotate(20deg);}
+    75% {transform: translate(+50%, -55%) rotate(-5deg);}
+    100% {transform: translate(+50%, -55%)rotate(0deg);}
 }
 
 @media (max-width: 576px){
