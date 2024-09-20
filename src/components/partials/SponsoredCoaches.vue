@@ -86,15 +86,17 @@ export default{
         this.getSponsoredPlayers();
         // this.$refs.carousel.scrollLeft = this.$refs.carousel.scrollWidth / 3;
         this.checkArrayLength = setInterval(() => {
-            if(this.isMoreThan3 === true && this.sponsoredCoaches.length > 3)
+            if(this.isMoreThan3 === false && this.sponsoredCoaches.length > 3){
                 this.startCarouselClock();
                 this.isMoreThan3 = true;
-                console.log('START');
-                console.log(this.sponsoredCoaches.length, this.isAutoScrollActive)
+                // console.log('START');
+                // console.log(this.sponsoredCoaches.length, this.isAutoScrollActive)
+                if(this.isMoreThan3 === true){
+                    clearInterval(this.checkArrayLength);
+                    // console.log('STOP')
+                }
+            }
         }, 1000);
-        if(this.isMoreThan3 = true){
-            clearInterval(this.checkArrayLength);
-        }
         
         console.log(this.sponsoredCoaches.length, this.isAutoScrollActive)
     }
