@@ -42,6 +42,9 @@ export default {
         width: 100% !important;
         height: 30vw !important;
         margin-bottom: 2rem;
+        figure{
+            height: 55% !important;
+        }
     }
 }
 
@@ -81,8 +84,8 @@ export default {
     }
 
     figure {
-        width: 110px;
-        height: 110px;
+        width: 50%;
+        height: 45%;
         flex-shrink: 0;
         object-fit: contain;
         display: flex;

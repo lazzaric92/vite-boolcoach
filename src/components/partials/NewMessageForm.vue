@@ -48,7 +48,7 @@ export default {
             setInterval(() => {
                 this.isSent = false;
                 document.getElementById('closing-offcanvas-btn').click();
-            }, 3000);
+            }, 1000);
         }
     },
 

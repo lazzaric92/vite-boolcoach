@@ -70,6 +70,7 @@ export default {
     },
     created(){
         if(this.store.gameSelected != 0){
+            
             this.gameId = this.store.gameSelected;
             this.searchOn = true
             this.getSearchedCoaches(this.gameId, this.voteAvg, this.nicknameString);
@@ -119,11 +120,11 @@ export default {
         </div>
         <div id="main-content" class="container-fluid p-relative"
             :class="(searchOn === false || (searchOn === true && searchResults.length === 0)) ? 'empty' : ''">
-            <CoachesIndex v-if="searchOn === false" />
+            <CoachesIndex v-if="searchOn === false"  class="me-auto"/>
             <div v-else>
                 <AppLoader v-if="this.isLoading === true" />
                 <div v-else>
-                    <div v-if="searchResults.length > 0" class="row justify-content-center">
+                    <div v-if="searchResults.length > 0" class="row flex-wrap">
                         <router-link :to="{ name: 'coach-details', params: { id: coach.id } }"
                             class="col-12 col-md-4 mb-3 card-wrapper" v-for="coach in searchResults" key="coach.id"
                             :class="sponsored.includes(coach.id) ? 'order-0' : 'order-1'">
