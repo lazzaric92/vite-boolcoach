@@ -56,7 +56,7 @@ export default{
                     :class="{ 'filled': n <= Math.round(singleCoach.vote_average) }">&#9733;
                 </span>
                 <small class="mx-2 text-white">{{ (Number(singleCoach.vote_average)).toFixed(1) }} / 5</small>
-                <small>({{ singleCoach.vote_average }})</small>
+                <small>({{ singleCoach.votes.length }})</small>
             </div>
         </div>
     </div>
@@ -78,6 +78,13 @@ export default{
     border-radius: 1rem;
     will-change: transform;
     cursor: pointer;
+}
+
+.card-body {
+    text-shadow: -1px -1px 0 #000, 
+                1px -1px 0 #000,   
+                -1px 1px 0 #000,   
+                1px 1px 0 #000;    
 }
 
 img {
