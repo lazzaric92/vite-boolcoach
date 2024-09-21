@@ -128,7 +128,8 @@ header {
 
         }
         &:hover {
-            scale: 1.05;
+            scale: 1.1;
+            transition: all .2s ease-in-out
         }
     }
     .nav {
@@ -153,6 +154,7 @@ header {
         border-radius: 50%;
         &:hover {
             scale: 1.1;
+            transition: all .2s ease-in-out
         }
     }
 
