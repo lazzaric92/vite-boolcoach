@@ -114,5 +114,6 @@ select {
     align-self: center;
     padding: 1rem 1.5rem;
     border-radius: 20px;
+    font-variant-ligatures: none
 }
 </style>

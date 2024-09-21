@@ -70,7 +70,7 @@ export default{
     text-transform: capitalize;
     transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     overflow: hidden;
-    min-height: 400px;
+    min-height: 600px;
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
     background-size: cover;
     background-position: top;
