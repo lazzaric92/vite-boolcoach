@@ -58,7 +58,7 @@ export default {
 <template>
 <div class="offcanvas offcanvas-start w-50 h-100 full-md" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
     <button type="button" id="closing-offcanvas-btn" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="offcanvas" aria-label="Close" @click="this.store.isOffcanvasOpen = false"></button>
-    <div class="offcanvas-header position-relative">
+    <div class="offcanvas-header position-relative w-75">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Invia un messaggio al coach</h5>
     </div>
     <div class="offcanvas-body d-flex flex-column">
