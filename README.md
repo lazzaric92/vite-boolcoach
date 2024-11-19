@@ -1,6 +1,7 @@
-# vite-boolcoach-prova
+# vite-boolcoach
 
-This template should help get you started developing with Vue 3 in Vite.
+Frontend of the Boolcoach project.
+Backend: [laravel-boolcoach](https://github.com/lazzaric92/laravel-boolcoach)
 
 ## Recommended IDE Setup
 
