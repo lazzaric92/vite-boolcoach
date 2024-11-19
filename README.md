@@ -1,6 +1,7 @@
 # vite-boolcoach
 
 Frontend of the Boolcoach project.
+
 Backend: [laravel-boolcoach](https://github.com/lazzaric92/laravel-boolcoach)
 
 ## Recommended IDE Setup
